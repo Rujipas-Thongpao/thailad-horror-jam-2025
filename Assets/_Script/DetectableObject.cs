@@ -7,6 +7,7 @@ public class DetectableObject : MonoBehaviour
     [SerializeField]
     private RenderingLayerMask outlineLayer, defaultLayer;
 
+    private bool isCasted = false;
 
     private void Awake()
     {
@@ -15,18 +16,30 @@ public class DetectableObject : MonoBehaviour
 
     public void OnCasted()
     {
-        foreach (var mesh in meshes)
-        {
-            mesh.renderingLayerMask = outlineLayer;
-        }
+        isCasted = true;
+        SetLayerMask(outlineLayer);
     }
 
     public void OnUnCasted()
     {
+        isCasted = false;
+        SetLayerMask(defaultLayer);
+    }
+
+    private void Update()
+    {
+        // If not casted, ensure the layer mask is set to default
+        if (!isCasted)
+        {
+            SetLayerMask(defaultLayer);
+        }
+    }
+
+    private void SetLayerMask(RenderingLayerMask layer)
+    {
         foreach (var mesh in meshes)
         {
-            mesh.renderingLayerMask = defaultLayer;
+            mesh.renderingLayerMask = layer;
         }
-
     }
 }

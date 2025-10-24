@@ -478,7 +478,7 @@ MonoBehaviour:
   camera: {fileID: 2141320895}
   detectableLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4294967295
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1746,7 +1746,7 @@ Transform:
   m_GameObject: {fileID: 919132147670466861}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.77, y: -0.18, z: 0}
+  m_LocalPosition: {x: -1.77, y: -0.072, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1789,7 +1789,7 @@ GameObject:
   - component: {fileID: 3745622626962702578}
   - component: {fileID: 5334037118913771116}
   - component: {fileID: 4539702728678845107}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1807,7 +1807,7 @@ GameObject:
   - component: {fileID: 543450651862637463}
   - component: {fileID: 919132147670466862}
   - component: {fileID: 919132147670466863}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Salt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2347,6 +2347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5579051710136178139}
+  - component: {fileID: 5579051710136178141}
   m_Layer: 0
   m_Name: Table1
   m_TagString: Untagged
@@ -2384,6 +2385,27 @@ Transform:
   - {fileID: 1047447754330232324}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5579051710136178141
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5055032558283362145}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.7083586, y: 0.7302272, z: 1}
+  m_Center: {x: -0.022522628, y: 0.39551166, z: 0}
 --- !u!4 &5680519942955170885
 Transform:
   m_ObjectHideFlags: 0
@@ -2654,7 +2676,7 @@ GameObject:
   - component: {fileID: 5680519942955170885}
   - component: {fileID: 3010172807635473324}
   - component: {fileID: 8544783546752277425}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2720,7 +2742,7 @@ GameObject:
   - component: {fileID: 4083501149991151057}
   - component: {fileID: 3260616446836393980}
   - component: {fileID: 7762067043885080173}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

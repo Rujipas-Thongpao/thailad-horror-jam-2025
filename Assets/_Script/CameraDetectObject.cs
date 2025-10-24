@@ -11,6 +11,8 @@ public class CameraDetectObject : MonoBehaviour
     // Track the last detected object so we can call OnUnCasted when it's no longer hit
     private DetectableObject lastDetected;
 
+    private bool isEnable = true;
+
     void Start()
     {
         if (camera == null)
@@ -21,6 +23,8 @@ public class CameraDetectObject : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!isEnable) return;
+
         RaycastHit hit;
         // Does the ray intersect any objects in detectableLayer?
         if (Physics.Raycast(camera.transform.position, camera.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, detectableLayer))
@@ -60,5 +64,20 @@ public class CameraDetectObject : MonoBehaviour
                 lastDetected = null;
             }
         }
+    }
+
+    public void SetEnable(bool enable)
+    {
+        isEnable = enable;
+        //if (!isEnable && lastDetected != null)
+        //{
+        //    lastDetected.OnUnCasted();
+        //    lastDetected = null;
+        //}
+    }
+
+    public Transform GetLastDetectedObject()
+    {
+        return lastDetected?.transform;
     }
 }

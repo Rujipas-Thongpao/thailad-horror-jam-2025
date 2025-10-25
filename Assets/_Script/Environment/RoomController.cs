@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using SmoothShakeFree;
 
 public class RoomController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class RoomController : MonoBehaviour
 
     [SerializeField]  private List<Rigidbody> forceAbleObject;
     [SerializeField]  private List<LightObject> flickerLight;
+
+    [SerializeField] bool shake;
 
     void Start()
     {
@@ -111,5 +114,32 @@ public class RoomController : MonoBehaviour
         PushObj();
 
         StartCoroutine(ForceRecur());
+    }
+
+    public void ShakeRoom()
+    {
+        SmoothShake[] allShake = FindObjectsByType<SmoothShake>(FindObjectsSortMode.None);
+
+        foreach(SmoothShake canShake in allShake)
+        {
+            canShake.StartShake();
+        }
+
+        for(int i=0; i<=forceAbleObject.Count; i++)
+        {
+            Vector3 randomDirection = Random.onUnitSphere;
+            float randomForce = Random.Range(2f, 4f);
+
+            forceAbleObject[i].AddForce(randomDirection * randomForce, ForceMode.Impulse);
+        }
+    }
+
+    void Update()
+    {
+        if(shake)
+        {
+            shake = false;
+            ShakeRoom();
+        } 
     }
 }

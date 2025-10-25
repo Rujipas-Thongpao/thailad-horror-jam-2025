@@ -10,6 +10,12 @@ public class Dizzyness : PlayerEffect
 
     public override void PlayEffect(float intensity)
     {
+        if(volume == null || camera == null)
+        {
+            Debug.LogError("Volume or Camera is not assigned in Dizzyness effect.");
+            return;
+        }
+
         int intensityLevel = Mathf.Clamp(Mathf.RoundToInt(intensity), 0, 5);
 
         if (intensity >= 0)
@@ -37,15 +43,17 @@ public class Dizzyness : PlayerEffect
     public override void StopEffect()
     {
         volume.profile.TryGet<Vignette>(out var vignette);
-        vignette.active = false;
         //vignette.intensity.value = 0f;
-        DOTween.To(() => vignette.intensity.value, x => vignette.intensity.value = x, 0.0f, 1f);
+        DOTween.To(() => vignette.intensity.value, x => vignette.intensity.value = x, 0.0f, 1f).OnComplete(() =>
+        {
+            vignette.active = false;
+        });
 
         volume.profile.TryGet<DepthOfField>(out var dof);
-        dof.active = false;
         dof.mode.value = DepthOfFieldMode.Bokeh;
-        //dof.focalLength.value = 0f;
-        DOTween.To(() => vignette.intensity.value, x => vignette.intensity.value = x, 0.0f, 1f);
+        DOTween.To(() => dof.focalLength.value, x => dof.focalLength.value = x, 0.0f, 1f).OnComplete(()=> {
+            dof.active = false;
+        });
 
         //camera.fieldOfView = 60f;
         DOTween.To(() => camera.fieldOfView, x => camera.fieldOfView = x, 60f, 1f);

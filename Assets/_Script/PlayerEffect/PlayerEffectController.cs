@@ -1,17 +1,34 @@
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class PlayerEffectController : MonoBehaviour
 {
     [SerializeField]
     private Dizzyness dizzyness;
 
-    public void Dizzyness(float intensity)
+    public static PlayerEffectController Instance { get; private set; }
+    private void Awake()
     {
-        dizzyness.PlayEffect(2);
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
-    public void StopDizzyness()
+    async public void Dizzyness(float intensity)
     {
+        await DizzyRoutine(intensity);
+    }
+
+    async UniTask<string> DizzyRoutine(float intensity)
+    {
+        dizzyness.PlayEffect(intensity);
+        await UniTask.WaitForSeconds(2);
         dizzyness.StopEffect();
+        return "Done";
     }
 }

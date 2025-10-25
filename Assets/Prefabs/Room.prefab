@@ -1156,7 +1156,7 @@ Transform:
   m_GameObject: {fileID: 8994458750260888097}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.24882, y: -0.90747, z: 4.14847}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1193,6 +1193,9 @@ MonoBehaviour:
   roomConfig: {fileID: 11400000, guid: 809a06182e55ad940a623b985007644b, type: 2}
   furnitures:
   - {fileID: 9138148651128475942}
+  forceAbleObject: []
+  flickerLight: []
+  shake: 0
 --- !u!1 &9170012718733639505
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,7 +25,6 @@ public class NormalState : GameState
     public override void OnSelect(Vector2 screenPos)
     {
         var lastDetectedObject = playerManager.CameraDetectObject.GetLastDetectedObject();
-        Debug.Log(lastDetectedObject);
         if (lastDetectedObject != null)
         {
             // pick item -> change state to holding item state.

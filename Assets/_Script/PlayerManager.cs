@@ -131,7 +131,6 @@ public class PlayerManager : MonoBehaviour
 
     private void OnSelectPerformed(Vector2 screenPos)
     {
-        Debug.Log("OnSelectPerformed");
         currentState.OnSelect(screenPos);
     }
 

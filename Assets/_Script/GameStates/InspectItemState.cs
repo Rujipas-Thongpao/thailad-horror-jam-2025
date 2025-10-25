@@ -31,10 +31,6 @@ public class InspectItemState : GameState
 
     public override void RightClickPerformed(Vector2 screenPos)
     {
-        // rotate object
-        // disable camera movement
-        //playerManager.MovementController.cameraCanMove = false;
-        Debug.Log(screenPos);
         playerManager.ObjectHolder.SetRotate(screenPos);
     }
 

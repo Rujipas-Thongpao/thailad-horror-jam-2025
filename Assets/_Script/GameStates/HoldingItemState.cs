@@ -23,7 +23,8 @@ public class HoldingItemState : GameState
 
     public override void OnSelect(Vector2 screenPos)
     {
-        // Place item on ray
+        playerManager.ObjectHolder.PlaceItem();
+        playerManager.ChangeState(E_PlayerState.Normal);
     }
 
     public override void RightClickPerformed(Vector2 screenPos)

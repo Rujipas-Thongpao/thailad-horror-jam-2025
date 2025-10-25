@@ -66,14 +66,15 @@ public class CameraDetectObject : MonoBehaviour
         }
     }
 
+
     public void SetEnable(bool enable)
     {
         isEnable = enable;
-        //if (!isEnable && lastDetected != null)
-        //{
-        //    lastDetected.OnUnCasted();
-        //    lastDetected = null;
-        //}
+        if (!isEnable && lastDetected != null)
+        {
+            lastDetected.OnUnCasted();
+            lastDetected = null;
+        }
     }
 
     public Transform GetLastDetectedObject()

@@ -4,6 +4,12 @@ using UnityEngine;
 public class ObjectHolder : MonoBehaviour
 {
     [SerializeField]
+    private Camera camera;
+
+    [SerializeField]
+    private LayerMask placableLayer;
+
+    [SerializeField]
     private Transform holdPoint;
     private Transform holdingObject;
 
@@ -12,15 +18,25 @@ public class ObjectHolder : MonoBehaviour
     bool rotateAllowed = false;
     private InputActions inputActions;
 
+    void Start()
+    {
+        if (camera == null)
+        {
+            camera = Camera.main;
+        }
+    }
+
     public void RegisterObject(Transform obj)
     {
         holdingObject = obj;
         holdingObject.SetParent(holdPoint);
         holdingObject.localPosition = Vector3.zero;
+        holdingObject.gameObject.layer = LayerMask.NameToLayer("HoldingItem");
     }
 
     public void UnregisterObject()
     {
+        holdingObject.gameObject.layer = LayerMask.NameToLayer("Default");
         if (holdingObject != null)
         {
             holdingObject.SetParent(null);
@@ -40,7 +56,7 @@ public class ObjectHolder : MonoBehaviour
     public void StartRotate()
     {
         SetRotateAllowed(true);
-        StartCoroutine(RotateObject());
+        //StartCoroutine(RotateObject());
 
 
         inputActions = new InputActions();
@@ -52,21 +68,41 @@ public class ObjectHolder : MonoBehaviour
     public void StopRotate()
     {
         SetRotateAllowed(false);
-        StopCoroutine(RotateObject());
+        //StopCoroutine(RotateObject());
 
         inputActions.Gameplay.Axis.performed -= ctx => {  rotation = ctx.ReadValue<Vector2>(); };
         inputActions.Gameplay.Disable();
     }
 
-    public IEnumerator RotateObject()
+    private void FixedUpdate()
     {
-        while (rotateAllowed)
-        {
-            rotation *= rotateSpeed;
-            holdingObject.Rotate(Vector3.up, rotation.x * Time.deltaTime, Space.World);
-            holdingObject.Rotate(Vector3.right, rotation.y * Time.deltaTime, Space.World);
+        if(!rotateAllowed || holdingObject == null) return;
 
-            yield return null;
+        rotation *= rotateSpeed;
+        holdingObject.Rotate(Vector3.up, rotation.x, Space.World);
+        holdingObject.Rotate(camera.transform.right, rotation.y, Space.World);
+        
+    }
+
+    //public IEnumerator RotateObject()
+    //{
+    //    while (rotateAllowed)
+    //    {
+
+    //        yield return null;
+    //    }
+    //}
+
+    public void PlaceItem()
+    {
+        RaycastHit hit;
+        // Does the ray intersect any objects in detectableLayer?
+        if (Physics.Raycast(camera.transform.position, camera.transform.TransformDirection(Vector3.forward), out hit, 10, placableLayer))
+        {
+            holdingObject.position = hit.point;
+            holdingObject.rotation = Quaternion.identity;
+
+            UnregisterObject();
         }
     }
 }

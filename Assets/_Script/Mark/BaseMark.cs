@@ -8,7 +8,7 @@ public abstract class BaseMark
 
     private DetectableObject obj;
     private bool isActive;
-    private float lastTriggerTime;
+    private float nextTriggerTime;
 
     protected BaseMark(int _intensity)
     {
@@ -34,9 +34,9 @@ public abstract class BaseMark
     protected bool TryTriggerMark()
     {
         if (!isActive) return false;
-        if (Time.time > lastTriggerTime + DEFAULT_CD) return false;
+        if (Time.time > nextTriggerTime) return false;
 
-        lastTriggerTime = Time.time;
+        nextTriggerTime = Time.time + DEFAULT_CD;
 
         return true;
     }

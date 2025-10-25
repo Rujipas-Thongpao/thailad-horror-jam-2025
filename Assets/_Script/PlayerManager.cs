@@ -11,9 +11,17 @@ public enum E_PlayerState
 
 public class PlayerManager : MonoBehaviour
 {
+    //[SerializeField]
+    //private FirstPersonController movementController;
+    //public FirstPersonController MovementController => movementController;
+
     [SerializeField]
-    private FirstPersonController movementController;
-    public FirstPersonController MovementController => movementController;
+    private PlayerMovementAdvanced movementController;
+    public PlayerMovementAdvanced MovementController => movementController;
+
+    [SerializeField]
+    private PlayerCam playerCam;
+    public PlayerCam PlayerCam => playerCam;
 
     [SerializeField]
     private CameraDetectObject cameraDetectObject;

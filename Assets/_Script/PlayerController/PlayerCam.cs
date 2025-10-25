@@ -14,14 +14,19 @@ public class PlayerCam : MonoBehaviour
     float xRotation;
     float yRotation;
 
+    private bool allowMove = false;
+    public bool AllowMove { get { return allowMove; } set { allowMove = value; } }
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        allowMove = true;
     }
 
     private void Update()
     {
+        if(!allowMove) return;
         // get mouse input
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;

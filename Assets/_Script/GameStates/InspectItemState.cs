@@ -11,13 +11,13 @@ public class InspectItemState : GameState
 
     public override void Enter()
     {
-        playerManager.MovementController.cameraCanMove = false;
+        playerManager.PlayerCam.AllowMove = false;
         playerManager.ObjectHolder.StartRotate();
     }
 
     public override void Exit()
     {
-        playerManager.MovementController.cameraCanMove = true;
+        playerManager.PlayerCam.AllowMove = true; 
         playerManager.ObjectHolder.StopRotate();
     }
 

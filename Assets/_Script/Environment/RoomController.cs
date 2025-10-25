@@ -10,6 +10,7 @@ public class RoomController : MonoBehaviour
     private List<DetectableObject> objects;
 
     [SerializeField]  private List<Rigidbody> forceAbleObject;
+    [SerializeField]  private List<LightObject> flickerLight;
 
     void Start()
     {
@@ -31,7 +32,46 @@ public class RoomController : MonoBehaviour
 
             lights[i].Init(lightOn, lightOff);
             lights[i].SetLight(isOn);
+
+            if(isOn) flickerLight.Add(lights[i]);
         }
+        
+        StartCoroutine(FlickerLight());
+    }
+
+    IEnumerator FlickerLight()
+    {
+        float randCd = Random.Range(2f, 5f);
+        yield return new WaitForSeconds(randCd);
+        
+        int randObj = Random.Range(0, flickerLight.Count);
+
+        int randFlickerMode = Random.Range(0, 1 + 1);
+
+        for(int i=0; i<=flickerLight.Count; i++)
+        {
+            if(i == randObj) 
+            {
+                if(randFlickerMode == 0)
+                {
+                    flickerLight[i].SetLight(false);
+                    yield return new WaitForSeconds(randCd / 10f);
+                    flickerLight[i].SetLight(true);
+                }
+                else if(randFlickerMode == 1)
+                {
+                    flickerLight[i].SetLight(false);
+                    yield return new WaitForSeconds(0.15f);
+                    flickerLight[i].SetLight(true);
+                    yield return new WaitForSeconds(0.15f);
+                    flickerLight[i].SetLight(false);
+                    yield return new WaitForSeconds(0.15f);
+                    flickerLight[i].SetLight(true);
+                }
+            }
+        }
+        
+        StartCoroutine(FlickerLight());
     }
 
     private void SetUpForceObj()

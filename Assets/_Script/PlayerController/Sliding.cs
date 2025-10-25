@@ -109,6 +109,6 @@ public class Sliding : MonoBehaviour
         pm.sliding = false;
 
         playerObj.localScale = new Vector3(playerObj.localScale.x, startYScale, playerObj.localScale.z);
-        // playerObj.transform.position = new Vector3(playerObj.transform.position.x, playerObj.transform.position.y + 1f, playerObj.transform.position.z);
+        playerObj.transform.position = new Vector3(playerObj.transform.position.x, playerObj.transform.position.y + 0.55f, playerObj.transform.position.z);
     }
 }

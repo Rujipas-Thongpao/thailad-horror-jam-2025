@@ -28,7 +28,8 @@ public class LevelManager : MonoBehaviour
         {
             0 => new FlickerMark(0),
             1 => new ShakeMark(0),
-            _ => new FlickerMark(0)
+            2 => new PlayerDizzyMark(0),
+            _ => new PlayerDizzyMark(0)
         };
 
         return mark;

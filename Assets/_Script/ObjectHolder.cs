@@ -67,7 +67,6 @@ public class ObjectHolder : MonoBehaviour
         rotation *= rotateSpeed;
         holdingObject.transform.Rotate(Vector3.up, rotation.x, Space.World);
         holdingObject.transform.Rotate(camera.transform.right, rotation.y, Space.World);
-        
     }
 
     public void PlaceItem()

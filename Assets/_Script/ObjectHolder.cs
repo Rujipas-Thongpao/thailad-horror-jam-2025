@@ -28,10 +28,10 @@ public class ObjectHolder : MonoBehaviour
     public void RegisterObject(DetectableObject obj)
     {
         holdingObject = obj;
+        holdingObject.GetComponent<Collider>().enabled = false;
         holdingObject.transform.SetParent(holdPoint);
         holdingObject.transform.localPosition = Vector3.zero;
         holdingObject.gameObject.layer = LayerMask.NameToLayer("HoldingItem");
-        holdingObject.GetComponent<Collider>().enabled = false;
     }
 
     private void UnregisterObject()
@@ -63,6 +63,8 @@ public class ObjectHolder : MonoBehaviour
     private void FixedUpdate()
     {
         if (!rotateAllowed || !holdingObject) return;
+        
+        holdingObject.transform.localPosition = Vector3.zero;
 
         rotation *= rotateSpeed;
 

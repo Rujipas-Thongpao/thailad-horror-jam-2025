@@ -29,6 +29,10 @@ public class InspectItemState : GameState
     {
     }
 
+    public override void OnDeselect(Vector2 screenPos)
+    {
+    }
+
     public override void RightClickPerformed(Vector2 screenPos)
     {
         playerManager.ObjectHolder.ApplyRotation(screenPos);

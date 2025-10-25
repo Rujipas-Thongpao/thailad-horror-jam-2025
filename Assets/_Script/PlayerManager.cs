@@ -1,20 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public enum E_PlayerState
 {
     Normal,
     Holding,
-    Inspecting
+    Inspecting,
+    Dragging,
 }
 
 public class PlayerManager : MonoBehaviour
 {
-    //[SerializeField]
-    //private FirstPersonController movementController;
-    //public FirstPersonController MovementController => movementController;
-
     [SerializeField]
     private PlayerMovementAdvanced movementController;
     public PlayerMovementAdvanced MovementController => movementController;
@@ -35,6 +31,7 @@ public class PlayerManager : MonoBehaviour
     private NormalState normalState;
     private HoldingItemState holdingItemState;
     private InspectItemState inspectingState;
+    private DraggingFurnitureState draggingState;
 
     private InputHandler inputHandler;
 
@@ -48,12 +45,14 @@ public class PlayerManager : MonoBehaviour
         normalState = new NormalState(this);
         holdingItemState = new HoldingItemState(this);
         inspectingState = new InspectItemState(this);
+        draggingState = new DraggingFurnitureState(this); 
 
-        stateDictionary = new()
+        stateDictionary = new Dictionary<E_PlayerState, GameState>
         {
-            {E_PlayerState.Normal , normalState },
-            {E_PlayerState.Holding , holdingItemState   },
-            {E_PlayerState.Inspecting , inspectingState }
+            { E_PlayerState.Normal, normalState },
+            { E_PlayerState.Holding, holdingItemState },
+            { E_PlayerState.Inspecting, inspectingState },
+            { E_PlayerState.Dragging, draggingState }
         };
 
         ChangeState(E_PlayerState.Normal);
@@ -64,7 +63,7 @@ public class PlayerManager : MonoBehaviour
     private void OnDestroy()
     {
         inputHandler.Dispose();
-        
+
         normalState = null;
         holdingItemState = null;
 
@@ -75,6 +74,7 @@ public class PlayerManager : MonoBehaviour
     {
         inputHandler.EventMouseMoved += OnMouseMoved;
         inputHandler.EventSelectPerformed += OnSelectPerformed;
+        inputHandler.EventSelectCanceled += OnSelectCanceled;
         inputHandler.EventRightClickPerformed += OnRightClickPerformed;
         inputHandler.EventRightClickCanceled += OnRightClickCanceled;
     }
@@ -83,6 +83,7 @@ public class PlayerManager : MonoBehaviour
     {
         inputHandler.EventMouseMoved -= OnMouseMoved;
         inputHandler.EventSelectPerformed -= OnSelectPerformed;
+        inputHandler.EventSelectCanceled -= OnSelectCanceled;
         inputHandler.EventRightClickPerformed -= OnRightClickPerformed;
         inputHandler.EventRightClickCanceled -= OnRightClickCanceled;
     }
@@ -96,6 +97,11 @@ public class PlayerManager : MonoBehaviour
     private void OnSelectPerformed(Vector2 screenPos)
     {
         currentState.OnSelect(screenPos);
+    }
+
+    private void OnSelectCanceled(Vector2 screenPos)
+    {
+        currentState.OnDeselect(screenPos);
     }
 
     private void OnRightClickPerformed(Vector2 screenPos)

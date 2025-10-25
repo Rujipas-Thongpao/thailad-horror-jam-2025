@@ -6,6 +6,7 @@ public class InputHandler
 {
     public event Action<Vector2> EventMouseMoved;
     public event Action<Vector2> EventSelectPerformed;
+    public event Action<Vector2> EventSelectCanceled;
     public event Action<Vector2> EventDraggingStart;
     public event Action EventDraggingStop;
 
@@ -21,6 +22,7 @@ public class InputHandler
 
         inputActions.Gameplay.Axis.performed += OnMouseMoved;
         inputActions.Gameplay.LeftClick.performed += OnLeftClickPerformed;
+        inputActions.Gameplay.LeftClick.canceled += OnLeftClickCanceled;
         inputActions.Gameplay.RightClick.performed += OnRightClickPerformed;
         inputActions.Gameplay.RightClick.canceled += OnRightClickCanceled;
 
@@ -31,6 +33,7 @@ public class InputHandler
     {
         inputActions.Gameplay.Axis.performed -= OnMouseMoved;
         inputActions.Gameplay.LeftClick.performed -= OnLeftClickPerformed;
+        inputActions.Gameplay.LeftClick.canceled -= OnLeftClickCanceled;
         inputActions.Gameplay.RightClick.performed -= OnRightClickPerformed;
         inputActions.Gameplay.RightClick.canceled -= OnRightClickCanceled;
 
@@ -46,6 +49,11 @@ public class InputHandler
     private void OnLeftClickPerformed(InputAction.CallbackContext context)
     {
         EventSelectPerformed?.Invoke(Mouse.current.position.ReadValue());
+    }
+
+    private void OnLeftClickCanceled(InputAction.CallbackContext context)
+    {
+        EventSelectCanceled?.Invoke(Mouse.current.position.ReadValue());
     }
 
     private void OnRightClickPerformed(InputAction.CallbackContext context)

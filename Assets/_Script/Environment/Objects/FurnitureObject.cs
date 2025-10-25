@@ -1,10 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FurnitureObject : MonoBehaviour
+public class FurnitureObject : MonoBehaviour, IDetectable
 {
     [SerializeField] private Transform[] places;
     [SerializeField] private FurnitureConfigSO config;
+
+    public void OnHovered()
+    {
+        
+    }
+
+    public void OnUnhovered()
+    {
+        
+    }
 
     public List<DetectableObject> PlaceItems(List<BaseMark> marks)
     {

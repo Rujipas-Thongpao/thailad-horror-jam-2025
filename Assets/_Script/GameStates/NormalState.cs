@@ -26,12 +26,24 @@ public class NormalState : GameState
     {
         var detectedObj = playerManager.CameraDetectObject.GetLastDetectedObject();
 
-        if (detectedObj == null) return;
+        if (detectedObj == null)
+        {
+            var furniture = playerManager.CameraDetectObject.GetLastFurnitureObject();
+            if (furniture == null) return;
+
+            playerManager.ChangeState(E_PlayerState.Dragging);
+            return;
+        }
 
         // pick item -> change state to holding item state.
         detectedObj.OnPicked();
         playerManager.ObjectHolder.RegisterObject(detectedObj);
         playerManager.ChangeState(E_PlayerState.Holding);
+    }
+
+    public override void OnDeselect(Vector2 screenPos)
+    {
+        // No action for cancel left click in NormalState
     }
 
     public override void RightClickPerformed(Vector2 screenPos)

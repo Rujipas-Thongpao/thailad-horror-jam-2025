@@ -8,15 +8,13 @@ public class RoomController : MonoBehaviour
     [SerializeField] private LightObject[] lights;
     [SerializeField] private Material lightOn, lightOff;
 
-    [SerializeField] private RoomConfigSO roomConfig;
     [SerializeField] private FurnitureObject[] furnitures;
 
-    private List<DetectableObject> sceneObjects = new();
-
-    [SerializeField]  private List<Rigidbody> forceAbleObject;
-    [SerializeField]  private List<LightObject> flickerLight;
-
     [SerializeField] bool shake;
+
+    private List<DetectableObject> sceneObjects = new();
+    private List<LightObject> activeLights = new();
+    private List<Rigidbody> forceAbleObject;
 
     public void Init(List<BaseMark> marks)
     {
@@ -32,83 +30,113 @@ public class RoomController : MonoBehaviour
 
     private void SetUpFurniture(List<BaseMark> marks)
     {
+        var abnormalAmount = LogicHelper.GetDistributeArray(marks.Count, furnitures.Length);
+
         for (int i = 0; i < furnitures.Length; i++)
         {
-            var amount = furnitures[i].GetAmount();
-            var objs = new DetectableObject[amount];
+            var placedMarks = new List<BaseMark>();
 
-            for (int j = 0; j < amount; j++)
+            for (int j = 0; j < abnormalAmount[i]; j++)
             {
-                objs[j] = Instantiate(roomConfig.GetNonMarkObject());
-                sceneObjects.Add(objs[j]);
+                var mark = marks[^1];
+                marks.RemoveAt(marks.Count - 1);
+                placedMarks.Add(mark);
             }
-            
-            furnitures[i].PlaceItems(objs);
 
+            var objs = furnitures[i].PlaceItems(placedMarks);
+
+            foreach (var obj in objs)
+            {
+                sceneObjects.Add(obj);
+            }
         }
-
-        ApplyMark(marks);
     }
 
     private void SetUpLight()
     {
-        for (int i = 0; i < lights.Length; i++)
+        foreach (var light in lights)
         {
             var isOn = Random.Range(0f, 1f) > 0.3f;
 
-            lights[i].Init(lightOn, lightOff);
-            lights[i].SetLight(isOn);
+            light.Init(lightOn, lightOff);
+            light.SetLight(isOn);
 
-            if(isOn) flickerLight.Add(lights[i]);
+            if (isOn) activeLights.Add(light);
         }
-        
+    }
+
+    #region environment events
+    [ContextMenu("Flicker Light")]
+    public void StartFlickerLight()
+    {
         StartCoroutine(FlickerLight());
     }
 
-    IEnumerator FlickerLight()
+    [ContextMenu("Shake Room")]
+    public void ShakeRoom()
     {
-        float randCd = Random.Range(2f, 5f);
-        yield return new WaitForSeconds(randCd);
-        
-        int randObj = Random.Range(0, flickerLight.Count);
+        //TODO: implement camera handler and move logic there.
+        var allShake = FindObjectsByType<SmoothShake>(FindObjectsSortMode.None);
 
-        int randFlickerMode = Random.Range(0, 1 + 1);
-
-        for(int i=0; i<=flickerLight.Count; i++)
+        foreach (var canShake in allShake)
         {
-            if(i == randObj) 
+            canShake.StartShake();
+        }
+        //
+
+        for (int i = 0; i <= forceAbleObject.Count; i++)
+        {
+            var randomDirection = Random.onUnitSphere;
+            var randomForce = Random.Range(2f, 4f);
+
+            forceAbleObject[i].AddForce(randomDirection * randomForce, ForceMode.Impulse);
+        }
+    }
+    #endregion
+
+    private IEnumerator FlickerLight()
+    {
+        var randCd = Random.Range(2f, 5f);
+        yield return new WaitForSeconds(randCd);
+
+        var randObj = Random.Range(0, lights.Length);
+        var randFlickerMode = Random.Range(0, 2);
+
+        for(var i = 0; i <= lights.Length; i++)
+        {
+            if (i != randObj) continue;
+
+            switch (randFlickerMode)
             {
-                if(randFlickerMode == 0)
-                {
-                    flickerLight[i].SetLight(false);
+                case 0:
+                    activeLights[i].SetLight(false);
                     yield return new WaitForSeconds(randCd / 10f);
-                    flickerLight[i].SetLight(true);
-                }
-                else if(randFlickerMode == 1)
-                {
-                    flickerLight[i].SetLight(false);
-                    yield return new WaitForSeconds(0.15f);
-                    flickerLight[i].SetLight(true);
-                    yield return new WaitForSeconds(0.15f);
-                    flickerLight[i].SetLight(false);
-                    yield return new WaitForSeconds(0.15f);
-                    flickerLight[i].SetLight(true);
-                }
+                    activeLights[i].SetLight(true);
+                    break;
+
+                case 1:
+                    var delay = new WaitForSeconds(0.15f);
+                    activeLights[i].SetLight(false);
+                    yield return delay;
+                    activeLights[i].SetLight(true);
+                    yield return delay;
+                    activeLights[i].SetLight(false);
+                    yield return delay;
+                    activeLights[i].SetLight(true);
+                    break;
             }
         }
-        
-        StartCoroutine(FlickerLight());
     }
 
     private void SetUpForceObj()
     {
-        GameObject[] forceObject = GameObject.FindGameObjectsWithTag("ForceObj");
-        if(forceAbleObject.Count != 0) forceAbleObject.Clear();
+        var forceObject = GameObject.FindGameObjectsWithTag("ForceObj");
+        if (forceAbleObject.Count != 0) forceAbleObject.Clear();
 
-        foreach(GameObject obj in forceObject)
+        foreach (var obj in forceObject)
         {
-            Rigidbody haveRB = obj.GetComponent<Rigidbody>();
-            if(haveRB) forceAbleObject.Add(haveRB);
+            var haveRb = obj.GetComponent<Rigidbody>();
+            if(haveRb) forceAbleObject.Add(haveRb);
         }
 
         StartCoroutine(ForceRecur());
@@ -116,82 +144,25 @@ public class RoomController : MonoBehaviour
 
     private void PushObj()
     {
-        int randObj = Random.Range(0, forceAbleObject.Count);
-        for(int i=0; i<=forceAbleObject.Count; i++)
+        var randObj = Random.Range(0, forceAbleObject.Count);
+
+        for (var i = 0; i <= forceAbleObject.Count; i++)
         {
-            if(i == randObj) 
-            {
-                Vector3 randomDirection = Random.onUnitSphere;
-                float randomForce = Random.Range(2f, 4f);
+            if (i != randObj) continue;
 
-                forceAbleObject[i].AddForce(randomDirection * randomForce, ForceMode.Impulse);
-            }
-        }
-    }
-
-    IEnumerator ForceRecur()
-    {
-        float randCd = Random.Range(2f, 5f);
-        yield return new WaitForSeconds(randCd);
-
-        PushObj();
-
-        StartCoroutine(ForceRecur());
-    }
-
-    public void ShakeRoom()
-    {
-        SmoothShake[] allShake = FindObjectsByType<SmoothShake>(FindObjectsSortMode.None);
-
-        foreach(SmoothShake canShake in allShake)
-        {
-            canShake.StartShake();
-        }
-
-        for(int i=0; i<=forceAbleObject.Count; i++)
-        {
-            Vector3 randomDirection = Random.onUnitSphere;
-            float randomForce = Random.Range(2f, 4f);
+            var randomDirection = Random.onUnitSphere;
+            var randomForce = Random.Range(2f, 4f);
 
             forceAbleObject[i].AddForce(randomDirection * randomForce, ForceMode.Impulse);
         }
     }
 
-    void Update()
+    IEnumerator ForceRecur()
     {
-        if(shake)
-        {
-            shake = false;
-            ShakeRoom();
-        }
-    }
+        var randCd = Random.Range(2f, 5f);
+        yield return new WaitForSeconds(randCd);
 
-    private void ApplyMark(List<BaseMark> marks)
-    {
-        if (marks == null || marks.Count == 0 || sceneObjects == null || sceneObjects.Count == 0) return;
-
-        var selectedObjects = GetRandomUniqueElements(sceneObjects, marks.Count);
-
-        for (int i = 0; i < selectedObjects.Count; i++)
-        {
-            selectedObjects[i].ApplyMark(marks[i]);
-        }
-    }
-
-    private static List<T> GetRandomUniqueElements<T>(IList<T> source, int count)
-    {
-        count = Mathf.Min(count, source.Count);
-
-        var tempList = new List<T>(source);
-        var result = new List<T>();
-
-        for (int i = 0; i < count; i++)
-        {
-            int index = Random.Range(0, tempList.Count);
-            result.Add(tempList[index]);
-            tempList.RemoveAt(index);
-        }
-
-        return result;
+        PushObj();
+        StartCoroutine(ForceRecur());
     }
 }

@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class HoldingItemState : GameState
 {
-    private PlayerManager playerManager;
+    private readonly PlayerManager playerManager;
 
     public HoldingItemState(PlayerManager gameplayManager)
     {
-        this.playerManager = gameplayManager;
+        playerManager = gameplayManager;
     }
 
     public override void Enter()

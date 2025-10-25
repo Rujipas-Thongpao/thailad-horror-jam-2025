@@ -1,30 +1,53 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FurnitureObject : MonoBehaviour
 {
     [SerializeField] private Transform[] places;
+    [SerializeField] private FurnitureConfigSO config;
 
-    public int GetAmount()
+    public List<DetectableObject> PlaceItems(List<BaseMark> marks)
     {
-        int maxAmount = places.Length;
-        return Random.Range(maxAmount / 2, maxAmount);
-    }
+        var objs = new List<DetectableObject>();
+        var amount = GetAmount(marks.Count);
+        var shuffledPlaces = LogicHelper.ShuffleArray(places);
+        var isAbnormal = LogicHelper.GetDistributeArray(marks.Count, amount);
 
-    public void PlaceItems(DetectableObject[] objects)
-    {
-        var shuffledPlaces = (Transform[])places.Clone();
-
-        for (int i = 0; i < shuffledPlaces.Length; i++)
+        for (int i = 0; i < amount; i++)
         {
-            var rand = Random.Range(i, shuffledPlaces.Length);
-            (shuffledPlaces[i], shuffledPlaces[rand]) = (shuffledPlaces[rand], shuffledPlaces[i]);
-        }
+            var obj = isAbnormal[i] == 0 ?
+                                    SpawnNormalObject() :
+                                    SpawnAbnormalObject(ref marks);
 
-        for (int i = 0; i < objects.Length; i++)
-        {
             var angleY = Random.Range(0f, 360f);
             var rotation = Quaternion.Euler(new Vector3(0, angleY, 0));
-            objects[i].transform.SetPositionAndRotation(shuffledPlaces[i].position, rotation);
+            obj.transform.SetPositionAndRotation(shuffledPlaces[i].position, rotation);
+
+            objs.Add(obj);
         }
+
+        return objs;
+    }
+
+    private DetectableObject SpawnNormalObject()
+    {
+        return Instantiate(config.GetNormalObject());
+    }
+
+    private DetectableObject SpawnAbnormalObject(ref List<BaseMark> marks)
+    {
+        var obj = Instantiate(config.GetAbnormalObject());
+        var mark = marks[^1];
+        marks.RemoveAt(marks.Count - 1);
+        obj.ApplyMark(mark);
+
+        return obj;
+    }
+
+    private int GetAmount(int minimum)
+    {
+        int maximum = places.Length;
+        minimum = Mathf.Max(minimum, maximum / 2);
+        return Random.Range(minimum, maximum);
     }
 }

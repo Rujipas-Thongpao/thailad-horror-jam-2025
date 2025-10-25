@@ -290,15 +290,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5912313
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.12080455
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.13563108
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -330,7 +330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}
       propertyPath: m_Name
-      value: TableLamp
+      value: TableLamp A 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -344,13 +344,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 354436678229395742}
+      addedObject: {fileID: 1981323832316467855}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5878829364111170577}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1981323832316467855}
+      addedObject: {fileID: 3981225197978756992}
   m_SourcePrefab: {fileID: 100100000, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}
 --- !u!4 &1045665610321516285 stripped
 Transform:
@@ -362,7 +362,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}
   m_PrefabInstance: {fileID: 4127322320177413672}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &354436678229395742
+--- !u!114 &1981323832316467855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -371,17 +371,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3856866998436365177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d3474e77062bf847b599e9709d72681, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ef84f0ec6674ae45aefb6933bf5a126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abnormalPrefabs:
-  - {fileID: 919132149155446097, guid: b5c0d14b357ff014385e45ee5e209287, type: 3}
-  - {fileID: 113769223703393843, guid: 996352905f073734cad61f9509067029, type: 3}
-  cursePoints:
-  - {fileID: 7717199236027390977}
-  - {fileID: 9072555378018311304}
-  - {fileID: 2691719402967847862}
-  - {fileID: 1676638526873284390}
 --- !u!136 &5878829364111170577
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -405,24 +397,33 @@ CapsuleCollider:
   m_Height: 0.57
   m_Direction: 1
   m_Center: {x: 0, y: 0.24, z: 0}
---- !u!114 &1981323832316467855
-MonoBehaviour:
+--- !u!54 &3981225197978756992
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3856866998436365177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ef84f0ec6674ae45aefb6933bf5a126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineLayer:
-    serializedVersion: 0
-    m_Bits: 2
-  defaultLayer:
-    serializedVersion: 0
-    m_Bits: 1
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &4525423512102001091 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}

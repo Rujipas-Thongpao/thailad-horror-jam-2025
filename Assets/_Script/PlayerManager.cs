@@ -87,7 +87,6 @@ public class PlayerManager : MonoBehaviour
         inputHandler.EventRightClickCanceled -= OnRightClickCanceled;
     }
 
-
     #region player input
     private void OnMouseMoved(Vector2 screenPos)
     {

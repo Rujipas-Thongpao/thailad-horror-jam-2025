@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class InspectItemState : GameState
 {
-    private PlayerManager playerManager;
+    private readonly PlayerManager playerManager;
     public InspectItemState(PlayerManager gameplayManager)
     {
-        this.playerManager = gameplayManager;
+        playerManager = gameplayManager;
     }
 
     public override void Enter()

@@ -9,14 +9,14 @@ public class DetectableObject : MonoBehaviour
 
     private static readonly RenderingLayerMask OutlineLayer = 2, DefaultLayer = 1;
 
-    public BaseMark Mark { get; private set; }
-
     private MeshRenderer[] meshes;
-    private bool isCasted = false;
+    private Rigidbody rb;
+    private bool isCasted;
 
     private void Awake()
     {
         meshes = GetComponentsInChildren<MeshRenderer>();
+        rb = GetComponent<Rigidbody>();
     }
 
     public void OnCasted()
@@ -34,11 +34,17 @@ public class DetectableObject : MonoBehaviour
     public void OnPicked()
     {
         EventPicked?.Invoke();
+        rb.isKinematic = true;
     }
 
-    public void ApplyMark(BaseMark mark)
+    public void OnPlaced()
     {
-        Mark = mark;
+        rb.isKinematic = false;
+    }
+
+    public void OnDropped()
+    {
+        rb.isKinematic = false;
     }
 
     private void SetLayerMask(RenderingLayerMask layer)

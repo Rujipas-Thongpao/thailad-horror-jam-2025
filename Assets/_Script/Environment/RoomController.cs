@@ -3,8 +3,7 @@ using UnityEngine;
 public class RoomController : MonoBehaviour
 {
     [SerializeField] private LightObject[] lights;
-    [SerializeField] private Material lightOn;
-    [SerializeField] private Material lightOff;
+    [SerializeField] private Material lightOn, lightOff;
 
     private void Start()
     {

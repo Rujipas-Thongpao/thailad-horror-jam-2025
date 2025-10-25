@@ -9,14 +9,16 @@ public class DetectableObject : MonoBehaviour
 
     private static readonly RenderingLayerMask OutlineLayer = 2, DefaultLayer = 1;
 
-    public BaseMark Mark { get; private set; }
+    [SerializeField] private PlaceConfig placeConfig;
 
     private MeshRenderer[] meshes;
-    private bool isCasted = false;
+    private Rigidbody rb;
+    private bool isCasted;
 
     private void Awake()
     {
         meshes = GetComponentsInChildren<MeshRenderer>();
+        rb = GetComponent<Rigidbody>();
     }
 
     public void OnCasted()
@@ -34,11 +36,37 @@ public class DetectableObject : MonoBehaviour
     public void OnPicked()
     {
         EventPicked?.Invoke();
+        rb.isKinematic = true;
     }
 
-    public void ApplyMark(BaseMark mark)
+    public void OnPlaced(Vector3 pos)
     {
-        Mark = mark;
+        transform.position = pos;
+        rb.isKinematic = false;
+
+        switch (placeConfig.Flip)
+        {
+            case false when !placeConfig.PlaceVertical:
+            {
+                LogicHelper.ApplyAngle(transform);
+                break;
+            }
+            case true when !placeConfig.PlaceVertical:
+            {
+                LogicHelper.ApplyAngleCanFlip(transform);
+                break;
+            }
+            case true when placeConfig.PlaceVertical:
+            {
+                LogicHelper.ApplyAngleCanFlipAndPlaceVertical(transform);
+                break;
+            }
+        }
+    }
+
+    public void OnDropped()
+    {
+        rb.isKinematic = false;
     }
 
     private void SetLayerMask(RenderingLayerMask layer)
@@ -48,4 +76,11 @@ public class DetectableObject : MonoBehaviour
             mesh.renderingLayerMask = layer;
         }
     }
+}
+
+[Serializable]
+public class PlaceConfig
+{
+    public bool Flip;
+    public bool PlaceVertical;
 }

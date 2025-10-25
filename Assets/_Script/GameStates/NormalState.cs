@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class NormalState : GameState
 {
-    private PlayerManager playerManager;
+    private readonly PlayerManager playerManager;
     public NormalState(PlayerManager gameplayManager)
     {
-        this.playerManager = gameplayManager;
+        playerManager = gameplayManager;
     }
 
     public override void Enter()
@@ -30,7 +30,7 @@ public class NormalState : GameState
 
         // pick item -> change state to holding item state.
         detectedObj.OnPicked();
-        playerManager.ObjectHolder.RegisterObject(detectedObj.transform);
+        playerManager.ObjectHolder.RegisterObject(detectedObj);
         playerManager.ChangeState(E_PlayerState.Holding);
     }
 

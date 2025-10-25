@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class ObjectHolder : MonoBehaviour
@@ -11,11 +10,11 @@ public class ObjectHolder : MonoBehaviour
 
     [SerializeField]
     private Transform holdPoint;
-    private Transform holdingObject;
+    private DetectableObject holdingObject;
 
     [SerializeField] private float rotateSpeed = 3f;
-    Vector2 rotation;
-    bool rotateAllowed = false;
+    private Vector2 rotation;
+    private bool rotateAllowed;
     private InputActions inputActions;
 
     void Start()
@@ -26,85 +25,61 @@ public class ObjectHolder : MonoBehaviour
         }
     }
 
-    public void RegisterObject(Transform obj)
+    public void RegisterObject(DetectableObject obj)
     {
         holdingObject = obj;
-        holdingObject.SetParent(holdPoint);
-        holdingObject.localPosition = Vector3.zero;
+        holdingObject.transform.SetParent(holdPoint);
+        holdingObject.transform.localPosition = Vector3.zero;
         holdingObject.gameObject.layer = LayerMask.NameToLayer("HoldingItem");
         holdingObject.GetComponent<Collider>().enabled = false;
     }
 
-    public void UnregisterObject()
+    private void UnregisterObject()
     {
         holdingObject.gameObject.layer = LayerMask.NameToLayer("Default");
-        if (holdingObject != null)
-        {
-            holdingObject.GetComponent<Collider>().enabled = true;
-            holdingObject.SetParent(null);
-            holdingObject = null;
-        }
+
+        if (holdingObject == null) return;
+
+        holdingObject.GetComponent<Collider>().enabled = true;
+        holdingObject.transform.SetParent(null);
+        holdingObject = null;
     }
 
-    public void SetRotateAllowed(bool allowed)
-    {
-        rotateAllowed = allowed;
-    }
-    public void SetRotate(Vector2 rotate)
+    public void ApplyRotation(Vector2 rotate)
     {
         rotation = rotate;
     }
 
     public void StartRotate()
     {
-        SetRotateAllowed(true);
-        //StartCoroutine(RotateObject());
-
-
-        inputActions = new InputActions();
-
-        inputActions.Gameplay.Enable();
-        inputActions.Gameplay.Axis.performed += ctx => {  rotation = ctx.ReadValue<Vector2>(); };
+        rotateAllowed = true;
     }
 
     public void StopRotate()
     {
-        SetRotateAllowed(false);
-        //StopCoroutine(RotateObject());
-
-        inputActions.Gameplay.Axis.performed -= ctx => {  rotation = ctx.ReadValue<Vector2>(); };
-        inputActions.Gameplay.Disable();
+        rotateAllowed = false;
     }
 
     private void FixedUpdate()
     {
-        if(!rotateAllowed || holdingObject == null) return;
+        if (!rotateAllowed || !holdingObject) return;
 
         rotation *= rotateSpeed;
-        holdingObject.Rotate(Vector3.up, rotation.x, Space.World);
-        holdingObject.Rotate(camera.transform.right, rotation.y, Space.World);
-        
+        holdingObject.transform.Rotate(Vector3.up, rotation.x, Space.World);
+        holdingObject.transform.Rotate(camera.transform.right, rotation.y, Space.World);
     }
-
-    //public IEnumerator RotateObject()
-    //{
-    //    while (rotateAllowed)
-    //    {
-
-    //        yield return null;
-    //    }
-    //}
 
     public void PlaceItem()
     {
         RaycastHit hit;
         // Does the ray intersect any objects in detectableLayer?
-        if (Physics.Raycast(camera.transform.position, camera.transform.TransformDirection(Vector3.forward), out hit, 10, placableLayer))
-        {
-            holdingObject.position = hit.point;
-            holdingObject.rotation = Quaternion.identity;
+        if (!Physics.Raycast(camera.transform.position, camera.transform.TransformDirection(Vector3.forward), out hit,
+                10, placableLayer)) return;
 
-            UnregisterObject();
-        }
+        holdingObject.OnPlaced(hit.point);
+
+        UnregisterObject();
     }
+
+    
 }

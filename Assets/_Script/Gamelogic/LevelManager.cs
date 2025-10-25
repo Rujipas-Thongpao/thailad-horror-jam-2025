@@ -5,7 +5,7 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private RoomController roomController;
 
-    private List<BaseMark> marks = new();
+    private readonly List<BaseMark> marks = new();
 
     public void Init(int difficulty)
     {
@@ -24,18 +24,13 @@ public class LevelManager : MonoBehaviour
 
     private BaseMark GetRandomMark()
     {
-        BaseMark mark;
-    
-        switch (Random.Range(0, 3))
+        BaseMark mark = Random.Range(0, 3) switch
         {
-            case 0:
-                mark = new FlickerMark();
-                break;
-            default:
-                mark = new FlickerMark();
-                break;
-        }
-    
+            0 => new FlickerMark(),
+            1 => new ShakeMark(),
+            _ => new FlickerMark()
+        };
+
         return mark;
     }
 }

@@ -83,6 +83,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3474e77062bf847b599e9709d72681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttachAbnormalController
+  placeConfig:
+    Flip: 1
+    PlaceVertical: 1
   abnormalPrefabs:
   - {fileID: 113769223703393843, guid: 996352905f073734cad61f9509067029, type: 3}
   - {fileID: 8153442295753868334, guid: 77eb374fda0b9d24d8c4999c10f80efd, type: 3}

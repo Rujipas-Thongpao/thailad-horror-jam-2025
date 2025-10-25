@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class ObjectHolder : MonoBehaviour
@@ -15,7 +14,7 @@ public class ObjectHolder : MonoBehaviour
 
     [SerializeField] private float rotateSpeed = 3f;
     private Vector2 rotation;
-    private bool rotateAllowed = false;
+    private bool rotateAllowed;
     private InputActions inputActions;
 
     void Start()
@@ -46,42 +45,28 @@ public class ObjectHolder : MonoBehaviour
         holdingObject = null;
     }
 
-    private void SetRotateAllowed(bool allowed)
-    {
-        rotateAllowed = allowed;
-    }
-
-    public void SetRotate(Vector2 rotate)
+    public void ApplyRotation(Vector2 rotate)
     {
         rotation = rotate;
     }
 
     public void StartRotate()
     {
-        SetRotateAllowed(true);
-
-        inputActions = new InputActions();
-
-        inputActions.Gameplay.Enable();
-        inputActions.Gameplay.Axis.performed += ctx => {  rotation = ctx.ReadValue<Vector2>(); };
+        rotateAllowed = true;
     }
 
     public void StopRotate()
     {
-        SetRotateAllowed(false);
-
-        inputActions.Gameplay.Axis.performed -= ctx => {  rotation = ctx.ReadValue<Vector2>(); };
-        inputActions.Gameplay.Disable();
+        rotateAllowed = false;
     }
 
     private void FixedUpdate()
     {
-        if(!rotateAllowed || !holdingObject) return;
+        if (!rotateAllowed || !holdingObject) return;
 
         rotation *= rotateSpeed;
         holdingObject.transform.Rotate(Vector3.up, rotation.x, Space.World);
         holdingObject.transform.Rotate(camera.transform.right, rotation.y, Space.World);
-        
     }
 
     public void PlaceItem()
@@ -90,11 +75,11 @@ public class ObjectHolder : MonoBehaviour
         // Does the ray intersect any objects in detectableLayer?
         if (!Physics.Raycast(camera.transform.position, camera.transform.TransformDirection(Vector3.forward), out hit,
                 10, placableLayer)) return;
-    
-        holdingObject.transform.position = hit.point;
-        holdingObject.transform.rotation = Quaternion.identity;
-        holdingObject.OnPlaced();
+
+        holdingObject.OnPlaced(hit.point);
 
         UnregisterObject();
     }
+
+    
 }

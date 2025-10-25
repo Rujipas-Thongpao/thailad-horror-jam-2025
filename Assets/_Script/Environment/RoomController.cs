@@ -8,13 +8,11 @@ public class RoomController : MonoBehaviour
     [SerializeField] private LightObject[] lights;
     [SerializeField] private Material lightOn, lightOff;
 
-    [SerializeField] private FurnitureObject[] furnitures;
+    [SerializeField] private FurnitureObject[] furniture;
 
-    [SerializeField] bool shake;
-
-    private List<DetectableObject> sceneObjects = new();
-    private List<LightObject> activeLights = new();
-    private List<Rigidbody> forceAbleObject;
+    private readonly List<DetectableObject> sceneObjects = new();
+    private readonly List<LightObject> activeLights = new();
+    private readonly List<Rigidbody> forceAbleObject = new();
 
     public void Init(List<BaseMark> marks)
     {
@@ -30,9 +28,9 @@ public class RoomController : MonoBehaviour
 
     private void SetUpFurniture(List<BaseMark> marks)
     {
-        var abnormalAmount = LogicHelper.GetDistributeArray(marks.Count, furnitures.Length);
+        var abnormalAmount = LogicHelper.GetDistributeArray(marks.Count, furniture.Length);
 
-        for (int i = 0; i < furnitures.Length; i++)
+        for (int i = 0; i < furniture.Length; i++)
         {
             var placedMarks = new List<BaseMark>();
 
@@ -43,7 +41,7 @@ public class RoomController : MonoBehaviour
                 placedMarks.Add(mark);
             }
 
-            var objs = furnitures[i].PlaceItems(placedMarks);
+            var objs = furniture[i].PlaceItems(placedMarks);
 
             foreach (var obj in objs)
             {
@@ -130,8 +128,9 @@ public class RoomController : MonoBehaviour
 
     private void SetUpForceObj()
     {
-        var forceObject = GameObject.FindGameObjectsWithTag("ForceObj");
         if (forceAbleObject.Count != 0) forceAbleObject.Clear();
+
+        var forceObject = GameObject.FindGameObjectsWithTag("ForceObj");
 
         foreach (var obj in forceObject)
         {
@@ -144,6 +143,8 @@ public class RoomController : MonoBehaviour
 
     private void PushObj()
     {
+        if (forceAbleObject.Count == 0) return;
+
         var randObj = Random.Range(0, forceAbleObject.Count);
 
         for (var i = 0; i <= forceAbleObject.Count; i++)

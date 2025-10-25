@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class InspectItemState : GameState
@@ -23,6 +22,7 @@ public class InspectItemState : GameState
 
     public override void OnMouseMoved(Vector2 screenPos)
     {
+        playerManager.ObjectHolder.ApplyRotation(screenPos);
     }
 
     public override void OnSelect(Vector2 screenPos)
@@ -31,7 +31,7 @@ public class InspectItemState : GameState
 
     public override void RightClickPerformed(Vector2 screenPos)
     {
-        playerManager.ObjectHolder.SetRotate(screenPos);
+        playerManager.ObjectHolder.ApplyRotation(screenPos);
     }
 
     public override void RightClickCanceled(Vector2 screenPos)

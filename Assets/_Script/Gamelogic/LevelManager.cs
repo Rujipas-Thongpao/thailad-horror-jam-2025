@@ -26,9 +26,9 @@ public class LevelManager : MonoBehaviour
     {
         BaseMark mark = Random.Range(0, 3) switch
         {
-            0 => new FlickerMark(),
-            1 => new ShakeMark(),
-            _ => new FlickerMark()
+            0 => new FlickerMark(0),
+            1 => new ShakeMark(0),
+            _ => new FlickerMark(0)
         };
 
         return mark;

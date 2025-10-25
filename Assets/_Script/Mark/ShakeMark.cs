@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class ShakeMark : BaseMark
 {
-    public override void Init(DetectableObject obj, int intensity)
+    public ShakeMark(int intensity) : base(intensity)
     {
-        base.Init(obj, intensity);
+        
+    }
+
+    public override void Init(DetectableObject obj)
+    {
+        base.Init(obj);
+        Debug.Log("Shake", obj.gameObject);
     }
 
     private void Shake()

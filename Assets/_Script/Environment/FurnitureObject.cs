@@ -39,6 +39,7 @@ public class FurnitureObject : MonoBehaviour
         var obj = Instantiate(config.GetAbnormalObject());
         var mark = marks[^1];
         marks.RemoveAt(marks.Count - 1);
+        mark.Init(obj);
         obj.ApplyMark(mark);
 
         return obj;

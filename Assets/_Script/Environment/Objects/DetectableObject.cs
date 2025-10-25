@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class DetectableObject : MonoBehaviour
+public class DetectableObject : MonoBehaviour, IDetectable
 {
     public event Action EventPlayerNearby;
     public event Action EventPicked;
@@ -16,7 +16,6 @@ public class DetectableObject : MonoBehaviour
 
     private MeshRenderer[] meshes;
     private Rigidbody rb;
-    private bool isCasted;
 
     private void Awake()
     {
@@ -26,15 +25,13 @@ public class DetectableObject : MonoBehaviour
         if (center == null) center = transform;
     }
 
-    public void OnCasted()
+    public void OnHovered()
     {
-        isCasted = true;
         SetLayerMask(OutlineLayer);
     }
 
-    public void OnUnCasted()
+    public void OnUnhovered()
     {
-        isCasted = false;
         SetLayerMask(DefaultLayer);
     }
 

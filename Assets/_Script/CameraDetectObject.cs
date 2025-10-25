@@ -9,7 +9,7 @@ public class CameraDetectObject : MonoBehaviour
     private LayerMask detectableLayer;
 
     // Track the last detected object so we can call OnUnCasted when it's no longer hit
-    private DetectableObject lastDetected;
+    private IDetectable lastDetected;
 
     private bool isEnable = true;
 
@@ -25,44 +25,36 @@ public class CameraDetectObject : MonoBehaviour
     {
         if (!isEnable) return;
 
-        RaycastHit hit;
         // Does the ray intersect any objects in detectableLayer?
-        if (Physics.Raycast(camera.transform.position, camera.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, detectableLayer))
+        var dir = camera.transform.TransformDirection(Vector3.forward);
+
+        if (!Physics.Raycast(camera.transform.position, dir, out var hit, Mathf.Infinity, detectableLayer))
         {
-            Debug.DrawRay(camera.transform.position, camera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            // No hit: ensure any previously cast object is uncasted.
+            if (lastDetected == null) return;
 
-            var detected = hit.transform.GetComponent<DetectableObject>();
-
-            if (detected)
-            {
-                // If we hit a new detectable object, uncast the previous and cast the new one.
-                if (detected == lastDetected) return;
-
-                lastDetected?.OnUnCasted();
-                detected.OnCasted();
-                lastDetected = detected;
-                // If it's the same object as last frame, do nothing.
-            }
-            else
-            {
-                // Hit something in the layer mask that isn't DetectableObject
-                if (!lastDetected) return;
-                lastDetected.OnUnCasted();
-                lastDetected = null;
-            }
+            lastDetected.OnUnhovered();
+            lastDetected = null;
+            return;
         }
-        else
+
+        if (!hit.transform.TryGetComponent<IDetectable>(out var detected))
         {
-            Debug.DrawRay(camera.transform.position, camera.transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            // No hit: ensure any previously casted object is uncasted.\
+            // Hit something in the layer mask that isn't IDetectable
+            if (lastDetected == null) return;
 
-            if (!lastDetected) return;
-
-            lastDetected.OnUnCasted();
+            lastDetected.OnUnhovered();
             lastDetected = null;
         }
-    }
 
+        // If it's the same object as last frame, do nothing.
+        if (detected == lastDetected) return;
+
+        // If we hit a new detectable object, uncast the previous and cast the new one.
+        lastDetected?.OnUnhovered();
+        detected.OnHovered();
+        lastDetected = detected;
+    }
 
     public void SetEnable(bool enable)
     {
@@ -70,12 +62,17 @@ public class CameraDetectObject : MonoBehaviour
 
         if (isEnable || lastDetected == null) return;
 
-        lastDetected.OnUnCasted();
+        lastDetected.OnUnhovered();
         lastDetected = null;
     }
 
     public DetectableObject GetLastDetectedObject()
     {
-        return lastDetected;
+        return lastDetected as DetectableObject;
+    }
+
+    public FurnitureObject GetLastFurnitureObject()
+    {
+        return lastDetected as FurnitureObject;
     }
 }

@@ -32,6 +32,7 @@ public class ObjectHolder : MonoBehaviour
         holdingObject.SetParent(holdPoint);
         holdingObject.localPosition = Vector3.zero;
         holdingObject.gameObject.layer = LayerMask.NameToLayer("HoldingItem");
+        holdingObject.GetComponent<Collider>().enabled = false;
     }
 
     public void UnregisterObject()
@@ -39,6 +40,7 @@ public class ObjectHolder : MonoBehaviour
         holdingObject.gameObject.layer = LayerMask.NameToLayer("Default");
         if (holdingObject != null)
         {
+            holdingObject.GetComponent<Collider>().enabled = true;
             holdingObject.SetParent(null);
             holdingObject = null;
         }

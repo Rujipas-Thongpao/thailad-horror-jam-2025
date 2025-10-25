@@ -65,8 +65,12 @@ public class ObjectHolder : MonoBehaviour
         if (!rotateAllowed || !holdingObject) return;
 
         rotation *= rotateSpeed;
-        holdingObject.transform.Rotate(Vector3.up, rotation.x, Space.World);
-        holdingObject.transform.Rotate(camera.transform.right, rotation.y, Space.World);
+
+        var obj = holdingObject.transform;
+        var center = holdingObject.Center;
+
+        obj.RotateAround(center.position, Vector3.up, rotation.x);
+        obj.RotateAround(center.position, camera.transform.right, rotation.y);
     }
 
     public void PlaceItem()
@@ -80,6 +84,4 @@ public class ObjectHolder : MonoBehaviour
 
         UnregisterObject();
     }
-
-    
 }

@@ -10,6 +10,9 @@ public class DetectableObject : MonoBehaviour
     private static readonly RenderingLayerMask OutlineLayer = 2, DefaultLayer = 1;
 
     [SerializeField] private PlaceConfig placeConfig;
+    [SerializeField] private Transform center;
+
+    public Transform Center => center;
 
     private MeshRenderer[] meshes;
     private Rigidbody rb;
@@ -19,6 +22,8 @@ public class DetectableObject : MonoBehaviour
     {
         meshes = GetComponentsInChildren<MeshRenderer>();
         rb = GetComponent<Rigidbody>();
+
+        if (center == null) center = transform;
     }
 
     public void OnCasted()

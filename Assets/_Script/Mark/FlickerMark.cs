@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class FlickerMark : BaseMark
 {
-    public override void Init(DetectableObject obj, int intensity)
+    public FlickerMark(int intensity) : base(intensity)
     {
-        base.Init(obj, intensity);
+        
+    }
+
+    public override void Init(DetectableObject obj)
+    {
+        base.Init(obj);
+        Debug.Log("Flicker", obj.gameObject);
     }
 
     private void Flicker()

@@ -4,16 +4,20 @@ public abstract class BaseMark
 {
     private const float DEFAULT_CD = 20f;
 
-    protected DetectableObject obj;
-    protected int intensity;
+    protected readonly int intensity;
 
-    protected bool isActive;
-    protected float lastTriggerTime;
+    private DetectableObject obj;
+    private bool isActive;
+    private float lastTriggerTime;
 
-    public virtual void Init(DetectableObject _obj, int _intensity)
+    protected BaseMark(int _intensity)
+    {
+        intensity = _intensity;
+    }
+
+    public virtual void Init(DetectableObject _obj)
     {
         obj = _obj;
-        intensity = _intensity;
 
         obj.EventPlayerNearby += OnPlayerNearby;
         obj.EventPicked += OnPicked;
@@ -27,8 +31,9 @@ public abstract class BaseMark
         obj.EventImpactHit -= OnImpactHit;
     }
 
-    public bool TryTriggerMark()
+    protected bool TryTriggerMark()
     {
+        if (!isActive) return false;
         if (Time.time > lastTriggerTime + DEFAULT_CD) return false;
 
         lastTriggerTime = Time.time;

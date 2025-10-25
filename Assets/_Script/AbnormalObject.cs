@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class AbnormalObject : DetectableObject
 {
+    [Header("Abnormal")]
     [SerializeField]
     private GameObject[] abnormalPrefabs;
 
@@ -16,20 +17,19 @@ public class AbnormalObject : DetectableObject
         SpawnAbnormal();
     }
 
-    [ContextMenu("SpawnAbnormal")]
-    public void SpawnAbnormal()
+    private void SpawnAbnormal()
     {
-        int amount = Random.Range(1, cursePoints.Length);
+        int amount = Random.Range(1, cursePoints.Length / 2 + 1);
+
+        var shufflePoints = LogicHelper.ShuffleArray(cursePoints);
+        var abnormalPrefab = abnormalPrefabs[Random.Range(0, abnormalPrefabs.Length)];
 
         for (int i = 0; i < amount; i++)
         {
-            var selectedPoint = cursePoints[Random.Range(0, cursePoints.Length)];
-
-            var abnormalPrefab = abnormalPrefabs[Random.Range(0, abnormalPrefabs.Length)];
-
-            var abnormalInstance = Instantiate(abnormalPrefab, selectedPoint.position, selectedPoint.rotation);
+            var point = shufflePoints[i];
+            var abnormalInstance = Instantiate(abnormalPrefab, point.position, point.rotation);
             abnormalInstance.transform.localScale = Vector3.one * Random.Range(0.5f, 1.5f);
-            abnormalInstance.transform.SetParent(selectedPoint);
+            abnormalInstance.transform.SetParent(point);
         }
     }
 }

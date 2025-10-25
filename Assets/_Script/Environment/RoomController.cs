@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RoomController : MonoBehaviour
@@ -5,7 +6,9 @@ public class RoomController : MonoBehaviour
     [SerializeField] private LightObject[] lights;
     [SerializeField] private Material lightOn, lightOff;
 
-    private void Start()
+    private List<DetectableObject> objects;
+
+    public void Init()
     {
         for (int i = 0; i < lights.Length; i++)
         {

@@ -1,7 +1,12 @@
+using System;
 using UnityEngine;
 
 public class DetectableObject : MonoBehaviour
 {
+    public event Action EventPlayerNearby;
+    public event Action EventPicked;
+    public event Action EventImpactHit;
+
     private MeshRenderer[] meshes;
 
     [SerializeField]

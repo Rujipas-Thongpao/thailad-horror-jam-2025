@@ -7,11 +7,11 @@ public class DetectableObject : MonoBehaviour
     public event Action EventPicked;
     public event Action EventImpactHit;
 
+    private static readonly RenderingLayerMask OutlineLayer = 2, DefaultLayer = 1;
+
+    public BaseMark Mark { get; private set; }
+
     private MeshRenderer[] meshes;
-
-    [SerializeField]
-    private RenderingLayerMask outlineLayer, defaultLayer;
-
     private bool isCasted = false;
 
     private void Awake()
@@ -22,22 +22,23 @@ public class DetectableObject : MonoBehaviour
     public void OnCasted()
     {
         isCasted = true;
-        SetLayerMask(outlineLayer);
+        SetLayerMask(OutlineLayer);
     }
 
     public void OnUnCasted()
     {
         isCasted = false;
-        SetLayerMask(defaultLayer);
+        SetLayerMask(DefaultLayer);
     }
 
-    private void Update()
+    public void OnPicked()
     {
-        // If not casted, ensure the layer mask is set to default
-        if (!isCasted)
-        {
-            SetLayerMask(defaultLayer);
-        }
+        EventPicked?.Invoke();
+    }
+
+    public void ApplyMark(BaseMark mark)
+    {
+        Mark = mark;
     }
 
     private void SetLayerMask(RenderingLayerMask layer)

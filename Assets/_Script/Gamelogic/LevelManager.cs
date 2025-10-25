@@ -3,11 +3,18 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] private RoomController roomController;
+
     private List<BaseMark> marks = new();
 
     public void Init(int difficulty)
     {
-        // marks.Add(GetRandomMark());
+        for (int i = 0; i < 5; i++)
+        {
+            marks.Add(GetRandomMark());
+        }
+
+        roomController.Init(marks);
     }
 
     public void Dispose()
@@ -15,38 +22,20 @@ public class LevelManager : MonoBehaviour
         
     }
 
-    #region event listeners
-
-    private void OnPlayerNearby()
+    private BaseMark GetRandomMark()
     {
-        
+        BaseMark mark;
+    
+        switch (Random.Range(0, 3))
+        {
+            case 0:
+                mark = new FlickerMark();
+                break;
+            default:
+                mark = new FlickerMark();
+                break;
+        }
+    
+        return mark;
     }
-
-    private void OnPicked()
-    {
-        
-    }
-
-    private void OnImpactHit()
-    {
-        
-    }
-
-    #endregion
-
-    // private BaseMark GetRandomMark()
-    // {
-    //     BaseMark mark;
-    //
-    //     switch (Random.Range(0, 3))
-    //     {
-    //         case 0:
-    //             mark = new 
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    //
-    //     return mark;
-    // }
 }

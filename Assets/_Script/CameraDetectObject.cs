@@ -33,36 +33,33 @@ public class CameraDetectObject : MonoBehaviour
 
             var detected = hit.transform.GetComponent<DetectableObject>();
 
-            if (detected != null)
+            if (detected)
             {
                 // If we hit a new detectable object, uncast the previous and cast the new one.
-                if (detected != lastDetected)
-                {
-                    lastDetected?.OnUnCasted();
-                    detected.OnCasted();
-                    lastDetected = detected;
-                }
+                if (detected == lastDetected) return;
+
+                lastDetected?.OnUnCasted();
+                detected.OnCasted();
+                lastDetected = detected;
                 // If it's the same object as last frame, do nothing.
             }
             else
             {
                 // Hit something in the layer mask that isn't DetectableObject
-                if (lastDetected != null)
-                {
-                    lastDetected.OnUnCasted();
-                    lastDetected = null;
-                }
+                if (!lastDetected) return;
+                lastDetected.OnUnCasted();
+                lastDetected = null;
             }
         }
         else
         {
             Debug.DrawRay(camera.transform.position, camera.transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            // No hit: ensure any previously casted object is uncasted.
-            if (lastDetected != null)
-            {
-                lastDetected.OnUnCasted();
-                lastDetected = null;
-            }
+            // No hit: ensure any previously casted object is uncasted.\
+
+            if (!lastDetected) return;
+
+            lastDetected.OnUnCasted();
+            lastDetected = null;
         }
     }
 
@@ -70,15 +67,15 @@ public class CameraDetectObject : MonoBehaviour
     public void SetEnable(bool enable)
     {
         isEnable = enable;
-        if (!isEnable && lastDetected != null)
-        {
-            lastDetected.OnUnCasted();
-            lastDetected = null;
-        }
+
+        if (isEnable || lastDetected == null) return;
+
+        lastDetected.OnUnCasted();
+        lastDetected = null;
     }
 
-    public Transform GetLastDetectedObject()
+    public DetectableObject GetLastDetectedObject()
     {
-        return lastDetected?.transform;
+        return lastDetected;
     }
 }

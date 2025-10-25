@@ -24,13 +24,14 @@ public class NormalState : GameState
 
     public override void OnSelect(Vector2 screenPos)
     {
-        var lastDetectedObject = playerManager.CameraDetectObject.GetLastDetectedObject();
-        if (lastDetectedObject != null)
-        {
-            // pick item -> change state to holding item state.
-            playerManager.ObjectHolder.RegisterObject(lastDetectedObject);
-            playerManager.ChangeState(E_PlayerState.Holding);
-        }
+        var detectedObj = playerManager.CameraDetectObject.GetLastDetectedObject();
+
+        if (detectedObj == null) return;
+
+        // pick item -> change state to holding item state.
+        detectedObj.OnPicked();
+        playerManager.ObjectHolder.RegisterObject(detectedObj.transform);
+        playerManager.ChangeState(E_PlayerState.Holding);
     }
 
     public override void RightClickPerformed(Vector2 screenPos)

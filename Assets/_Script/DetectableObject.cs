@@ -9,6 +9,8 @@ public class DetectableObject : MonoBehaviour
 
     private static readonly RenderingLayerMask OutlineLayer = 2, DefaultLayer = 1;
 
+    [SerializeField] private PlaceConfig placeConfig;
+
     private MeshRenderer[] meshes;
     private Rigidbody rb;
     private bool isCasted;
@@ -37,9 +39,29 @@ public class DetectableObject : MonoBehaviour
         rb.isKinematic = true;
     }
 
-    public void OnPlaced()
+    public void OnPlaced(Vector3 pos)
     {
+        transform.position = pos;
         rb.isKinematic = false;
+
+        switch (placeConfig.Flip)
+        {
+            case false when !placeConfig.PlaceVertical:
+            {
+                LogicHelper.ApplyAngle(transform);
+                break;
+            }
+            case true when !placeConfig.PlaceVertical:
+            {
+                LogicHelper.ApplyAngleCanFlip(transform);
+                break;
+            }
+            case true when placeConfig.PlaceVertical:
+            {
+                LogicHelper.ApplyAngleCanFlipAndPlaceVertical(transform);
+                break;
+            }
+        }
     }
 
     public void OnDropped()
@@ -54,4 +76,11 @@ public class DetectableObject : MonoBehaviour
             mesh.renderingLayerMask = layer;
         }
     }
+}
+
+[Serializable]
+public class PlaceConfig
+{
+    public bool Flip;
+    public bool PlaceVertical;
 }

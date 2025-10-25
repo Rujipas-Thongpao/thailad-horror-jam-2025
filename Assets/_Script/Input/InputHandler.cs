@@ -19,38 +19,28 @@ public class InputHandler
         //input =  new Input().Gameplay;
         inputActions = new InputActions();
 
-        inputActions.Gameplay.Enable();
+        inputActions.Gameplay.Axis.performed += OnMouseMoved;
         inputActions.Gameplay.LeftClick.performed += OnLeftClickPerformed;
-
         inputActions.Gameplay.RightClick.performed += OnRightClickPerformed;
         inputActions.Gameplay.RightClick.canceled += OnRightClickCanceled;
 
-        //input.FindAction("RightClick").performed += OnRightClickPerformed;
-        //input.FindAction("RightClick").canceled += OnRightClickCanceled;
-
-        //input.FindAction("Camera").performed += OnCameraPerformed;
-        //input.FindAction("Camera").canceled += OnCameraCanceled;
-        //input.FindAction("Move").performed += OnMouseMoved;
+        inputActions.Gameplay.Enable();
     }
 
     public void Dispose()
     {
+        inputActions.Gameplay.Axis.performed -= OnMouseMoved;
         inputActions.Gameplay.LeftClick.performed -= OnLeftClickPerformed;
-
         inputActions.Gameplay.RightClick.performed -= OnRightClickPerformed;
         inputActions.Gameplay.RightClick.canceled -= OnRightClickCanceled;
-        //input.FindAction("LeftClick").performed -= OnLeftClickPerformed;
-        //input.FindAction("RightClick").performed -= OnRightClickPerformed;
-        //input.FindAction("Camera").performed -= OnCameraPerformed;
-        //input.FindAction("Camera").canceled -= OnCameraCanceled;
-        //input.FindAction("Move").performed -= OnMouseMoved;
+
         inputActions.Disable();
         inputActions = null;
     }
 
     private void OnMouseMoved(InputAction.CallbackContext context)
     {
-        EventMouseMoved?.Invoke(Mouse.current.position.ReadValue());
+        EventMouseMoved?.Invoke(context.ReadValue<Vector2>());
     }
 
     private void OnLeftClickPerformed(InputAction.CallbackContext context)

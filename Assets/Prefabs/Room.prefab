@@ -1406,11 +1406,8 @@ MonoBehaviour:
   - {fileID: 7154186677380708840}
   lightOn: {fileID: 2100000, guid: 5f39c267d18b80546ad882bdc4db4b87, type: 2}
   lightOff: {fileID: 2100000, guid: 3906762970461ee47a5fc40ecb8b9d9e, type: 2}
-  furnitures:
+  furniture:
   - {fileID: 9138148651128475942}
-  forceAbleObject: []
-  flickerLight: []
-  shake: 0
 --- !u!1 &9170012718733639505
 GameObject:
   m_ObjectHideFlags: 0

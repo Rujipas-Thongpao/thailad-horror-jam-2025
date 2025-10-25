@@ -73,16 +73,16 @@ public class PlayerManager : MonoBehaviour
 
     private void AddListener()
     {
+        inputHandler.EventMouseMoved += OnMouseMoved;
         inputHandler.EventSelectPerformed += OnSelectPerformed;
-
         inputHandler.EventRightClickPerformed += OnRightClickPerformed;
         inputHandler.EventRightClickCanceled += OnRightClickCanceled;
     }
 
     private void RemoveListener()
     {
+        inputHandler.EventMouseMoved -= OnMouseMoved;
         inputHandler.EventSelectPerformed -= OnSelectPerformed;
-
         inputHandler.EventRightClickPerformed -= OnRightClickPerformed;
         inputHandler.EventRightClickCanceled -= OnRightClickCanceled;
     }

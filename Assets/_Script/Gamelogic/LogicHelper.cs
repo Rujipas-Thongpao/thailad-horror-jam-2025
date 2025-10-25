@@ -28,8 +28,8 @@ public static class LogicHelper
     public static int[] GetDistributeArray(int total, int amount)
     {
         var result = new int[amount];
-        var remainder = total % amount;
-        var value = total/amount;
+        var remainder = amount > 0 ? total % amount : 0;
+        var value = amount > 0 ? total/amount : 0;
 
         for (var i = 0; i < amount; i++)
         {
@@ -37,5 +37,44 @@ public static class LogicHelper
         }
 
         return ShuffleArray(result);
+    }
+
+    private static bool IsFlipped(Transform t)
+    {
+        return t.localToWorldMatrix.determinant < 0;
+    }
+
+    public static void ApplyAngle(Transform transform)
+    {
+        var euler = transform.rotation.eulerAngles;
+        transform.rotation = Quaternion.Euler(0f, euler.y, 0f);
+    }
+
+    public static void ApplyAngleCanFlip(Transform transform)
+    {
+        var euler = transform.rotation.eulerAngles;
+        transform.rotation = IsFlipped(transform) ?
+                             Quaternion.Euler(euler.x, euler.y, euler.z) :
+                             Quaternion.Euler(0f, euler.y, 0f);
+    }
+
+    public static void ApplyAngleCanFlipAndPlaceVertical(Transform transform)
+    {
+        var euler = transform.rotation.eulerAngles;
+        var angleFromUp = Vector3.Angle(transform.up, Vector3.up);
+
+        if (angleFromUp > 60f)
+        {
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                Quaternion.FromToRotation(transform.up, Vector3.up) * transform.rotation,
+                10f
+            );
+        }
+
+        if (IsFlipped(transform))
+        {
+            transform.rotation = Quaternion.Euler(euler.x, euler.y, euler.z);
+        }
     }
 }

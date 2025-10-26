@@ -213,14 +213,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e021b4c809a781e468c2988c016ebbea, type: 3}
   m_Name: ColorLookup
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ColorLookup
-  active: 0
+  active: 1
   texture:
     m_OverrideState: 1
     m_Value: {fileID: 2800000, guid: 9c37eefee6c866146805b932ef342c91, type: 3}
     dimension: 1
   contribution:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.75
 --- !u!114 &2314467078578250790
 MonoBehaviour:
   m_ObjectHideFlags: 3

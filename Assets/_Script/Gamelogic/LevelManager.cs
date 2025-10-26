@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
             1 => new ShakeMark(0),
             2 => new PlayerDizzyMark(0),
             3 => new HandTremorsMark(0),
-            _ => new HandTremorsMark(1)
+            _ => new FlickerMark(0)
         };
 
         return mark;

@@ -14,6 +14,19 @@ public class RoomController : MonoBehaviour
     private readonly List<LightObject> activeLights = new();
     private readonly List<Rigidbody> forceAbleObject = new();
 
+    public static RoomController Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     public void Init(List<BaseMark> marks)
     {
         SetUpFurniture(marks);
@@ -58,8 +71,7 @@ public class RoomController : MonoBehaviour
 
             light.Init(lightOn, lightOff);
             light.SetLight(isOn);
-
-            if (isOn) activeLights.Add(light);
+            activeLights.Add(light);
         }
     }
 
@@ -94,33 +106,36 @@ public class RoomController : MonoBehaviour
 
     private IEnumerator FlickerLight()
     {
-        var randCd = Random.Range(2f, 5f);
-        yield return new WaitForSeconds(randCd);
+        var randCd = Random.Range(.1f, 2f);
+        //yield return new WaitForSeconds(randCd);
 
-        var randObj = Random.Range(0, lights.Length);
+        var randObj = Random.Range(activeLights.Count/2, activeLights.Count);
         var randFlickerMode = Random.Range(0, 2);
+        randFlickerMode = 1;
 
-        for(var i = 0; i <= lights.Length; i++)
+        for(var i = 0; i <= activeLights.Count; i++)
         {
             if (i != randObj) continue;
 
             switch (randFlickerMode)
             {
                 case 0:
-                    activeLights[i].SetLight(false);
+                    activeLights[i].SetLight(false, true);
                     yield return new WaitForSeconds(randCd / 10f);
-                    activeLights[i].SetLight(true);
+                    activeLights[i].SetLight(true, true);
                     break;
 
                 case 1:
-                    var delay = new WaitForSeconds(0.15f);
-                    activeLights[i].SetLight(false);
-                    yield return delay;
-                    activeLights[i].SetLight(true);
-                    yield return delay;
-                    activeLights[i].SetLight(false);
-                    yield return delay;
-                    activeLights[i].SetLight(true);
+                    int r = Random.Range(15, 30);
+                    for(int j = 0; j < r; j++)
+                    {
+                        var w = new WaitForSeconds(Random.Range(0.01f, .2f)); 
+
+                        activeLights[i].SetLight(false,true);
+                        yield return w;
+                        activeLights[i].SetLight(true,true);
+                        yield return w;
+                    }
                     break;
             }
         }

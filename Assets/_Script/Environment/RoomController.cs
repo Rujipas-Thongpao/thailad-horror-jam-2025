@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using SmoothShakeFree;
+using Cysharp.Threading.Tasks;
 
 public class RoomController : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class RoomController : MonoBehaviour
     {
         SetUpFurniture(marks);
         SetUpLight();
-        SetUpForceObj();
+        //SetUpForceObj();
     }
 
     public void Dispose()
@@ -94,12 +95,12 @@ public class RoomController : MonoBehaviour
         }
         //
 
-        for (int i = 0; i <= forceAbleObject.Count; i++)
+        for (int i = 0; i < sceneObjects.Count; i++)
         {
             var randomDirection = Random.onUnitSphere;
-            var randomForce = Random.Range(2f, 4f);
+            var randomForce = Random.Range(1f, 2f);
 
-            forceAbleObject[i].AddForce(randomDirection * randomForce, ForceMode.Impulse);
+            sceneObjects[i]?.Addforce(randomDirection * randomForce);
         }
     }
     #endregion
@@ -141,44 +142,36 @@ public class RoomController : MonoBehaviour
         }
     }
 
-    private void SetUpForceObj()
+    private void PushObj(float intensity)
     {
-        if (forceAbleObject.Count != 0) forceAbleObject.Clear();
+        var randObj = Random.Range(0, sceneObjects.Count);
 
-        var forceObject = GameObject.FindGameObjectsWithTag("ForceObj");
+        var objAmount = Random.Range(0, sceneObjects.Count * intensity);
+        objAmount = Mathf.Clamp(objAmount, 1, sceneObjects.Count);
 
-        foreach (var obj in forceObject)
+        for (var i = 0; i < objAmount; i++)
         {
-            var haveRb = obj.GetComponent<Rigidbody>();
-            if(haveRb) forceAbleObject.Add(haveRb);
-        }
-
-        StartCoroutine(ForceRecur());
-    }
-
-    private void PushObj()
-    {
-        if (forceAbleObject.Count == 0) return;
-
-        var randObj = Random.Range(0, forceAbleObject.Count);
-
-        for (var i = 0; i <= forceAbleObject.Count; i++)
-        {
-            if (i != randObj) continue;
-
-            var randomDirection = Random.onUnitSphere;
-            var randomForce = Random.Range(2f, 4f);
-
-            forceAbleObject[i].AddForce(randomDirection * randomForce, ForceMode.Impulse);
+            randObj = Random.Range(0, sceneObjects.Count);
+            sceneObjects[randObj]?.Addforce(Random.onUnitSphere * Random.Range(2f, 4f));
         }
     }
 
-    IEnumerator ForceRecur()
+    IEnumerator ForceRecur(float intensity)
     {
+
+        PushObj(intensity);
+
         var randCd = Random.Range(2f, 5f);
         yield return new WaitForSeconds(randCd);
 
-        PushObj();
-        StartCoroutine(ForceRecur());
+        StartCoroutine(ForceRecur(intensity));
+
+    }
+
+    public async UniTask PoltergeistRoutine(float intensity)
+    {
+        var routine = StartCoroutine(ForceRecur(intensity));
+        await UniTask.WaitForSeconds(intensity * 5);
+        StopCoroutine(routine);
     }
 }

@@ -57,13 +57,14 @@ public class DialogueManager : MonoBehaviour
     }
 
     #region state dialogue
-    public void StartIntroDialogue(int level)
+    public void StartIntroDialogue(int level, int abnormalIndex)
     {
         currentStage = dialogueSO.stages[level];
 
         TryChangeState(DialogueState.INTRO);
 
         PlayDialogue(currentStage.Intro);
+        PlayDialogue(AbnormalConfig.Infos[abnormalIndex]);
     }
 
     public void OutroDialogue()

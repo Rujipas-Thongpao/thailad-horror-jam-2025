@@ -30,8 +30,8 @@ public class GameplayController : MonoBehaviour
 
     private void StartNextLevel()
     {
-        levelManager.Init(level);
-        dialogueManager.StartIntroDialogue(level);
+        var abnormalIndex = levelManager.Init(level);
+        dialogueManager.StartIntroDialogue(level, abnormalIndex);
         level++;
     }
 }

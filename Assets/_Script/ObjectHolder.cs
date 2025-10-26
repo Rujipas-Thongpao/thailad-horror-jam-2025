@@ -31,6 +31,16 @@ public class ObjectHolder : MonoBehaviour
     private bool rotateAllowed;
     private InputActions inputActions;
 
+    public bool HaveObject => holdingObject != null;
+    public bool IsObjectAbnormal
+    {
+        get
+        {
+            var obj = holdingObject as AbnormalObject;
+            return obj != null && obj.Mark != null;
+        }
+    }
+
     void Start()
     {
         if (camera == null)
@@ -106,5 +116,16 @@ public class ObjectHolder : MonoBehaviour
     public void TryInteract()
     {
         interactable?.OnInteracted();
+    }
+
+    public void SecureObject()
+    {
+        var obj = holdingObject as AbnormalObject;
+
+        obj?.Mark.Disable();
+        holdingObject.gameObject.SetActive(false);
+        UnregisterObject();
+
+        //TODO: spawn secured container on player's hand (object holder).
     }
 }

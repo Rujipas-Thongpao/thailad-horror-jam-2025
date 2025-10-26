@@ -1,14 +1,23 @@
+using System;
 using UnityEngine;
 
 public class OracleTriggerArea : MonoBehaviour
 {
+    private Action<BaseMark> EventAbnormalSecured;
+
     private PlayerManager player;
 
     private int incorrectCount;
 
-    public void Init()
+    public void Init(Action<BaseMark> eventAbnormalSecured)
     {
+        EventAbnormalSecured = eventAbnormalSecured;
         incorrectCount = 0;
+    }
+
+    public void Dispose()
+    {
+        EventAbnormalSecured = null;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -10,15 +10,13 @@ public class UIDialoguePanel : MonoBehaviour
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text dialogueText;
 
-    private List<string> currentDialogueList;
-    private int currentDialogueIndex;
+    private readonly Queue<string> dialogueQueue = new();
     private float dialogueTimer;
 
     public void Initialize()
     {
         gameObject.SetActive(true);
         dialogueBox.SetActive(false);
-        currentDialogueList = null;
     }
 
     public void Dispose()
@@ -28,14 +26,12 @@ public class UIDialoguePanel : MonoBehaviour
 
     private void Update()
     {
-        if (currentDialogueList == null) return;
+        if (dialogueQueue.Count == 0) return;
 
         dialogueTimer -= Time.deltaTime;
 
-        if (currentDialogueIndex >= currentDialogueList.Count && dialogueTimer <= 0)
+        if (dialogueQueue.Count == 0 && dialogueTimer <= 0)
         {
-            currentDialogueList = null;
-            currentDialogueIndex = 0;
             dialogueBox.SetActive(false);
             EventDialogueEnd?.Invoke();
             return;
@@ -43,19 +39,21 @@ public class UIDialoguePanel : MonoBehaviour
 
         if (dialogueTimer > 0) return;
 
-        dialogueText.text = currentDialogueList[currentDialogueIndex];
-        dialogueTimer = 1.5f + currentDialogueList[currentDialogueIndex].Length * 0.05f;
-        currentDialogueIndex++;
+        var dialogue = dialogueQueue.Dequeue();
+        dialogueText.text = dialogue;
+        dialogueTimer = 1.5f + dialogue.Length * 0.05f;
     }
 
-    public void Play(List<string> dialogueList)
+    public void Play(List<string> dialogues)
     {
         Stop();
-
-        dialogueBox.SetActive(true);
-        currentDialogueList = dialogueList;
-        currentDialogueIndex = 0;
         dialogueTimer = 0;
+        dialogueBox.SetActive(true);
+
+        foreach (var dialogue in dialogues)
+        {
+            dialogueQueue.Enqueue(dialogue);
+        }
     }
 
     public void Play(string dialogue)
@@ -74,8 +72,7 @@ public class UIDialoguePanel : MonoBehaviour
     public void Stop()
     {
         dialogueBox.SetActive(false);
-        currentDialogueList = null;
-        currentDialogueIndex = 0;
+        dialogueQueue.Clear();
         dialogueTimer = 0;
 
         EventDialogueEnd?.Invoke();

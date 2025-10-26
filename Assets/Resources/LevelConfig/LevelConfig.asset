@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0b87d0a318b224fa2650582ce9f5a4, type: 3}
+  m_Name: LevelConfig
+  m_EditorClassIdentifier: 
+  Levels:
+  - MainIntensity: 0000000001000000
+    SubIntensity: 
+  - MainIntensity: 0100000001000000
+    SubIntensity: 0000000000000000
+  - MainIntensity: 0100000002000000
+    SubIntensity: 000000000000000001000000
+  - MainIntensity: 010000000200000003000000
+    SubIntensity: 000000000100000001000000
+  - MainIntensity: 020000000300000003000000
+    SubIntensity: 010000000100000001000000
+  Hallways:
+  - {fileID: 919132149155446097, guid: aa53e5500df1b804e892518c30e487cf, type: 3}
+  - {fileID: 919132149155446097, guid: aa53e5500df1b804e892518c30e487cf, type: 3}
+  - {fileID: 919132149155446097, guid: 5d3b011b47b19cd4cb7a0046b6b77308, type: 3}
+  - {fileID: 919132149155446097, guid: 5d3b011b47b19cd4cb7a0046b6b77308, type: 3}
+  - {fileID: 919132149155446097, guid: 0690e8c9a6d4ae9469d7b466b3a2f137, type: 3}

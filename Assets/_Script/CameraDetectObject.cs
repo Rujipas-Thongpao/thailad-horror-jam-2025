@@ -28,7 +28,17 @@ public class CameraDetectObject : MonoBehaviour
         // Does the ray intersect any objects in detectableLayer?
         var dir = camera.transform.TransformDirection(Vector3.forward);
 
-        if (!Physics.Raycast(camera.transform.position, dir, out var hit, Mathf.Infinity, detectableLayer))
+        // Draw debug ray (yellow if hit, white if not)
+        RaycastHit hitInfo;
+        bool isHit = Physics.Raycast(camera.transform.position, dir, out hitInfo, 10, detectableLayer);
+        //Debug.Log("Raycast hit: " + (isHit ? hitInfo.transform.name : "Nothing"));
+        Debug.DrawRay(
+            camera.transform.position,
+            dir * (isHit ? hitInfo.distance : 1000f),
+            isHit ? Color.yellow : Color.white
+        );
+
+        if (!isHit)
         {
             // No hit: ensure any previously cast object is uncasted.
             if (lastDetected == null) return;
@@ -38,13 +48,14 @@ public class CameraDetectObject : MonoBehaviour
             return;
         }
 
-        if (!hit.transform.TryGetComponent<IDetectable>(out var detected))
+        if (!hitInfo.transform.TryGetComponent<IDetectable>(out var detected))
         {
             // Hit something in the layer mask that isn't IDetectable
             if (lastDetected == null) return;
 
             lastDetected.OnUnhovered();
             lastDetected = null;
+            return;
         }
 
         // If it's the same object as last frame, do nothing.

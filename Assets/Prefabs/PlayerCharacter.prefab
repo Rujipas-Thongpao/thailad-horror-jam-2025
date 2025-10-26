@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 6981184566026946347}
   - component: {fileID: 4575104293896044870}
   - component: {fileID: 799702190374540308}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NearByChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 5454068850105454422}
   - component: {fileID: 1943166780222621206}
   - component: {fileID: 7244453970970918648}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CrosshairAndStamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1137,7 +1137,7 @@ GameObject:
   - component: {fileID: 1632739408948252014}
   - component: {fileID: 7051602113465149674}
   - component: {fileID: 990364127171057929}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1594,7 +1594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1659737844553389696}
   - component: {fileID: 3093469297677000268}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SprintBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1645,7 +1645,7 @@ GameObject:
   - component: {fileID: 5387884992233176836}
   - component: {fileID: 2233331539241725551}
   - component: {fileID: 2335284892842106218}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1751,7 +1751,7 @@ GameObject:
   - component: {fileID: 1999227635825704180}
   - component: {fileID: 2384984010486630948}
   - component: {fileID: 3039135294135143327}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: StaminaBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}

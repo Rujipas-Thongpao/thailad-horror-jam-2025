@@ -478,7 +478,7 @@ MonoBehaviour:
   camera: {fileID: 670799093}
   detectableLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 247
 --- !u!114 &1067162316
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -172,7 +172,7 @@ PrefabInstance:
     - target: {fileID: -4129924734822636225, guid: 96fb32d9d39ae62498b35b1fbdb997bd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 20676484649532a4a9a1246f07016551, type: 2}
+      objectReference: {fileID: 2100000, guid: 3ad1eb6ca96c7cb41a9c7e0771f6fc8a, type: 2}
     - target: {fileID: 919132149155446097, guid: 96fb32d9d39ae62498b35b1fbdb997bd, type: 3}
       propertyPath: m_Name
       value: FloorLamp
@@ -186,7 +186,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 96fb32d9d39ae62498b35b1fbdb997bd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2019986913488381567}
+      addedObject: {fileID: 3031802194311392605}
   m_SourcePrefab: {fileID: 100100000, guid: 96fb32d9d39ae62498b35b1fbdb997bd, type: 3}
 --- !u!4 &68324563794290472 stripped
 Transform:
@@ -203,7 +203,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 96fb32d9d39ae62498b35b1fbdb997bd, type: 3}
   m_PrefabInstance: {fileID: 7952278359874511801}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2019986913488381567
+--- !u!114 &3031802194311392605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,9 +212,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7105909286556245736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 018ed6145c5301d4da8098291afff358, type: 3}
+  m_Script: {fileID: 11500000, guid: 790448e2babf12543a2b2c0210b48f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 2950882898931385990}
+  lampLight: {fileID: 7215363015371973628}
   OnMaterial: {fileID: 2100000, guid: 20676484649532a4a9a1246f07016551, type: 2}
-  OffMaterial: {fileID: 2100000, guid: 8fdad356777a7f44597fe1f2e38c79c9, type: 2}
+  OffMaterial: {fileID: 2100000, guid: 3ad1eb6ca96c7cb41a9c7e0771f6fc8a, type: 2}

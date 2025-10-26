@@ -324,6 +324,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1530506027412703424, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3ad1eb6ca96c7cb41a9c7e0771f6fc8a, type: 2}
     - target: {fileID: -421905867338162629, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -365,7 +369,7 @@ PrefabInstance:
       addedObject: {fileID: 6045720657215421282}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3868898592602905425}
+      addedObject: {fileID: 4513537489770627208}
   m_SourcePrefab: {fileID: 100100000, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}
 --- !u!4 &1045665610321516285 stripped
 Transform:
@@ -451,7 +455,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3868898592602905425
+--- !u!114 &4513537489770627208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -460,12 +464,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3856866998436365177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 018ed6145c5301d4da8098291afff358, type: 3}
+  m_Script: {fileID: 11500000, guid: 790448e2babf12543a2b2c0210b48f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 6018424460217911656}
+  lampLight: {fileID: 7416866602596712368}
   OnMaterial: {fileID: 2100000, guid: 20676484649532a4a9a1246f07016551, type: 2}
-  OffMaterial: {fileID: 2100000, guid: 1070bc5a6b8220849a01a5154e894252, type: 2}
+  OffMaterial: {fileID: 2100000, guid: 3ad1eb6ca96c7cb41a9c7e0771f6fc8a, type: 2}
 --- !u!4 &4525423512102001091 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 181072437c1157145abebb6a8a8d87b6, type: 3}

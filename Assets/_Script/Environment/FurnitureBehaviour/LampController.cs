@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class SwitchMaterialController : OnOffDeviceController
+public class LampController : OnOffDeviceController
 {
     [SerializeField] private MeshRenderer renderer;
+    [SerializeField] private Light lampLight;
     [SerializeField] private Material OnMaterial;
     [SerializeField] private Material OffMaterial;
 
@@ -11,10 +12,12 @@ public class SwitchMaterialController : OnOffDeviceController
         if (isOn)
         {
             renderer.material = OnMaterial;
+            lampLight.enabled = true;
         }
         else
         {
             renderer.material = OffMaterial;
+            lampLight.enabled = false;
         }
     }
 }

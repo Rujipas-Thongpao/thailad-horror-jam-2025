@@ -13,15 +13,15 @@ public class ObjectHolder : MonoBehaviour
     private DetectableObject holdingObject;
 
     [SerializeField] private float rotateSpeed = 3f;
-    public float RotateSpeed 
-    {         
+    public float RotateSpeed
+    {
         get => rotateSpeed;
         set => rotateSpeed = value;
     }
 
     [SerializeField] private bool invert = false;
-    public bool Invert 
-    {         
+    public bool Invert
+    {
         get => invert;
         set => invert = value;
     }
@@ -78,7 +78,7 @@ public class ObjectHolder : MonoBehaviour
     private void FixedUpdate()
     {
         if (!rotateAllowed || !holdingObject) return;
-        
+
         holdingObject.transform.localPosition = Vector3.zero;
 
         rotation *= rotateSpeed;
@@ -86,8 +86,8 @@ public class ObjectHolder : MonoBehaviour
         var obj = holdingObject.transform;
         var center = holdingObject.Center;
 
-        obj.RotateAround(center.position, Vector3.up * (invert?-1:1), rotation.x);
-        obj.RotateAround(center.position, camera.transform.right* (invert?-1:1), rotation.y);
+        obj.RotateAround(center.position, Vector3.up * (invert ? -1 : 1), rotation.x);
+        obj.RotateAround(center.position, camera.transform.right * (invert ? -1 : 1), rotation.y);
     }
 
     public void PlaceItem()

@@ -16,6 +16,7 @@ public class FlickerMark : BaseMark
     private void Flicker()
     {
         if (!TryTriggerMark()) return;
+        RoomController.Instance.StartFlickerLight();
 
         Debug.Log("Flicker");
     }

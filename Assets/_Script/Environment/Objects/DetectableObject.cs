@@ -16,13 +16,33 @@ public class DetectableObject : MonoBehaviour, IDetectable
 
     private MeshRenderer[] meshes;
     private Rigidbody rb;
+    private NearByChecker nearByChecker;
 
     private void Awake()
     {
         meshes = GetComponentsInChildren<MeshRenderer>();
         rb = GetComponent<Rigidbody>();
+        nearByChecker = gameObject.GetComponentInChildren<NearByChecker>();
 
         if (center == null) center = transform;
+        Subscribe();
+    }
+
+    private void OnDestroy()
+    {
+        Unsubscribe();
+    }
+
+    private void Subscribe()
+    {
+        if(nearByChecker != null)
+            nearByChecker.EventPlayerNearBy += OnPlayerNearBy;
+    }
+
+    private void Unsubscribe()
+    {
+        if(nearByChecker != null)
+            nearByChecker.EventPlayerNearBy -= OnPlayerNearBy;
     }
 
     public void OnHovered()
@@ -77,6 +97,11 @@ public class DetectableObject : MonoBehaviour, IDetectable
         {
             mesh.renderingLayerMask = layer;
         }
+    }
+
+    private void OnPlayerNearBy()
+    {
+        EventPlayerNearby?.Invoke();
     }
 }
 

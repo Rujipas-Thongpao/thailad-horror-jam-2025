@@ -18,6 +18,6 @@ public class PlayerDizzyMark : BaseMark
 
     protected override void OnPlayerNearby()
     {
-        //throw new System.NotImplementedException();
+        PlayerEffectController.Instance.Dizzyness(intensity);
     }
 }

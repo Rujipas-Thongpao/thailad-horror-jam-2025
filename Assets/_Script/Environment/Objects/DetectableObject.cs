@@ -99,7 +99,7 @@ public class DetectableObject : MonoBehaviour, IDetectable
         }
     }
 
-    private void OnPlayerNearBy()
+    public void OnPlayerNearBy()
     {
         EventPlayerNearby?.Invoke();
     }

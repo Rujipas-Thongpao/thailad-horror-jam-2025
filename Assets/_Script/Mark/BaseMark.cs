@@ -13,6 +13,8 @@ public abstract class BaseMark
     protected BaseMark(int _intensity)
     {
         intensity = _intensity;
+        nextTriggerTime = 0f;
+        isActive = true;
     }
 
     public virtual void Init(DetectableObject _obj)
@@ -34,7 +36,7 @@ public abstract class BaseMark
     protected bool TryTriggerMark()
     {
         if (!isActive) return false;
-        if (Time.time > nextTriggerTime) return false;
+        if (Time.time <= nextTriggerTime) return false;
 
         nextTriggerTime = Time.time + DEFAULT_CD;
 

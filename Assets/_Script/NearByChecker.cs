@@ -8,15 +8,13 @@ public class NearByChecker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
-            Debug.Log("Player Near By Detected");
-            EventPlayerNearBy?.Invoke();
+        if(other.GetComponent<DetectableObject>() != null)
+            other.GetComponent<DetectableObject>().OnPlayerNearBy();
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.CompareTag("Player"))
-            Debug.Log("Player Far By");
-            EventPlayerFarBy?.Invoke();
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if(other.CompareTag("Player"))
+    //        Debug.Log("Player Far By");
+    //        EventPlayerFarBy?.Invoke();
+    //}
 }

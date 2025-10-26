@@ -13,11 +13,13 @@ public class PlayerDizzyMark : BaseMark
 
     protected override void OnPicked()
     {
+        if (!TryTriggerMark()) return;
         PlayerEffectController.Instance.Dizzyness(intensity);
     }
 
     protected override void OnPlayerNearby()
     {
-        PlayerEffectController.Instance.Dizzyness(intensity);
+        if (!TryTriggerMark()) return;
+        PlayerEffectController.Instance.Dizzyness(Mathf.Clamp(intensity, 0, 1));
     }
 }

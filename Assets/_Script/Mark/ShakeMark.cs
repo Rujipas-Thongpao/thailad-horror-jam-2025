@@ -17,7 +17,7 @@ public class ShakeMark : BaseMark
     {
         if (!TryTriggerMark()) return;
 
-        Debug.Log("Shake");
+        RoomController.Instance.ShakeRoom();
     }
 
     protected override void OnPlayerNearby()

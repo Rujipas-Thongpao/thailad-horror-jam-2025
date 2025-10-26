@@ -13,7 +13,7 @@ public class HandTremors : PlayerEffect
         defaultRotateSpeed = objectHolder.RotateSpeed;
         objectHolder.RotateSpeed = intensity * .1f;
         objectHolder.Invert = true;
-        shaker.timeSettings.holdDuration = intensity * 5f;
+        shaker.timeSettings.holdDuration = 5f;
         shaker.StartShake();
     }
 

@@ -71,9 +71,13 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public bool sliding;
     public bool wallrunning;
     public bool climbing;
+    public bool walking;
+
+    bool jumped;
 
     [Header("Sound")]
     public AudioSource sound;
+    public AudioSource walkSound;
     public AudioClip landSound;
 
     [Header("Animation")]
@@ -87,6 +91,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
         readyToJump = true;
 
         startYScale = transform.localScale.y;
+
+        StartCoroutine(WalkSound());
     }
 
     private void Update()
@@ -103,8 +109,12 @@ public class PlayerMovementAdvanced : MonoBehaviour
         {
             rb.linearDamping = groundDrag;
 
-            // sound.clip = landSound;
-            // sound.Play();
+            if(jumped)
+            {
+                jumped = false;
+                sound.clip = landSound;
+                sound.Play();
+            }
         }
         else if(grounded && sliding == true && OnSlope() && !exitingSlope)
         {
@@ -138,6 +148,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
         // when to jump
         if(Input.GetKey(jumpKey) && readyToJump && grounded)
         {
+            jumped = true;
+
             readyToJump = false;
 
             Jump();
@@ -157,6 +169,38 @@ public class PlayerMovementAdvanced : MonoBehaviour
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
+    }
+
+    IEnumerator WalkSound()
+    {
+        float walkCd = 0.1f;
+        if(state == MovementState.walking && walking)
+        {
+            walkCd = 0.5f;
+            
+            float randPitch = Random.Range(0.9f, 1.1f);
+            walkSound.pitch = randPitch;
+            walkSound.volume = 1f;
+            walkSound.Play();
+        }
+        else if(state == MovementState.sliding && walking)
+        {
+            walkCd = 1f;
+
+            float randPitch = Random.Range(0.9f, 1.1f);
+            walkSound.pitch = randPitch;
+            walkSound.volume = 0.5f;
+            walkSound.Play();
+        }
+        // else if(state == MovementState.sprinting && walking)
+        // {
+        //     walkCd = 0.75f;
+        //     walkSound.Play();
+        // }
+
+        yield return new WaitForSeconds(walkCd);
+
+        StartCoroutine(WalkSound());
     }
 
     private void StateHandler()
@@ -198,8 +242,14 @@ public class PlayerMovementAdvanced : MonoBehaviour
             else
                 desiredMoveSpeed = sprintSpeed;
 
-            if(anim)
+            if(anim && ((horizontalInput != 0) || (verticalInput != 0)))
             {
+                walking = true;
+                anim.SetBool("Walk", true);
+            }
+            else
+            {
+                walking = false;
                 anim.SetBool("Walk", false);
             }
         }
@@ -236,10 +286,12 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
             if(anim && ((horizontalInput != 0) || (verticalInput != 0)))
             {
+                walking = true;
                 anim.SetBool("Walk", true);
             }
             else
             {
+                walking = false;
                 anim.SetBool("Walk", false);
             }
         }

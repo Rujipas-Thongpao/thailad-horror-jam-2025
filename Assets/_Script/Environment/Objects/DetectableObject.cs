@@ -98,6 +98,11 @@ public class DetectableObject : MonoBehaviour, IDetectable
     {
         EventPlayerNearby?.Invoke();
     }
+
+    public void Addforce(Vector3 force)
+    {
+        rb.AddForce(force, ForceMode.Impulse);
+    }
 }
 
 [Serializable]

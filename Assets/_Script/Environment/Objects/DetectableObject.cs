@@ -16,33 +16,15 @@ public class DetectableObject : MonoBehaviour, IDetectable
 
     private MeshRenderer[] meshes;
     private Rigidbody rb;
-    private NearByChecker nearByChecker;
+    private Collider[] cols;
 
     private void Awake()
     {
         meshes = GetComponentsInChildren<MeshRenderer>();
         rb = GetComponent<Rigidbody>();
-        nearByChecker = gameObject.GetComponentInChildren<NearByChecker>();
+        cols = GetComponentsInChildren<Collider>();
 
         if (center == null) center = transform;
-        Subscribe();
-    }
-
-    private void OnDestroy()
-    {
-        Unsubscribe();
-    }
-
-    private void Subscribe()
-    {
-        if(nearByChecker != null)
-            nearByChecker.EventPlayerNearBy += OnPlayerNearBy;
-    }
-
-    private void Unsubscribe()
-    {
-        if(nearByChecker != null)
-            nearByChecker.EventPlayerNearBy -= OnPlayerNearBy;
     }
 
     public void OnHovered()
@@ -59,12 +41,14 @@ public class DetectableObject : MonoBehaviour, IDetectable
     {
         EventPicked?.Invoke();
         rb.isKinematic = true;
+        TogglePhysicCollider(false);
     }
 
     public void OnPlaced(Vector3 pos)
     {
         transform.position = pos;
         rb.isKinematic = false;
+        TogglePhysicCollider(true);
 
         switch (placeConfig.Flip)
         {
@@ -89,6 +73,17 @@ public class DetectableObject : MonoBehaviour, IDetectable
     public void OnDropped()
     {
         rb.isKinematic = false;
+        TogglePhysicCollider(true);
+    }
+
+    private void TogglePhysicCollider(bool isActive)
+    {
+        if (cols.Length == 0) return;
+
+        foreach (var col in cols)
+        {
+            col.enabled = isActive;
+        }
     }
 
     private void SetLayerMask(RenderingLayerMask layer)

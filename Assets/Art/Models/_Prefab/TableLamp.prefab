@@ -405,7 +405,7 @@ MonoBehaviour:
   - {fileID: 2691719402967847862}
   - {fileID: 1676638526873284390}
   renderer: {fileID: 6018424460217911656}
-  lampLight: {fileID: 7416866602596712368}
+  lightSource: {fileID: 7416866602596712368}
   OnMaterial: {fileID: 2100000, guid: 20676484649532a4a9a1246f07016551, type: 2}
   OffMaterial: {fileID: 2100000, guid: 3ad1eb6ca96c7cb41a9c7e0771f6fc8a, type: 2}
 --- !u!136 &5878829364111170577
@@ -439,7 +439,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3856866998436365177}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

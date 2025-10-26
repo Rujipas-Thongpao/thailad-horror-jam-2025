@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class LampObject : AbnormalObject, IInteractable
+public class GlowFurnitureObject : DraggableFurnitureObject, IInteractable
 {
     [SerializeField] private MeshRenderer renderer;
-    [SerializeField] private Light lampLight;
+    [SerializeField] private Light lightSource;
     [SerializeField] private Material OnMaterial;
     [SerializeField] private Material OffMaterial;
 
@@ -22,15 +22,10 @@ public class LampObject : AbnormalObject, IInteractable
 
     private void UpdateDisplay()
     {
-        if (isOn)
-        {
-            renderer.material = OnMaterial;
-            lampLight.enabled = true;
-        }
-        else
-        {
-            renderer.material = OffMaterial;
-            lampLight.enabled = false;
-        }
+        renderer.material = isOn ? OnMaterial : OffMaterial;
+
+        if (lightSource == null) return;
+
+        lightSource.enabled = isOn;
     }
 }

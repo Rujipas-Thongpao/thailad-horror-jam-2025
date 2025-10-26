@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class MonitorObject : DraggableFurnitureObject, IInteractable
+public class GlowObject : AbnormalObject, IInteractable
 {
     [SerializeField] private MeshRenderer renderer;
+    [SerializeField] private Light lightSource;
     [SerializeField] private Material OnMaterial;
     [SerializeField] private Material OffMaterial;
 
@@ -21,13 +22,10 @@ public class MonitorObject : DraggableFurnitureObject, IInteractable
 
     private void UpdateDisplay()
     {
-        if (isOn)
-        {
-            renderer.material = OnMaterial;
-        }
-        else
-        {
-            renderer.material = OffMaterial;
-        }
+        renderer.material = isOn ? OnMaterial : OffMaterial;
+
+        if (lightSource == null) return;
+
+        lightSource.enabled = isOn;
     }
 }

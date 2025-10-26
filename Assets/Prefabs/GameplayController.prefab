@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8734429573710587594}
   - component: {fileID: 6443590925618390693}
   - component: {fileID: 7600346184146069637}
+  - component: {fileID: 4862223947979487390}
   m_Layer: 0
   m_Name: GameplayController
   m_TagString: Untagged
@@ -47,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelManager: {fileID: 7600346184146069637}
+  dialogueManager: {fileID: 4862223947979487390}
+  dialoguePanel: {fileID: 0}
 --- !u!114 &7600346184146069637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,6 +63,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomController: {fileID: 1631894156600876110}
+--- !u!114 &4862223947979487390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8225372397386968744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9488187cba50a45b4c8945b6eb877a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueSO: {fileID: 11400000, guid: e9a22a9822eeac24f9bc319e6221eede, type: 2}
 --- !u!1001 &4609973920356750837
 PrefabInstance:
   m_ObjectHideFlags: 0

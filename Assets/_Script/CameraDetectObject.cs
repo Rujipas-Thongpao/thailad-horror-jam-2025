@@ -82,8 +82,8 @@ public class CameraDetectObject : MonoBehaviour
         return lastDetected as DetectableObject;
     }
 
-    public FurnitureObject GetLastFurnitureObject()
+    public DraggableFurnitureObject GetLastFurnitureObject()
     {
-        return lastDetected as FurnitureObject;
+        return lastDetected as DraggableFurnitureObject;
     }
 }

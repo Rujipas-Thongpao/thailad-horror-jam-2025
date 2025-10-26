@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8734429573710587594}
   - component: {fileID: 6443590925618390693}
-  - component: {fileID: 7600346184146069637}
   - component: {fileID: 4862223947979487390}
   m_Layer: 0
   m_Name: GameplayController
@@ -46,24 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c46bb5896263254ebde5d04633287c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelManager: {fileID: 7600346184146069637}
+  levelManager: {fileID: 0}
   dialogueManager: {fileID: 4862223947979487390}
   playerManager: {fileID: 0}
---- !u!114 &7600346184146069637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8225372397386968744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59c6a32b89f927c45b0971df16f6878a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roomController: {fileID: 0}
-  oracle: {fileID: 0}
-  config: {fileID: 11400000, guid: 47089f0c0a3d52c499e8a88c312bee83, type: 2}
 --- !u!114 &4862223947979487390
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,14 +13,13 @@ public class RoomController : MonoBehaviour
 
     private readonly List<DetectableObject> sceneObjects = new();
     private readonly List<LightObject> activeLights = new();
-    private readonly List<Rigidbody> forceAbleObject = new();
 
     public static RoomController Instance { get; private set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
         else
         {
@@ -32,7 +31,6 @@ public class RoomController : MonoBehaviour
     {
         SetUpFurniture(marks);
         SetUpLight();
-        //SetUpForceObj();
     }
 
     public void Dispose()

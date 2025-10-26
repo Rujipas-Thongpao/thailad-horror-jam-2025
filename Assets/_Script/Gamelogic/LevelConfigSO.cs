@@ -5,6 +5,8 @@ using UnityEngine;
 public class LevelConfigSO : ScriptableObject
 {
     public LevelData[] Levels;
+
+    public GameObject[] Hallways;
 }
 
 [Serializable]

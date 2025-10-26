@@ -533,8 +533,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 539266639}
+  - component: {fileID: 539266640}
   m_Layer: 0
-  m_Name: -----Room-----
+  m_Name: -----Level-----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -555,6 +556,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &539266640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539266638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c6a32b89f927c45b0971df16f6878a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomController: {fileID: 1296266676}
+  oracle: {fileID: 1296266677}
+  config: {fileID: 11400000, guid: 47089f0c0a3d52c499e8a88c312bee83, type: 2}
 --- !u!20 &670799093 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 4554362863643064376, guid: e373aa5844093734daa81ee94030606d, type: 3}
@@ -647,6 +663,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6443590925618390693, guid: ea03fb70b63832e4099aadad62e64cd9, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 539266640}
     - target: {fileID: 6443590925618390693, guid: ea03fb70b63832e4099aadad62e64cd9, type: 3}
       propertyPath: playerManager
       value: 

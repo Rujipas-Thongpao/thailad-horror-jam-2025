@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     private readonly List<BaseMark> marks = new();
     private readonly List<BaseMark> mainAbnormal = new();
 
+    private GameObject hallway;
     private int mainAbnormalType;
     private int progress;
 
@@ -37,6 +38,7 @@ public class LevelManager : MonoBehaviour
 
         roomController.Init(marks);
         oracle.Init(OnAbnormalSecured);
+        hallway = Instantiate(config.Hallways[level]);
 
         progress = 0;
 
@@ -47,6 +49,8 @@ public class LevelManager : MonoBehaviour
     {
         roomController.Dispose();
         oracle.Dispose();
+
+        Destroy(hallway);
     }
 
     #region event listener
@@ -61,6 +65,7 @@ public class LevelManager : MonoBehaviour
         if (progress >= mainAbnormal.Count)
         {
             Debug.Log("LEVEL COMPLETED");
+            Dispose();
         }
     }
 

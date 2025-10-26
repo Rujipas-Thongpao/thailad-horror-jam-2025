@@ -24,12 +24,13 @@ public class LevelManager : MonoBehaviour
 
     private BaseMark GetRandomMark()
     {
-        BaseMark mark = Random.Range(0, 3) switch
+        BaseMark mark = Random.Range(0, 10) switch
         {
             0 => new FlickerMark(0),
             1 => new ShakeMark(0),
             2 => new PlayerDizzyMark(0),
-            _ => new PlayerDizzyMark(0)
+            3 => new HandTremorsMark(0),
+            _ => new HandTremorsMark(1)
         };
 
         return mark;

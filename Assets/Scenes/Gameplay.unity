@@ -383,6 +383,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &357624362 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7915288597674809309, guid: e373aa5844093734daa81ee94030606d, type: 3}
+  m_PrefabInstance: {fileID: 712779396}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6c4a2ae5b653d4da56baa3a520f389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &670799093 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 4554362863643064376, guid: e373aa5844093734daa81ee94030606d, type: 3}
@@ -754,6 +765,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2279552987082028591, guid: fd929f3937336fe40b48b5fc442fac74, type: 3}
+      propertyPath: shaker
+      value: 
+      objectReference: {fileID: 357624362}
+    - target: {fileID: 2279552987082028591, guid: fd929f3937336fe40b48b5fc442fac74, type: 3}
+      propertyPath: objectHolder
+      value: 
+      objectReference: {fileID: 1860028415}
     - target: {fileID: 3396125231180774377, guid: fd929f3937336fe40b48b5fc442fac74, type: 3}
       propertyPath: camera
       value: 

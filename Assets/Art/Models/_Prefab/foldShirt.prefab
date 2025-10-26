@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1467982214859377667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6305430141929478139}
+  m_Layer: 0
+  m_Name: cursepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6305430141929478139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467982214859377667}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: -0.06, z: -0.142}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7226167001976896143}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!1 &2381075875137964950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1847929336972521051}
+  m_Layer: 0
+  m_Name: center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1847929336972521051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2381075875137964950}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7226167001976896143}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7188371620724350308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54,12 +116,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 580492d4162493345a8b415f3e06f93c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1847929336972521051}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 580492d4162493345a8b415f3e06f93c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6305430141929478139}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 580492d4162493345a8b415f3e06f93c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1345719536325976893}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 580492d4162493345a8b415f3e06f93c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9037837074746961484}
   m_SourcePrefab: {fileID: 100100000, guid: 580492d4162493345a8b415f3e06f93c, type: 3}
+--- !u!4 &7226167001976896143 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 580492d4162493345a8b415f3e06f93c, type: 3}
+  m_PrefabInstance: {fileID: 7188371620724350308}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7999325558729809973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 580492d4162493345a8b415f3e06f93c, type: 3}
@@ -86,3 +162,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35, y: 0.05, z: 0.45}
   m_Center: {x: 0, y: 0.02, z: 0}
+--- !u!114 &9037837074746961484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7999325558729809973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3474e77062bf847b599e9709d72681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placeConfig:
+    Flip: 0
+    PlaceVertical: 0
+  center: {fileID: 1847929336972521051}
+  abnormalPrefabs:
+  - {fileID: 8153442295753868334, guid: 77eb374fda0b9d24d8c4999c10f80efd, type: 3}
+  cursePoints:
+  - {fileID: 6305430141929478139}

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 55a8c075c4a39cb44b843e58f5cd9970
+guid: 8a99011ac073dd747965c2e0c04705de
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Cabinet
-    second: {fileID: 2100000, guid: bcce63c4d25bf7146811a3a10b15315b, type: 2}
+      name: Flower
+    second: {fileID: 2100000, guid: 76120666e005d1042ba1ed766cd4ee0a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

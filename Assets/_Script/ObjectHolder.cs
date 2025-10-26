@@ -1,7 +1,12 @@
+using System;
 using UnityEngine;
 
 public class ObjectHolder : MonoBehaviour
 {
+    public event Action<DetectableObject, IInteractable> EventObjectPicked;
+    public event Action EventObjectUnpicked;
+    public event Action EventSecureEnabled;
+
     [SerializeField]
     private Camera camera;
 
@@ -29,7 +34,8 @@ public class ObjectHolder : MonoBehaviour
 
     private Vector2 rotation;
     private bool rotateAllowed;
-    private InputActions inputActions;
+
+    public bool CanSecure { get; private set; }
 
     public bool HaveObject => holdingObject != null;
     public bool IsObjectAbnormal
@@ -58,6 +64,8 @@ public class ObjectHolder : MonoBehaviour
         holdingObject.transform.SetParent(holdPoint);
         holdingObject.transform.localPosition = Vector3.zero;
         holdingObject.gameObject.layer = LayerMask.NameToLayer("HoldingItem");
+
+        EventObjectPicked?.Invoke(obj, interactable);
     }
 
     private void UnregisterObject()
@@ -69,6 +77,8 @@ public class ObjectHolder : MonoBehaviour
         holdingObject.GetComponent<Collider>().enabled = true;
         holdingObject.transform.SetParent(null);
         holdingObject = null;
+
+        EventObjectUnpicked?.Invoke();
     }
 
     public void ApplyRotation(Vector2 rotate)
@@ -110,12 +120,24 @@ public class ObjectHolder : MonoBehaviour
 
         holdingObject.OnPlaced(hit.point);
 
+        DisableSecureObject();
         UnregisterObject();
     }
 
     public void TryInteract()
     {
         interactable?.OnInteracted();
+    }
+
+    public void EnableSecureObject()
+    {
+        CanSecure = true;
+        EventSecureEnabled?.Invoke();
+    }
+
+    public void DisableSecureObject()
+    {
+        CanSecure = false;
     }
 
     public void SecureObject()

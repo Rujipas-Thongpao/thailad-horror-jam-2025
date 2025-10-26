@@ -43,7 +43,7 @@ public class HoldingItemState : GameState
 
     public override void InteractPerformed()
     {
-        if (playerManager.CanSecureObject)
+        if (playerManager.ObjectHolder.CanSecure)
         {
             playerManager.ObjectHolder.SecureObject();
             playerManager.ChangeState(E_PlayerState.Normal);

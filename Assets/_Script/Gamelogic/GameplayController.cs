@@ -4,7 +4,7 @@ public class GameplayController : MonoBehaviour
 {
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private DialogueManager dialogueManager;
-    [SerializeField] private CameraDetectObject cameraDetectObject;
+    [SerializeField] private PlayerManager playerManager;
 
     private UIManager ui;
 
@@ -17,7 +17,7 @@ public class GameplayController : MonoBehaviour
     {
         ui = UIManager.Instance;
         dialogueManager.Init(ui.DialoguePanel);
-        ui.ButtonPrompt.Init(cameraDetectObject);
+        ui.ButtonPrompt.Init(playerManager);
 
         StartNextLevel();
     }

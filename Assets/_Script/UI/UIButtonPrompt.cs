@@ -3,18 +3,26 @@ using UnityEngine;
 public class UIButtonPrompt : MonoBehaviour
 {
     [SerializeField] private GameObject pickup;
+    [SerializeField] private GameObject place;
     [SerializeField] private GameObject drag;
     [SerializeField] private GameObject interact;
+    [SerializeField] private GameObject secure;
 
     private CameraDetectObject detect;
+    private ObjectHolder holder;
 
-    public void Init(CameraDetectObject cameraDetectObject)
+    public void Init(PlayerManager playerManager)
     {
-        detect = cameraDetectObject;
+        detect = playerManager.CameraDetectObject;
+        holder = playerManager.ObjectHolder;
 
         detect.EventFindDetectableObject += OnFindDetectableObject;
         detect.EventFindInteractableObject += OnFindInteractableObject;
         detect.EventQuitDetect += Hide;
+
+        holder.EventObjectPicked += OnObjectPicked;
+        holder.EventObjectUnpicked += OnObjectUnpicked;
+        holder.EventSecureEnabled += OnSecureEnabled;
 
         Hide();
     }
@@ -25,7 +33,12 @@ public class UIButtonPrompt : MonoBehaviour
         detect.EventFindInteractableObject -= OnFindInteractableObject;
         detect.EventQuitDetect -= Hide;
 
+        holder.EventObjectPicked -= OnObjectPicked;
+        holder.EventObjectUnpicked -= OnObjectUnpicked;
+        holder.EventSecureEnabled -= OnSecureEnabled;
+
         detect = null;
+        holder = null;
     }
 
     private void OnFindDetectableObject(IDetectable detectable)
@@ -47,9 +60,35 @@ public class UIButtonPrompt : MonoBehaviour
         ShowInteract();
     }
 
+    private void OnObjectPicked(DetectableObject detectable, IInteractable interactable)
+    {
+        Hide();
+        ShowPlace();
+
+        if (interactable == null) return;
+
+        ShowInteract();
+    }
+
+    private void OnObjectUnpicked()
+    {
+        Hide();
+    }
+
+    private void OnSecureEnabled()
+    {
+        Hide();
+        ShowSecure();
+    }
+
     private void ShowPickup()
     {
         pickup.SetActive(true);
+    }
+
+    private void ShowPlace()
+    {
+        place.SetActive(true);
     }
 
     private void ShowDrag()
@@ -62,10 +101,17 @@ public class UIButtonPrompt : MonoBehaviour
         interact.SetActive(true);
     }
 
+    private void ShowSecure()
+    {
+        secure.SetActive(true);
+    }
+
     private void Hide()
     {
         pickup.SetActive(false);
+        place.SetActive(false);
         drag.SetActive(false);
         interact.SetActive(false);
+        secure.SetActive(false);
     }
 }

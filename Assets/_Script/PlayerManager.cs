@@ -37,8 +37,6 @@ public class PlayerManager : MonoBehaviour
 
     private Dictionary<E_PlayerState, GameState> stateDictionary = new();
 
-    public bool CanSecureObject { get; private set; }
-
     private void Awake()
     {
         inputHandler = new InputHandler();
@@ -136,12 +134,12 @@ public class PlayerManager : MonoBehaviour
 
     public void EnableSecureObject()
     {
-        CanSecureObject = true;
+        ObjectHolder.EnableSecureObject();
     }
 
     public void DisableSecureObject()
     {
-        CanSecureObject = false;
+        ObjectHolder.DisableSecureObject();
     }
 
     #region state

@@ -8,6 +8,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UIDialoguePanel dialogue;
     public UIDialoguePanel DialoguePanel => dialogue;
 
+    [SerializeField] private UIButtonPrompt buttonPrompt;
+    public UIButtonPrompt ButtonPrompt => buttonPrompt;
+
     public void Awake()
     {
         if (instance != null && instance != this)

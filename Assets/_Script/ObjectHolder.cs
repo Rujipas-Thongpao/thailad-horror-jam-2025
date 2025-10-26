@@ -11,6 +11,7 @@ public class ObjectHolder : MonoBehaviour
     [SerializeField]
     private Transform holdPoint;
     private DetectableObject holdingObject;
+    private IInteractable interactable;
 
     [SerializeField] private float rotateSpeed = 3f;
     public float RotateSpeed 
@@ -26,7 +27,6 @@ public class ObjectHolder : MonoBehaviour
         set => invert = value;
     }
 
-
     private Vector2 rotation;
     private bool rotateAllowed;
     private InputActions inputActions;
@@ -39,9 +39,11 @@ public class ObjectHolder : MonoBehaviour
         }
     }
 
-    public void RegisterObject(DetectableObject obj)
+    public void RegisterObject(DetectableObject obj, IInteractable _interactable)
     {
         holdingObject = obj;
+        interactable = _interactable;
+
         holdingObject.GetComponent<Collider>().enabled = false;
         holdingObject.transform.SetParent(holdPoint);
         holdingObject.transform.localPosition = Vector3.zero;
@@ -58,7 +60,6 @@ public class ObjectHolder : MonoBehaviour
         holdingObject.transform.SetParent(null);
         holdingObject = null;
     }
-
 
     public void ApplyRotation(Vector2 rotate)
     {
@@ -100,5 +101,10 @@ public class ObjectHolder : MonoBehaviour
         holdingObject.OnPlaced(hit.point);
 
         UnregisterObject();
+    }
+
+    public void TryInteract()
+    {
+        interactable?.OnInteracted();
     }
 }

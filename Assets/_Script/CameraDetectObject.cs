@@ -1,7 +1,12 @@
+using System;
 using UnityEngine;
 
 public class CameraDetectObject : MonoBehaviour
 {
+    public event Action<IDetectable> EventFindDetectableObject;
+    public event Action<IInteractable> EventFindInteractableObject;
+    public event Action EventQuitDetect;
+
     [SerializeField]
     private Camera camera;
 
@@ -10,6 +15,7 @@ public class CameraDetectObject : MonoBehaviour
 
     // Track the last detected object so we can call OnUnCasted when it's no longer hit
     private IDetectable lastDetected;
+    private IInteractable lastInteracted;
 
     private bool isEnable = true;
 
@@ -45,9 +51,17 @@ public class CameraDetectObject : MonoBehaviour
 
             lastDetected.OnUnhovered();
             lastDetected = null;
+
+            EventQuitDetect?.Invoke();
             return;
         }
 
+        CheckDetectable(hitInfo);
+        CheckInteractable(hitInfo);
+    }
+
+    private void CheckDetectable(RaycastHit hitInfo)
+    {
         if (!hitInfo.transform.TryGetComponent<IDetectable>(out var detected))
         {
             // Hit something in the layer mask that isn't IDetectable
@@ -55,6 +69,8 @@ public class CameraDetectObject : MonoBehaviour
 
             lastDetected.OnUnhovered();
             lastDetected = null;
+
+            EventQuitDetect?.Invoke();
             return;
         }
 
@@ -65,6 +81,25 @@ public class CameraDetectObject : MonoBehaviour
         lastDetected?.OnUnhovered();
         detected.OnHovered();
         lastDetected = detected;
+
+        EventFindDetectableObject?.Invoke(detected);
+    }
+
+    private void CheckInteractable(RaycastHit hitInfo)
+    {
+        if (!hitInfo.transform.TryGetComponent<IInteractable>(out var interacted))
+        {
+            if (lastInteracted == null) return;
+
+            lastInteracted = null;
+            return;
+        }
+
+        if (interacted == lastInteracted) return;
+
+        lastInteracted = interacted;
+
+        EventFindInteractableObject?.Invoke(interacted);
     }
 
     public void SetEnable(bool enable)
@@ -80,6 +115,11 @@ public class CameraDetectObject : MonoBehaviour
     public DetectableObject GetLastDetectedObject()
     {
         return lastDetected as DetectableObject;
+    }
+
+    public IInteractable GetLastInteractable()
+    {
+        return lastInteracted;
     }
 
     public DraggableFurnitureObject GetLastFurnitureObject()

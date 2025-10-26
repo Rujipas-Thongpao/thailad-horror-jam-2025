@@ -42,4 +42,9 @@ public class InspectItemState : GameState
     {
         playerManager.ChangeState(E_PlayerState.Holding);
     }
+
+    public override void InteractPerformed()
+    {
+        playerManager.ObjectHolder.TryInteract();
+    }
 }

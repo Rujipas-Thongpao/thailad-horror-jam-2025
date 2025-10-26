@@ -40,4 +40,9 @@ public class HoldingItemState : GameState
     {
         // Optionally handle right click cancel logic here
     }
+
+    public override void InteractPerformed()
+    {
+        playerManager.ObjectHolder.TryInteract();
+    }
 }

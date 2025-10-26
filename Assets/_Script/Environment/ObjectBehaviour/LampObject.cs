@@ -1,13 +1,26 @@
 using UnityEngine;
 
-public class LampController : OnOffDeviceController
+public class LampObject : AbnormalObject, IInteractable
 {
     [SerializeField] private MeshRenderer renderer;
     [SerializeField] private Light lampLight;
     [SerializeField] private Material OnMaterial;
     [SerializeField] private Material OffMaterial;
 
-    public override void SetState(bool isOn)
+    private bool isOn;
+
+    private void Start()
+    {
+        UpdateDisplay();
+    }
+
+    public void OnInteracted()
+    {
+        isOn = !isOn;
+        UpdateDisplay();
+    }
+
+    private void UpdateDisplay()
     {
         if (isOn)
         {

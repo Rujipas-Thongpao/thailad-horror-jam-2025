@@ -12,6 +12,7 @@ public class InputHandler
 
     public event Action<Vector2> EventRightClickPerformed;
     public event Action<Vector2> EventRightClickCanceled;
+    public event Action EventInteractPerformed;
 
     private InputActions inputActions;
 
@@ -25,6 +26,7 @@ public class InputHandler
         inputActions.Gameplay.LeftClick.canceled += OnLeftClickCanceled;
         inputActions.Gameplay.RightClick.performed += OnRightClickPerformed;
         inputActions.Gameplay.RightClick.canceled += OnRightClickCanceled;
+        inputActions.Gameplay.Interact.performed += OnInteractPerformed;
 
         inputActions.Gameplay.Enable();
     }
@@ -36,6 +38,7 @@ public class InputHandler
         inputActions.Gameplay.LeftClick.canceled -= OnLeftClickCanceled;
         inputActions.Gameplay.RightClick.performed -= OnRightClickPerformed;
         inputActions.Gameplay.RightClick.canceled -= OnRightClickCanceled;
+        inputActions.Gameplay.Interact.performed -= OnInteractPerformed;
 
         inputActions.Disable();
         inputActions = null;
@@ -64,6 +67,11 @@ public class InputHandler
     private void OnRightClickCanceled(InputAction.CallbackContext context)
     {
         EventRightClickCanceled?.Invoke(Mouse.current.position.ReadValue());
+    }
+
+    private void OnInteractPerformed(InputAction.CallbackContext context)
+    {
+        EventInteractPerformed?.Invoke();
     }
 
     private void OnCameraPerformed(InputAction.CallbackContext context)

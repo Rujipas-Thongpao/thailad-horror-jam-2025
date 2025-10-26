@@ -25,6 +25,7 @@ public class NormalState : GameState
     public override void OnSelect(Vector2 screenPos)
     {
         var detectedObj = playerManager.CameraDetectObject.GetLastDetectedObject();
+        var interactable = playerManager.CameraDetectObject.GetLastInteractable();
 
         if (detectedObj == null)
         {
@@ -37,7 +38,7 @@ public class NormalState : GameState
 
         // pick item -> change state to holding item state.
         detectedObj.OnPicked();
-        playerManager.ObjectHolder.RegisterObject(detectedObj);
+        playerManager.ObjectHolder.RegisterObject(detectedObj, interactable);
         playerManager.ChangeState(E_PlayerState.Holding);
     }
 
@@ -54,5 +55,11 @@ public class NormalState : GameState
     public override void RightClickCanceled(Vector2 screenPos)
     {
         // No action for right click cancel in NormalState
+    }
+
+    public override void InteractPerformed()
+    {
+        var interactable = playerManager.CameraDetectObject.GetLastInteractable();
+        interactable?.OnInteracted();
     }
 }

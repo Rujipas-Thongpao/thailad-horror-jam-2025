@@ -450,6 +450,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6443590925618390693, guid: ea03fb70b63832e4099aadad62e64cd9, type: 3}
+      propertyPath: cameraDetectObject
+      value: 
+      objectReference: {fileID: 1067162315}
     - target: {fileID: 8225372397386968744, guid: ea03fb70b63832e4099aadad62e64cd9, type: 3}
       propertyPath: m_Name
       value: GameplayController

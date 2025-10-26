@@ -4,6 +4,7 @@ public class GameplayController : MonoBehaviour
 {
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private DialogueManager dialogueManager;
+    [SerializeField] private CameraDetectObject cameraDetectObject;
 
     private UIManager ui;
 
@@ -16,6 +17,7 @@ public class GameplayController : MonoBehaviour
     {
         ui = UIManager.Instance;
         dialogueManager.Init(ui.DialoguePanel);
+        ui.ButtonPrompt.Init(cameraDetectObject);
 
         StartNextLevel();
     }
@@ -23,6 +25,7 @@ public class GameplayController : MonoBehaviour
     private void OnDestroy()
     {
         dialogueManager.Dispose();
+        ui.ButtonPrompt.Dispose();
     }
 
     private void StartNextLevel()

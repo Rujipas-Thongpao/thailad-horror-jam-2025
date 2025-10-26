@@ -41,5 +41,9 @@ public class DraggingFurnitureState : GameState
     public override void RightClickCanceled(Vector2 screenPos)
     {
     }
+
+    public override void InteractPerformed()
+    {
+    }
 }
     

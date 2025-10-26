@@ -77,6 +77,7 @@ public class PlayerManager : MonoBehaviour
         inputHandler.EventSelectCanceled += OnSelectCanceled;
         inputHandler.EventRightClickPerformed += OnRightClickPerformed;
         inputHandler.EventRightClickCanceled += OnRightClickCanceled;
+        inputHandler.EventInteractPerformed += OnInteractPerformed;
     }
 
     private void RemoveListener()
@@ -86,6 +87,7 @@ public class PlayerManager : MonoBehaviour
         inputHandler.EventSelectCanceled -= OnSelectCanceled;
         inputHandler.EventRightClickPerformed -= OnRightClickPerformed;
         inputHandler.EventRightClickCanceled -= OnRightClickCanceled;
+        inputHandler.EventInteractPerformed -= OnInteractPerformed;
     }
 
     #region player input
@@ -112,6 +114,11 @@ public class PlayerManager : MonoBehaviour
     private void OnRightClickCanceled(Vector2 screenPos)
     {
         currentState.RightClickCanceled(screenPos);
+    }
+
+    private void OnInteractPerformed()
+    {
+        currentState.InteractPerformed();
     }
 
     private void OnDraggingStart(Vector2 screenPos)

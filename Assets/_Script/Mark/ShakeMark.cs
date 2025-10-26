@@ -17,6 +17,7 @@ public class ShakeMark : BaseMark
     {
         if (!TryTriggerMark()) return;
 
+        Debug.Log("Shake Triggered", obj.gameObject);
         RoomController.Instance.ShakeRoom();
     }
 

@@ -18,7 +18,7 @@ public class FlickerMark : BaseMark
         if (!TryTriggerMark()) return;
         RoomController.Instance.StartFlickerLight();
 
-        Debug.Log("Flicker");
+        Debug.Log("Flicker Triggered", obj.gameObject);
     }
 
     protected override void OnPlayerNearby()

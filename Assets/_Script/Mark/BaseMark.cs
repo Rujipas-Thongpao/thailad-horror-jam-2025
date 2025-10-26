@@ -6,7 +6,7 @@ public abstract class BaseMark
 
     protected readonly int intensity;
 
-    private DetectableObject obj;
+    protected DetectableObject obj;
     private bool isActive;
     private float nextTriggerTime;
 

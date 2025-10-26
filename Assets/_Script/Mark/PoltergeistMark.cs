@@ -16,6 +16,7 @@ public class PoltergeistMark : BaseMark
     private async void Poltergeist(float intensity)
     {
         if (!TryTriggerMark()) return;
+        Debug.Log("Poltergeist Triggered", obj.gameObject);
         await RoomController.Instance.PoltergeistRoutine(1+intensity);
     }
 

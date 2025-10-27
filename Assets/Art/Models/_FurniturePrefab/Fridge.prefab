@@ -1617,6 +1617,7 @@ MonoBehaviour:
   closeAnother: {fileID: 0}
   interactionDistance: 5
   interactionKey: 102
+  clip: {fileID: 8300000, guid: 077775ed54fb5a44a9ed06933be50d83, type: 3}
 --- !u!320 &4449133133842910230
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -1754,6 +1755,7 @@ MonoBehaviour:
   closeAnother: {fileID: 1066100059925186442}
   interactionDistance: 5
   interactionKey: 102
+  clip: {fileID: 8300000, guid: 586d984449c2a0e4ab43df8104cee413, type: 3}
 --- !u!320 &4020967857759182825
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -1941,6 +1943,7 @@ MonoBehaviour:
   closeAnother: {fileID: 0}
   interactionDistance: 5
   interactionKey: 102
+  clip: {fileID: 8300000, guid: 586d984449c2a0e4ab43df8104cee413, type: 3}
 --- !u!320 &1118036866903648819
 PlayableDirector:
   m_ObjectHideFlags: 0

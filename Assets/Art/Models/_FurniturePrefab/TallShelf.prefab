@@ -627,6 +627,7 @@ MonoBehaviour:
   closeAnother: {fileID: 0}
   interactionDistance: 3
   interactionKey: 102
+  clip: {fileID: 8300000, guid: 077775ed54fb5a44a9ed06933be50d83, type: 3}
 --- !u!54 &6517421791046608067
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -789,6 +790,7 @@ MonoBehaviour:
   closeAnother: {fileID: 0}
   interactionDistance: 3
   interactionKey: 102
+  clip: {fileID: 8300000, guid: 077775ed54fb5a44a9ed06933be50d83, type: 3}
 --- !u!54 &4360978996242071073
 Rigidbody:
   m_ObjectHideFlags: 0

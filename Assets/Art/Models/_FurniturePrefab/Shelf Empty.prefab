@@ -214,7 +214,7 @@ MonoBehaviour:
   - {fileID: 7616616503889095831}
   - {fileID: 2964855456490705587}
   - {fileID: 3015248419896953780}
-  config: {fileID: 11400000, guid: ade9892deab5b174c88475eefb73003c, type: 2}
+  config: {fileID: 11400000, guid: 3d9346f7104f71b4e9e0af2e57bf656a, type: 2}
 --- !u!1 &4065330477499917443
 GameObject:
   m_ObjectHideFlags: 0

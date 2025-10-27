@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec4e909c09ad4b646bbba7233cb4bc60, type: 3}
-  m_Name: Routable
+  m_Name: Shelf
   m_EditorClassIdentifier: 
   NormalObj:
   - {fileID: 8690111286206060586, guid: 654545a964fec8d44a7f710dae479e15, type: 3}
@@ -19,16 +19,8 @@ MonoBehaviour:
   - {fileID: 4513537489770627208, guid: ce8d7b5c528a66640a871befe8b60960, type: 3}
   - {fileID: 5275038599527201988, guid: 440e928176a62e34f92c7fe97f66dba2, type: 3}
   - {fileID: 7156320264724769109, guid: b2ee9282cb3011a40bf1bc179bb89b30, type: 3}
-  - {fileID: 1608338135864411766, guid: 620f5b63e147f5c4ea226479bf9493ca, type: 3}
-  - {fileID: -278274731959432650, guid: af0effde2c618ae42b95c3842aa891d9, type: 3}
-  - {fileID: 4879319105435134183, guid: 1fc9611092417104a9ee9228a9fba3bc, type: 3}
-  - {fileID: 1608338135864411766, guid: 620f5b63e147f5c4ea226479bf9493ca, type: 3}
-  - {fileID: 37124812375080797, guid: 22e311b78ad61014ba90dd741d8ad9ac, type: 3}
   AbnormalObj:
   - {fileID: 8690111286206060586, guid: 654545a964fec8d44a7f710dae479e15, type: 3}
   - {fileID: 1248367269025030207, guid: 8ccf7785245c1dd47a9ed581cecf2164, type: 3}
   - {fileID: 88446186888228958, guid: cba3eadb5cac219429783d4f927fd2f4, type: 3}
   - {fileID: 4513537489770627208, guid: ce8d7b5c528a66640a871befe8b60960, type: 3}
-  - {fileID: -278274731959432650, guid: af0effde2c618ae42b95c3842aa891d9, type: 3}
-  - {fileID: -278274731959432650, guid: af0effde2c618ae42b95c3842aa891d9, type: 3}
-  - {fileID: 5880181520234187571, guid: a0eb5c4721b1a9e46a9d4e29b51beec4, type: 3}

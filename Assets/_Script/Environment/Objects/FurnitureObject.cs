@@ -6,6 +6,14 @@ public class FurnitureObject : MonoBehaviour
     [SerializeField] private Transform[] places;
     [SerializeField] private FurnitureConfigSO config;
 
+    private void Start()
+    {
+        if (places.Length > 0 && config == null)
+        {
+            Debug.LogWarning($"Furniture object: {name} has no config");
+        }
+    }
+
     public List<DetectableObject> PlaceItems(List<BaseMark> marks)
     {
         var objs = new List<DetectableObject>();

@@ -49,7 +49,6 @@ public class RoomController : MonoBehaviour
         {
             var placedMarks = new List<BaseMark>();
 
-            Debug.Log($"Placing mark {abnormalAmount[i]} on furniture {i}.");
             for (int j = 0; j < abnormalAmount[i]; j++)
             {
                 var mark = marks[^1];

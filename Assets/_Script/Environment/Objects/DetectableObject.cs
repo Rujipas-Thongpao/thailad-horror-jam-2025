@@ -29,12 +29,12 @@ public class DetectableObject : MonoBehaviour, IDetectable
 
     public void OnHovered()
     {
-        SetLayerMask(OutlineLayer);
+        SetLayerMask("Outline");
     }
 
     public void OnUnhovered()
     {
-        SetLayerMask(DefaultLayer);
+        SetLayerMask("Default");
     }
 
     public void OnPicked()
@@ -86,11 +86,11 @@ public class DetectableObject : MonoBehaviour, IDetectable
         }
     }
 
-    private void SetLayerMask(RenderingLayerMask layer)
+    private void SetLayerMask(String layer)
     {
         foreach (var mesh in meshes)
         {
-            mesh.renderingLayerMask = layer;
+            mesh.gameObject.layer = LayerMask.NameToLayer(layer);
         }
     }
 

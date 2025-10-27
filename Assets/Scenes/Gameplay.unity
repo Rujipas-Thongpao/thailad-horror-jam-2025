@@ -655,6 +655,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49506e13b42747d4390962458334c921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayManager
+--- !u!1001 &748208643
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3665241681080601888, guid: 3efc36e4b3543c341bfa7b18d0b46596, type: 3}
+      propertyPath: m_Name
+      value: Fridge
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149606702069815194, guid: 3efc36e4b3543c341bfa7b18d0b46596, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.582
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149606702069815194, guid: 3efc36e4b3543c341bfa7b18d0b46596, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149606702069815194, guid: 3efc36e4b3543c341bfa7b18d0b46596, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149606702069815194, guid: 3efc36e4b3543c341bfa7b18d0b46596, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710784
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149606702069815194, guid: 3efc36e4b3543c341bfa7b18d0b46596, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149606702069815194, guid: 3efc36e4b3543c341bfa7b18d0b46596, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710576
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149606702069815194, guid: 3efc36e4b3543c341bfa7b18d0b46596, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149606702069815194, guid: 3efc36e4b3543c341bfa7b18d0b46596, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149606702069815194, guid: 3efc36e4b3543c341bfa7b18d0b46596, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149606702069815194, guid: 3efc36e4b3543c341bfa7b18d0b46596, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3efc36e4b3543c341bfa7b18d0b46596, type: 3}
 --- !u!1001 &1115858899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -792,9 +849,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4348702857323858306, guid: 75869042a97369d48b09b27a64755993, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6132799410535929972, guid: 75869042a97369d48b09b27a64755993, type: 3}
       propertyPath: m_AdditionalLightsShadowResolutionTier
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534289754589516640, guid: 75869042a97369d48b09b27a64755993, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7003819156633245912, guid: 75869042a97369d48b09b27a64755993, type: 3}
       propertyPath: m_CastShadows
@@ -928,3 +993,4 @@ SceneRoots:
   - {fileID: 85175044}
   - {fileID: 539266639}
   - {fileID: 1296266675}
+  - {fileID: 748208643}

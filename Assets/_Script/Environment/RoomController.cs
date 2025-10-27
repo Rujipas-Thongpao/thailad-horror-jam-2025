@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using SmoothShakeFree;
 using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 
 public class RoomController : MonoBehaviour
 {
@@ -40,12 +41,15 @@ public class RoomController : MonoBehaviour
 
     private void SetUpFurniture(List<BaseMark> marks)
     {
+        Debug.Log($"Placing {marks.Count} marks in room.");
         var abnormalAmount = LogicHelper.GetDistributeArray(marks.Count, furniture.Length);
+        Debug.Log($"Abnormal amount per furniture: {string.Join(",", abnormalAmount)}");
 
         for (int i = 0; i < furniture.Length; i++)
         {
             var placedMarks = new List<BaseMark>();
 
+            Debug.Log($"Placing mark {abnormalAmount[i]} on furniture {i}.");
             for (int j = 0; j < abnormalAmount[i]; j++)
             {
                 var mark = marks[^1];
@@ -101,6 +105,14 @@ public class RoomController : MonoBehaviour
             sceneObjects[i]?.Addforce(randomDirection * randomForce);
         }
     }
+
+
+    [ContextMenu("Test Poltergeist Routine")]
+    public async Task TestPoltergeistRoutine()
+    {
+        await PoltergeistRoutine(2f);
+    }
+
     #endregion
 
     private IEnumerator FlickerLight()
@@ -150,26 +162,18 @@ public class RoomController : MonoBehaviour
         for (var i = 0; i < objAmount; i++)
         {
             randObj = Random.Range(0, sceneObjects.Count);
-            sceneObjects[randObj]?.Addforce(Random.onUnitSphere * Random.Range(2f, 4f));
+            sceneObjects[randObj]?.Addforce(Random.onUnitSphere * Random.Range(1f, 3f) * intensity);
         }
-    }
-
-    IEnumerator ForceRecur(float intensity)
-    {
-
-        PushObj(intensity);
-
-        var randCd = Random.Range(2f, 5f);
-        yield return new WaitForSeconds(randCd);
-
-        StartCoroutine(ForceRecur(intensity));
-
     }
 
     public async UniTask PoltergeistRoutine(float intensity)
     {
-        var routine = StartCoroutine(ForceRecur(intensity));
-        await UniTask.WaitForSeconds(intensity * 5);
-        StopCoroutine(routine);
+        var r = Random.Range(2f, intensity * 3f);
+        for(int i =0;i< r; i++)
+        {
+            PushObj(intensity);
+            await UniTask.Delay(System.TimeSpan.FromSeconds(Random.Range(2f, 5f)));
+        }
+        return;
     }
 }

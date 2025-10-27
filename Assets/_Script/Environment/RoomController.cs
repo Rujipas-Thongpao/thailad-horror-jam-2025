@@ -41,9 +41,7 @@ public class RoomController : MonoBehaviour
 
     private void SetUpFurniture(List<BaseMark> marks)
     {
-        Debug.Log($"Placing {marks.Count} marks in room.");
         var abnormalAmount = LogicHelper.GetDistributeArray(marks.Count, furniture.Length);
-        Debug.Log($"Abnormal amount per furniture: {string.Join(",", abnormalAmount)}");
 
         for (int i = 0; i < furniture.Length; i++)
         {

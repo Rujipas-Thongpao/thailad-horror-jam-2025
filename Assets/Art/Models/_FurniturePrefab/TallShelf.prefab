@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 47753039418047678}
   - component: {fileID: 785131731439097473}
   - component: {fileID: 3390574309693191373}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,6 +624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openAnim: {fileID: 3696313013178291338}
   closeAnim: {fileID: 7738931719673778151}
+  closeAnother: {fileID: 0}
   interactionDistance: 3
   interactionKey: 102
 --- !u!54 &6517421791046608067
@@ -744,7 +745,7 @@ MonoBehaviour:
   - {fileID: 3238176492677761263}
   - {fileID: 3781229031056517845}
   - {fileID: 1993085786987503444}
-  config: {fileID: 0}
+  config: {fileID: 11400000, guid: d22935895562a774b9199f3a368e117b, type: 2}
 --- !u!1 &8971986541564124326 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8665679477936736261, guid: 2250bfe9fcb38d44fbac5a0b8ef3125f, type: 3}
@@ -785,6 +786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openAnim: {fileID: 3011234800990780899}
   closeAnim: {fileID: 5494802302938252711}
+  closeAnother: {fileID: 0}
   interactionDistance: 3
   interactionKey: 102
 --- !u!54 &4360978996242071073

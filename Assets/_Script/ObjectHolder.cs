@@ -19,6 +19,9 @@ public class ObjectHolder : MonoBehaviour
     private IInteractable interactable;
 
     [SerializeField] private float rotateSpeed = 3f;
+
+    [SerializeField] AudioClip placeObj;
+
     public float RotateSpeed
     {
         get => rotateSpeed;
@@ -119,6 +122,8 @@ public class ObjectHolder : MonoBehaviour
                 10, placableLayer)) return;
 
         holdingObject.OnPlaced(hit.point);
+
+        SoundManager.PlaySound(placeObj);
 
         DisableSecureObject();
         UnregisterObject();

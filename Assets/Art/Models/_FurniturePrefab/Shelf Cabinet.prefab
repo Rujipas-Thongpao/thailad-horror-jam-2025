@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4387907829931757684}
   - component: {fileID: 4320504630168450050}
   m_Layer: 0
-  m_Name: ShelfWithCabinet
+  m_Name: Shelf Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4528115337224079114}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 0, z: -2.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -267,8 +267,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openAnim: {fileID: 2442150967864202005}
   closeAnim: {fileID: 4011226615048338544}
+  closeAnother: {fileID: 0}
   interactionDistance: 3
   interactionKey: 102
+  clip: {fileID: 8300000, guid: 586d984449c2a0e4ab43df8104cee413, type: 3}
 --- !u!65 &2459229451084086221
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -382,8 +384,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openAnim: {fileID: 7496926122109125001}
   closeAnim: {fileID: 5727245152817352726}
+  closeAnother: {fileID: 0}
   interactionDistance: 3
   interactionKey: 102
+  clip: {fileID: 8300000, guid: 586d984449c2a0e4ab43df8104cee413, type: 3}
 --- !u!65 &1181788694242160052
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -34,4 +34,13 @@ public class GameplayController : MonoBehaviour
         dialogueManager.StartIntroDialogue(level, abnormalIndex);
         level++;
     }
+
+    #region game flow
+
+    private void OnGameStarted()
+    {
+        StartNextLevel();
+    }
+
+    #endregion
 }

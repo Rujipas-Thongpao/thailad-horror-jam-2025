@@ -86,7 +86,7 @@ public class DetectableObject : MonoBehaviour, IDetectable
         }
     }
 
-    private void SetLayerMask(String layer)
+    private void SetLayerMask(string layer)
     {
         foreach (var mesh in meshes)
         {

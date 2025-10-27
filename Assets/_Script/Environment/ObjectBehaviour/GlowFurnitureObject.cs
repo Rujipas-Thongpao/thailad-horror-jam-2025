@@ -7,10 +7,13 @@ public class GlowFurnitureObject : DraggableFurnitureObject, IInteractable
     [SerializeField] private Material OnMaterial;
     [SerializeField] private Material OffMaterial;
 
+    [SerializeField] AudioClip clip;
+
     private bool isOn;
 
     private void Start()
     {
+        isOn = Random.Range(0f, 1f) > 0.5f;
         UpdateDisplay();
     }
 
@@ -18,6 +21,8 @@ public class GlowFurnitureObject : DraggableFurnitureObject, IInteractable
     {
         isOn = !isOn;
         UpdateDisplay();
+
+        SoundManager.PlaySound(clip);
     }
 
     private void UpdateDisplay()

@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 6442615055062081910}
   - component: {fileID: 8539150767828168739}
   m_Layer: 0
-  m_Name: EmptyShelf
+  m_Name: Shelf Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +181,7 @@ Transform:
   m_GameObject: {fileID: 4060952465821978834}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5779991, y: 0.042, z: 0.703}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -214,7 +214,7 @@ MonoBehaviour:
   - {fileID: 7616616503889095831}
   - {fileID: 2964855456490705587}
   - {fileID: 3015248419896953780}
-  config: {fileID: 11400000, guid: ade9892deab5b174c88475eefb73003c, type: 2}
+  config: {fileID: 11400000, guid: 3d9346f7104f71b4e9e0af2e57bf656a, type: 2}
 --- !u!1 &4065330477499917443
 GameObject:
   m_ObjectHideFlags: 0

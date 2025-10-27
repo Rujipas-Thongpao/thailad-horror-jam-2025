@@ -6,6 +6,7 @@ public class ObjectHolder : MonoBehaviour
     public event Action<DetectableObject, IInteractable> EventObjectPicked;
     public event Action EventObjectUnpicked;
     public event Action EventSecureEnabled;
+    public event Action<BaseMark> EventAbnormalSecured;
 
     [SerializeField]
     private Camera camera;
@@ -148,6 +149,8 @@ public class ObjectHolder : MonoBehaviour
     public void SecureObject()
     {
         var obj = holdingObject as AbnormalObject;
+
+        EventAbnormalSecured?.Invoke(obj?.Mark);
 
         obj?.Mark.Disable();
         holdingObject.gameObject.SetActive(false);

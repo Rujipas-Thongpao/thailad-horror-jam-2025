@@ -60,7 +60,6 @@ public class DialogueManager : MonoBehaviour
     #region state dialogue
     public void StartIntroDialogue(int level, int abnormalIndex)
     {
-        Debug.Log("START " + level);
         currentStage = dialogueSO.stages[level];
 
         TryChangeState(DialogueState.INTRO);

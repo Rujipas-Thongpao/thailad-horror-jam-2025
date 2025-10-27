@@ -19,6 +19,8 @@ public class GameplayController : MonoBehaviour
         dialogueManager.Init(ui.DialoguePanel);
         ui.ButtonPrompt.Init(playerManager);
 
+        levelManager.EventStageEnd += OnStageEnd;
+
         StartNextLevel();
     }
 
@@ -26,6 +28,8 @@ public class GameplayController : MonoBehaviour
     {
         dialogueManager.Dispose();
         ui.ButtonPrompt.Dispose();
+
+        levelManager.EventStageEnd -= OnStageEnd;
     }
 
     private void StartNextLevel()
@@ -37,8 +41,16 @@ public class GameplayController : MonoBehaviour
 
     #region game flow
 
-    private void OnGameStarted()
+    private void OnStageEnd(PerformanceStatsData stats)
     {
+        Debug.Log("STAGE END");
+        levelManager.Dispose();
+        ui.ResultPanel.Init(stats, OnCloseResult);
+    }
+
+    private void OnCloseResult()
+    {
+        ui.ResultPanel.Dispose();
         StartNextLevel();
     }
 

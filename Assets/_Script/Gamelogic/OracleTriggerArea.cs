@@ -3,31 +3,30 @@ using UnityEngine;
 
 public class OracleTriggerArea : MonoBehaviour
 {
-    private Action<BaseMark> EventAbnormalSecured;
+    private Action<BaseMark> eventAbnormalSecured;
+    private Action eventIncorrectChecked;
 
     private PlayerManager player;
 
-    private int incorrectCount;
-
-    public void Init(Action<BaseMark> eventAbnormalSecured)
+    public void Init(Action<BaseMark> _eventAbnormalSecured, Action _eventIncorrectChecked)
     {
-        EventAbnormalSecured = eventAbnormalSecured;
-        incorrectCount = 0;
+        player = PlayerManager.Instance;
+
+        eventAbnormalSecured = _eventAbnormalSecured;
+        eventIncorrectChecked = _eventIncorrectChecked;
+        player.ObjectHolder.EventAbnormalSecured += OnAbnormalSecured;
     }
 
     public void Dispose()
     {
-        EventAbnormalSecured = null;
+        eventAbnormalSecured = null;
+        eventIncorrectChecked = null;
+        player.ObjectHolder.EventAbnormalSecured -= OnAbnormalSecured;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-
-        if (player == null)
-        {
-            player = other.GetComponentInParent<PlayerManager>();
-        }
 
         CheckHoldingObject();
     }
@@ -55,7 +54,12 @@ public class OracleTriggerArea : MonoBehaviour
         else
         {
             DialogueManager.Instance.PlayIncorrectExamine();
-            incorrectCount++;
+            eventIncorrectChecked?.Invoke();
         }
+    }
+
+    private void OnAbnormalSecured(BaseMark mark)
+    {
+        eventAbnormalSecured?.Invoke(mark);
     }
 }

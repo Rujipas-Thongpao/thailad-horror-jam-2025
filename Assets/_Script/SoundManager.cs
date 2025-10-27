@@ -4,7 +4,7 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] AudioSource soundPlayer;
 
-    public static AudioSource audioSource;
+    private static AudioSource audioSource;
 
     void Awake()
     {

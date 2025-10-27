@@ -1108,6 +1108,7 @@ MonoBehaviour:
     m_Bits: 119
   holdPoint: {fileID: 9188378090419028485}
   rotateSpeed: 1
+  placeObj: {fileID: 8300000, guid: 533aced36d8a9b34eba5379df84e6fac, type: 3}
   invert: 0
 --- !u!95 &7797796615266935274
 Animator:

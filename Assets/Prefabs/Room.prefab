@@ -993,6 +993,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light 1-1
       objectReference: {fileID: 0}
+    - target: {fileID: 1199276985115145109, guid: bbbaff40336c4db43a8f5811ed559fba, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199276985115145109, guid: bbbaff40336c4db43a8f5811ed559fba, type: 3}
+      propertyPath: m_Shadows.m_NearPlane
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199276985115145109, guid: bbbaff40336c4db43a8f5811ed559fba, type: 3}
+      propertyPath: m_Shadows.m_Resolution
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 3601574222460188148, guid: bbbaff40336c4db43a8f5811ed559fba, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -1043,6 +1055,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3601574222460188148, guid: bbbaff40336c4db43a8f5811ed559fba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624557660905239550, guid: bbbaff40336c4db43a8f5811ed559fba, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

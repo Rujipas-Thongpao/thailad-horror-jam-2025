@@ -7,6 +7,8 @@ public class GlowObject : AbnormalObject, IInteractable
     [SerializeField] private Material OnMaterial;
     [SerializeField] private Material OffMaterial;
 
+    [SerializeField] AudioClip clip;
+
     private bool isOn;
 
     private void Start()
@@ -18,6 +20,8 @@ public class GlowObject : AbnormalObject, IInteractable
     {
         isOn = !isOn;
         UpdateDisplay();
+
+        SoundManager.PlaySound(clip);
     }
 
     private void UpdateDisplay()

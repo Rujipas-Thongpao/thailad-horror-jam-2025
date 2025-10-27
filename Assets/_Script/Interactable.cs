@@ -17,6 +17,8 @@ public class Interactable : MonoBehaviour, IInteractable, IDetectable
 
     float lastInteract;
 
+    [SerializeField] AudioClip clip;
+
     public void OnInteracted()
     {
         if(Time.time - lastInteract >= 2f) Interact();
@@ -79,5 +81,7 @@ public class Interactable : MonoBehaviour, IInteractable, IDetectable
         }
 
         isOpen = !isOpen;
+
+        SoundManager.PlaySound(clip);
     }
 }

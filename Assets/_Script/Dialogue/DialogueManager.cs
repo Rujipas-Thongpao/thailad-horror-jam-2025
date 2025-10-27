@@ -8,11 +8,12 @@ public class DialogueManager : MonoBehaviour
         OUTRO = 0,
         TUTORIAL = 1,
         INTRO = 2,
-        
+
         EXAMINE = 3,
         WARN = 10,
+        IDLE = 15,
 
-        IDLE = 100,
+        NONE = 101,
     }
 
     [SerializeField] private GameDialogueSO dialogueSO;
@@ -42,16 +43,16 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePanel = _dialoguePanel;
         dialoguePanel.Initialize();
-        dialoguePanel.EventDialogueEnd += () => TryChangeState(DialogueState.IDLE);
+        dialoguePanel.EventDialogueEnd += OnDialogueEnd;
 
         lastRandomIndex = 0;
 
-        currentState = DialogueState.IDLE;
+        currentState = DialogueState.NONE;
     }
 
     public void Dispose()
     {
-        dialoguePanel.EventDialogueEnd -= () => TryChangeState(DialogueState.IDLE);
+        dialoguePanel.EventDialogueEnd -= OnDialogueEnd;
         dialoguePanel.Dispose();
         dialoguePanel = null;
     }
@@ -59,6 +60,7 @@ public class DialogueManager : MonoBehaviour
     #region state dialogue
     public void StartIntroDialogue(int level, int abnormalIndex)
     {
+        Debug.Log("START " + level);
         currentStage = dialogueSO.stages[level];
 
         TryChangeState(DialogueState.INTRO);
@@ -105,7 +107,11 @@ public class DialogueManager : MonoBehaviour
     public void StopDialogue()
     {
         dialoguePanel.Stop();
-        TryChangeState(DialogueState.IDLE);
+    }
+
+    private void OnDialogueEnd()
+    {
+        TryChangeState(DialogueState.NONE);
     }
     #endregion
 
@@ -123,7 +129,7 @@ public class DialogueManager : MonoBehaviour
 
     private bool TryChangeState(DialogueState state)
     {
-        if (currentState < state && state != DialogueState.IDLE) return false;
+        if (currentState < state && state != DialogueState.NONE) return false;
 
         currentState = state;
 

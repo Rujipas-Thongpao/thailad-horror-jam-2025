@@ -64,6 +64,7 @@ MonoBehaviour:
   - {fileID: 2258655628882284895}
   - {fileID: 9017186090404311088}
   - {fileID: 566953062311736568}
+  - {fileID: 3609705976634375224}
 --- !u!1001 &440997121175087437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -114,13 +115,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8661742839238399947, guid: f6bdfe95d4986b246a75e472c5c5b0aa, type: 3}
       propertyPath: m_Name
-      value: round_table
+      value: Table Round
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6bdfe95d4986b246a75e472c5c5b0aa, type: 3}
+--- !u!114 &3609705976634375224 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3748961909336511861, guid: f6bdfe95d4986b246a75e472c5c5b0aa, type: 3}
+  m_PrefabInstance: {fileID: 440997121175087437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48327ffd03b22544b8004fb6d5dcef67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8458284702082180156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8322477928816758129, guid: f6bdfe95d4986b246a75e472c5c5b0aa, type: 3}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4387907829931757684}
   - component: {fileID: 4320504630168450050}
   m_Layer: 0
-  m_Name: ShelfWithCabinet
+  m_Name: Shelf With Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

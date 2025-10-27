@@ -10,12 +10,15 @@ public class RoomController : MonoBehaviour
     [SerializeField] private LightObject[] lights;
     [SerializeField] private Material lightOn, lightOff;
 
-    [SerializeField] private FurnitureObject[] furniture;
+    [SerializeField] private FurnitureSetup[] setupPool;
+
+    private FurnitureSetup setup;
 
     private readonly List<DetectableObject> sceneObjects = new();
     private readonly List<LightObject> activeLights = new();
 
     public static RoomController Instance { get; private set; }
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -30,6 +33,7 @@ public class RoomController : MonoBehaviour
 
     public void Init(List<BaseMark> marks)
     {
+        setup = Instantiate(setupPool[Random.Range(0, setupPool.Length)], transform);
         SetUpFurniture(marks);
         SetUpLight();
     }
@@ -41,9 +45,10 @@ public class RoomController : MonoBehaviour
 
     private void SetUpFurniture(List<BaseMark> marks)
     {
-        var abnormalAmount = LogicHelper.GetDistributeArray(marks.Count, furniture.Length);
+        var spawners = setup.ObjSpawners;
+        var abnormalAmount = LogicHelper.GetDistributeArray(marks.Count, spawners.Length);
 
-        for (int i = 0; i < furniture.Length; i++)
+        for (int i = 0; i < spawners.Length; i++)
         {
             var placedMarks = new List<BaseMark>();
 
@@ -54,7 +59,7 @@ public class RoomController : MonoBehaviour
                 placedMarks.Add(mark);
             }
 
-            var objs = furniture[i].PlaceItems(placedMarks);
+            var objs = spawners[i].PlaceItems(placedMarks);
 
             foreach (var obj in objs)
             {

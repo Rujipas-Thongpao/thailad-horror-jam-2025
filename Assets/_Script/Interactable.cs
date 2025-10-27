@@ -6,6 +6,7 @@ public class Interactable : MonoBehaviour
 {
     [SerializeField] private PlayableDirector openAnim;
     [SerializeField] private PlayableDirector closeAnim;
+    [SerializeField] private Interactable closeAnother;
 
     bool isOpen;
 
@@ -14,6 +15,8 @@ public class Interactable : MonoBehaviour
 
     private Camera mainCamera;
 
+    float lastInteract;
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -21,10 +24,7 @@ public class Interactable : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(interactionKey))
-        {
-            PerformRaycast();
-        }
+        PerformRaycast();
     }
 
     private void PerformRaycast()
@@ -36,15 +36,29 @@ public class Interactable : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, interactionDistance))
         {
-            if (hit.collider.gameObject == this.gameObject)
+            if (hit.collider.gameObject == this.gameObject && Input.GetKeyDown(interactionKey) && Time.time - lastInteract >= 1f)
             {
                 Interact();
             }
         }
     }
 
+    public void ForceClose()
+    {
+        if (isOpen)
+        {
+            closeAnim?.Play();
+
+            if(closeAnother) closeAnother.ForceClose();
+        }
+
+        isOpen = false;
+    }
+
     private void Interact()
     {
+        lastInteract = Time.time;
+
         if (!isOpen)
         {
             openAnim?.Play();
@@ -52,6 +66,8 @@ public class Interactable : MonoBehaviour
         else
         {
             closeAnim?.Play();
+
+            if(closeAnother) closeAnother.ForceClose();
         }
 
         isOpen = !isOpen;

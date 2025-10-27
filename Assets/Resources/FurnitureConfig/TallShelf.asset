@@ -13,14 +13,9 @@ MonoBehaviour:
   m_Name: TallShelf
   m_EditorClassIdentifier: 
   NormalObj:
-  - {fileID: 8690111286206060586, guid: 654545a964fec8d44a7f710dae479e15, type: 3}
-  - {fileID: 1248367269025030207, guid: 8ccf7785245c1dd47a9ed581cecf2164, type: 3}
-  - {fileID: 88446186888228958, guid: cba3eadb5cac219429783d4f927fd2f4, type: 3}
-  - {fileID: 4513537489770627208, guid: ce8d7b5c528a66640a871befe8b60960, type: 3}
-  - {fileID: 5275038599527201988, guid: 440e928176a62e34f92c7fe97f66dba2, type: 3}
-  - {fileID: 7156320264724769109, guid: b2ee9282cb3011a40bf1bc179bb89b30, type: 3}
+  - {fileID: 9037837074746961484, guid: 1907731a9f2ae0a4a9df6000c6ddc3e8, type: 3}
+  - {fileID: 4975294847260443509, guid: 15831c248e1debc428a7d50ca5809e1d, type: 3}
+  - {fileID: 5880181520234187571, guid: a0eb5c4721b1a9e46a9d4e29b51beec4, type: 3}
   AbnormalObj:
-  - {fileID: 8690111286206060586, guid: 654545a964fec8d44a7f710dae479e15, type: 3}
-  - {fileID: 1248367269025030207, guid: 8ccf7785245c1dd47a9ed581cecf2164, type: 3}
-  - {fileID: 88446186888228958, guid: cba3eadb5cac219429783d4f927fd2f4, type: 3}
-  - {fileID: 4513537489770627208, guid: ce8d7b5c528a66640a871befe8b60960, type: 3}
+  - {fileID: 9037837074746961484, guid: 1907731a9f2ae0a4a9df6000c6ddc3e8, type: 3}
+  - {fileID: 4975294847260443509, guid: 15831c248e1debc428a7d50ca5809e1d, type: 3}

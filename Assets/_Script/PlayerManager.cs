@@ -27,6 +27,10 @@ public class PlayerManager : MonoBehaviour
     private ObjectHolder objectHolder;
     public ObjectHolder ObjectHolder => objectHolder;
 
+    [SerializeField]
+    private PlayerSanityController sanityController;
+    public PlayerSanityController SanityController => sanityController;
+
     private GameState currentState;
     private NormalState normalState;
     private HoldingItemState holdingItemState;
@@ -41,6 +45,8 @@ public class PlayerManager : MonoBehaviour
     {
         inputHandler = new InputHandler();
         inputHandler.Initialize();
+
+        sanityController.Init(this);
 
         normalState = new NormalState(this);
         holdingItemState = new HoldingItemState(this);

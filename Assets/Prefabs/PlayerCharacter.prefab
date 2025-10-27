@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 956208533884051843}
   - component: {fileID: 9066505926561275253}
   - component: {fileID: 1724818949055270090}
+  - component: {fileID: 268878029422142151}
   m_Layer: 3
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -52,6 +53,7 @@ MonoBehaviour:
   playerCam: {fileID: 5592967395609075467}
   cameraDetectObject: {fileID: 1724818949055270090}
   objectHolder: {fileID: 6976032555370044892}
+  sanityController: {fileID: 268878029422142151}
 --- !u!114 &1724818949055270090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +70,19 @@ MonoBehaviour:
   detectableLayer:
     serializedVersion: 2
     m_Bits: 247
+--- !u!114 &268878029422142151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131756342198699120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db5fee5e9dee9d4c8e9229e3ecd1aff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: c4c406d3b111be14887a87a1500faa3b, type: 2}
 --- !u!1 &1257681118488462886
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Cover
-    second: {fileID: 2100000, guid: c29b07e83d61b6d418f3dfc014e1618e, type: 2}
+    second: {fileID: 2100000, guid: e539ffba398632840b830e8e526adfd1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: paper
-    second: {fileID: 2100000, guid: 348c36463db7ed24b8ad4270035d89dc, type: 2}
+    second: {fileID: 2100000, guid: fb9ad13dba0a3c049afc09fa586115bf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

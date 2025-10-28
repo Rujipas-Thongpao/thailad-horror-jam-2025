@@ -24,6 +24,7 @@ MonoBehaviour:
   - {fileID: 4879319105435134183, guid: 1fc9611092417104a9ee9228a9fba3bc, type: 3}
   - {fileID: 1608338135864411766, guid: 620f5b63e147f5c4ea226479bf9493ca, type: 3}
   - {fileID: 37124812375080797, guid: 22e311b78ad61014ba90dd741d8ad9ac, type: 3}
+  - {fileID: 3830441807858119276, guid: 4103562dc25002e4b9b5ff6833f09418, type: 3}
   AbnormalObj:
   - {fileID: 8690111286206060586, guid: 654545a964fec8d44a7f710dae479e15, type: 3}
   - {fileID: 1248367269025030207, guid: 8ccf7785245c1dd47a9ed581cecf2164, type: 3}
@@ -32,3 +33,4 @@ MonoBehaviour:
   - {fileID: -278274731959432650, guid: af0effde2c618ae42b95c3842aa891d9, type: 3}
   - {fileID: -278274731959432650, guid: af0effde2c618ae42b95c3842aa891d9, type: 3}
   - {fileID: 5880181520234187571, guid: a0eb5c4721b1a9e46a9d4e29b51beec4, type: 3}
+  - {fileID: 3830441807858119276, guid: 4103562dc25002e4b9b5ff6833f09418, type: 3}

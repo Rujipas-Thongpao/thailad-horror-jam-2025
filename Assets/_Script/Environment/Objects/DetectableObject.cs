@@ -18,13 +18,27 @@ public class DetectableObject : MonoBehaviour, IDetectable
     private Rigidbody rb;
     private Collider[] cols;
 
+    private bool isPlaceWithParent = false;
+
     private void Awake()
     {
+        isPlaceWithParent = false;
         meshes = GetComponentsInChildren<MeshRenderer>();
         rb = GetComponent<Rigidbody>();
         cols = GetComponentsInChildren<Collider>();
 
         if (center == null) center = transform;
+    }
+
+    public void Init(bool isplaceWithParent = false)
+    {
+        this.isPlaceWithParent = isplaceWithParent;
+
+        if(isPlaceWithParent)
+        {
+            rb.isKinematic = true;
+            TogglePhysicCollider(false);
+        }
     }
 
     public void OnHovered()

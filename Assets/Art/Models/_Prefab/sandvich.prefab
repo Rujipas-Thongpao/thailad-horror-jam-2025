@@ -194,6 +194,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c4647913d6738b24484f15e41f4a0bc4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 97117816110932354}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c4647913d6738b24484f15e41f4a0bc4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7912585563388307460}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c4647913d6738b24484f15e41f4a0bc4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4056726761968184020}
   m_SourcePrefab: {fileID: 100100000, guid: c4647913d6738b24484f15e41f4a0bc4, type: 3}
 --- !u!1 &2718712529036579166 stripped
 GameObject:
@@ -243,6 +249,50 @@ MonoBehaviour:
   cursePoints:
   - {fileID: 9020785927255879074}
   - {fileID: 4953699349761733776}
+--- !u!54 &7912585563388307460
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2718712529036579166}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &4056726761968184020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2718712529036579166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ecc64d1e9db694b82927f30497ba30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: 09a3a75eae61ce540a64776b7fe79b8a, type: 3}
+  minCollisionVelocity: 1
+  volume: 0.8
+  minPitch: 0.9
+  maxPitch: 1.1
 --- !u!4 &3382517817274354660 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c4647913d6738b24484f15e41f4a0bc4, type: 3}

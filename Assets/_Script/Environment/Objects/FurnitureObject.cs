@@ -17,6 +17,11 @@ public class FurnitureObject : MonoBehaviour
 
     public virtual List<DetectableObject> PlaceItems(List<BaseMark> marks)
     {
+        if(places.Length == 0 || config == null)
+        {
+            return new List<DetectableObject>();
+        }
+
         var objs = new List<DetectableObject>();
         var amount = GetAmount(marks.Count);
         var shuffledPlaces = LogicHelper.ShuffleArray(places);

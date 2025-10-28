@@ -2,7 +2,7 @@
 - Project name: thailad-horror-jam-2025
 - Unity version: Unity 6000.0.60f1
 - Active game object:
-  - Name: Table 1
+  - Name: banana
   - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

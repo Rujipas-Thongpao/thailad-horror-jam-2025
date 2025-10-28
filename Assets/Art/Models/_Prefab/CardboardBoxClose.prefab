@@ -62,8 +62,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: c02510260be21ba439728b10b0406ee7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9070396609651555703}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c02510260be21ba439728b10b0406ee7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2307345668586134787}
   m_SourcePrefab: {fileID: 100100000, guid: c02510260be21ba439728b10b0406ee7, type: 3}
+--- !u!1 &237909689453211243 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c02510260be21ba439728b10b0406ee7, type: 3}
+  m_PrefabInstance: {fileID: 1120358693657269050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2307345668586134787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237909689453211243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ecc64d1e9db694b82927f30497ba30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: 09a3a75eae61ce540a64776b7fe79b8a, type: 3}
+  minCollisionVelocity: 1
+  volume: 0.8
+  minPitch: 0.9
+  maxPitch: 1.1
 --- !u!4 &578406023435072721 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c02510260be21ba439728b10b0406ee7, type: 3}

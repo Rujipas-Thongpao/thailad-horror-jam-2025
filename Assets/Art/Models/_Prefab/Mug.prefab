@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 6064514747554707753}
   - component: {fileID: 1465787365355632704}
   - component: {fileID: 3984839186699797937}
+  - component: {fileID: 8001525307565184190}
   m_Layer: 0
   m_Name: Mug
   m_TagString: Untagged
@@ -220,6 +221,23 @@ CapsuleCollider:
   m_Height: 0.12360151
   m_Direction: 1
   m_Center: {x: -0.00050405785, y: 0.06514671, z: -0.013435721}
+--- !u!114 &8001525307565184190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8352643146689333130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ecc64d1e9db694b82927f30497ba30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: 09a3a75eae61ce540a64776b7fe79b8a, type: 3}
+  minCollisionVelocity: 1
+  volume: 0.8
+  minPitch: 0.9
+  maxPitch: 1.1
 --- !u!1001 &1006466092843751017
 PrefabInstance:
   m_ObjectHideFlags: 0

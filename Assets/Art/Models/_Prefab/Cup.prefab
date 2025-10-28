@@ -282,6 +282,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa5f389a3bc65ae49a0b543ab8ed042c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9120300433088793461}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fa5f389a3bc65ae49a0b543ab8ed042c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1061818516707301562}
   m_SourcePrefab: {fileID: 100100000, guid: fa5f389a3bc65ae49a0b543ab8ed042c, type: 3}
 --- !u!4 &8159981205893091739 stripped
 Transform:
@@ -365,3 +368,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1061818516707301562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8824173452986370849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ecc64d1e9db694b82927f30497ba30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: 09a3a75eae61ce540a64776b7fe79b8a, type: 3}
+  minCollisionVelocity: 1
+  volume: 0.8
+  minPitch: 0.9
+  maxPitch: 1.1

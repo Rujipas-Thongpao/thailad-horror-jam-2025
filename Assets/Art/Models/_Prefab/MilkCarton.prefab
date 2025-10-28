@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7156320264724769109}
   - component: {fileID: 3023724759822313996}
   - component: {fileID: 5489789418277260619}
-  - component: {fileID: 1777425004998223726}
+  - component: {fileID: 8397504238275164884}
   m_Layer: 0
   m_Name: MilkCarton
   m_TagString: Untagged
@@ -132,7 +132,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1777425004998223726
+--- !u!114 &8397504238275164884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

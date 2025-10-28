@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7454686287730314422}
   - component: {fileID: 1509636531705111228}
   - component: {fileID: 615161832968170963}
+  - component: {fileID: 1982010058054208869}
   m_Layer: 0
   m_Name: Plate
   m_TagString: Untagged
@@ -105,6 +106,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.25, y: 0.01, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1982010058054208869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4835746989399284458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ecc64d1e9db694b82927f30497ba30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: 09a3a75eae61ce540a64776b7fe79b8a, type: 3}
+  minCollisionVelocity: 1
+  volume: 0.8
+  minPitch: 0.9
+  maxPitch: 1.1
 --- !u!1001 &2521891046881392666
 PrefabInstance:
   m_ObjectHideFlags: 0

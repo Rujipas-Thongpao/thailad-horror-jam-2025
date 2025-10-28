@@ -1,8 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
+    public event Action<PerformanceStatsData> EventStageEnd;
+
     [SerializeField] private RoomController roomController;
     [SerializeField] private OracleTriggerArea oracle;
     [SerializeField] private LevelConfigSO config;
@@ -12,7 +16,7 @@ public class LevelManager : MonoBehaviour
 
     private GameObject hallway;
     private int mainAbnormalType;
-    private int progress;
+    private PerformanceStatsData stats;
 
     public int Init(int level)
     {
@@ -37,10 +41,10 @@ public class LevelManager : MonoBehaviour
         }
 
         roomController.Init(marks);
-        oracle.Init(OnAbnormalSecured);
+        oracle.Init(OnAbnormalSecured, OnIncorrectChecked);
         hallway = Instantiate(config.Hallways[level]);
 
-        progress = 0;
+        stats = new PerformanceStatsData();
 
         return mainAbnormalType;
     }
@@ -57,17 +61,35 @@ public class LevelManager : MonoBehaviour
 
     private void OnAbnormalSecured(BaseMark mark)
     {
-        if (mainAbnormal.Contains(mark))
-        {
-            progress++;
-        }
+        stats.AbnormalSecured(mainAbnormal.Contains(mark));
+        Debug.Log(stats.MainAbnormal);
 
-        if (progress >= mainAbnormal.Count)
-        {
-            Debug.Log("LEVEL COMPLETED");
-            Dispose();
-        }
+        if (stats.MainAbnormal < mainAbnormal.Count) return;
+
+        EventStageEnd?.Invoke(stats);
     }
 
+    private void OnIncorrectChecked()
+    {
+        stats.IncorrectChecked();
+    }
     #endregion
+}
+
+public class PerformanceStatsData
+{
+    public int MainAbnormal { get; private set;}
+    public int SubAbnormal { get ; private set; }
+    public int Incorrect { get ; private set; }
+
+    public void AbnormalSecured(bool isMain)
+    {
+        if (isMain) MainAbnormal++;
+        else SubAbnormal++;
+    }
+
+    public void IncorrectChecked()
+    {
+        Incorrect++;
+    }
 }

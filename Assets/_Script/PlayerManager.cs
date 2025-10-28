@@ -41,8 +41,12 @@ public class PlayerManager : MonoBehaviour
 
     private Dictionary<E_PlayerState, GameState> stateDictionary = new();
 
+    public static PlayerManager Instance;
+
     private void Awake()
     {
+        Instance = this;
+
         inputHandler = new InputHandler();
         inputHandler.Initialize();
 

@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class HandTremorsMark : BaseMark
 {
     public HandTremorsMark(int _intensity) : base(_intensity)
@@ -14,7 +12,6 @@ public class HandTremorsMark : BaseMark
     protected override void OnPicked()
     {
         if (!TryTriggerMark()) return;
-        Debug.Log("Tremors Triggered OnPicked", obj.gameObject);
         PlayerEffectController.Instance.HandTremor(intensity);
     }
 
@@ -23,7 +20,6 @@ public class HandTremorsMark : BaseMark
         if (intensity <= 0) return;
         if (!TryTriggerMark()) return;
 
-        Debug.Log("Tremors Triggered NearBy", obj.gameObject);
         PlayerEffectController.Instance.HandTremor(1.0f);
     }
 }

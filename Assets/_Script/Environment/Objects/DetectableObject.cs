@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class DetectableObject : MonoBehaviour, IDetectable
 {
     public event Action EventPlayerNearby;

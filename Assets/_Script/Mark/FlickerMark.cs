@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class FlickerMark : BaseMark
 {
     public FlickerMark(int intensity) : base(intensity)
@@ -10,15 +8,12 @@ public class FlickerMark : BaseMark
     public override void Init(DetectableObject obj)
     {
         base.Init(obj);
-        Debug.Log("Flicker", obj.gameObject);
     }
 
     private void Flicker()
     {
         if (!TryTriggerMark()) return;
         RoomController.Instance.StartFlickerLight();
-
-        Debug.Log("Flicker Triggered", obj.gameObject);
     }
 
     protected override void OnPlayerNearby()

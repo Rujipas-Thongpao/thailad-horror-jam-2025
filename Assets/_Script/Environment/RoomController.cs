@@ -11,6 +11,7 @@ public class RoomController : MonoBehaviour
     [SerializeField] private Material lightOn, lightOff;
 
     [SerializeField] private FurnitureSetup[] setupPool;
+    [SerializeField] private Transform playerSpawnPoint;
 
     private FurnitureSetup setup;
 
@@ -36,6 +37,7 @@ public class RoomController : MonoBehaviour
         setup = Instantiate(setupPool[Random.Range(0, setupPool.Length)], transform);
         SetUpFurniture(marks);
         SetUpLight();
+        PlayerManager.Instance.transform.SetPositionAndRotation(playerSpawnPoint.position, playerSpawnPoint.rotation);
     }
 
     public void Dispose()

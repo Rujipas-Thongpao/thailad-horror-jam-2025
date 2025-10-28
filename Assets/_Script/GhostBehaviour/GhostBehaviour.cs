@@ -3,19 +3,20 @@ using UnityEngine;
 public class GhostBehaviour : MonoBehaviour
 {
     private PlayerManager player;
+
+    private void Start()
+    {
+        player = PlayerManager.Instance;
+    }
+
     private void Update()
     {
-        if(player == null)
-        {
-            player = GameObject.FindFirstObjectByType<PlayerManager>();
-        }
+        if (!player) return;
 
-        if (player == null) return;
+        var angle = Vector3.Dot(-player.PlayerCam.camHolder.transform.forward, transform.forward);
 
-        var angle = Vector3.Dot(-player.PlayerCam.camHolder.transform.forward, this.transform.forward);
-        if(angle > .8f)
-        {
-            player.SanityController.ModifySanity(-10f * Time.deltaTime);
-        }
+        if (angle <= .8f) return;
+
+        player.SanityController.DrainSanity(-10f * Time.deltaTime);
     }
 }

@@ -10,6 +10,7 @@ public class OracleTriggerArea : MonoBehaviour
     [SerializeField] private StageLeaveArea stageLeaveArea;
 
     private PlayerManager player;
+    private bool isActive;
 
     public void Init()
     {
@@ -25,6 +26,13 @@ public class OracleTriggerArea : MonoBehaviour
         stageLeaveArea.Dispose();
 
         player.ObjectHolder.EventAbnormalSecured -= OnAbnormalSecured;
+
+        isActive = false;
+    }
+
+    public void EnableCheckArea()
+    {
+        isActive = true;
     }
 
     public void EnableLeaveArea()
@@ -35,6 +43,7 @@ public class OracleTriggerArea : MonoBehaviour
     #region trigger events
     private void OnTriggerEnter(Collider other)
     {
+        if (!isActive) return;
         if (!other.CompareTag("Player")) return;
 
         CheckHoldingObject();
@@ -42,6 +51,7 @@ public class OracleTriggerArea : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (!isActive) return;
         if (!other.CompareTag("Player")) return;
 
         player.DisableSecureObject();

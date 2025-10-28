@@ -47,22 +47,25 @@ public class LevelManager : MonoBehaviour
         oracle.EventLeaveStage += OnPlayerLeaveStage;
 
         hallway = Instantiate(config.Hallways[level]);
-
         stats = new PerformanceStatsData();
+
+        DialogueManager.Instance.EventIntroEnd += OnDialogueIntroEnd;
 
         return mainAbnormalType;
     }
 
     public void Dispose()
     {
+        marks.Clear();
+        mainAbnormal.Clear();
+
         roomController.Dispose();
         oracle.Dispose();
         oracle.EventAbnormalSecured -= OnAbnormalSecured;
         oracle.EventIncorrectChecked -= OnIncorrectChecked;
         oracle.EventLeaveStage -= OnPlayerLeaveStage;
 
-        marks.Clear();
-        mainAbnormal.Clear();
+        DialogueManager.Instance.EventIntroEnd -= OnDialogueIntroEnd;
 
         Destroy(hallway);
     }
@@ -103,6 +106,11 @@ public class LevelManager : MonoBehaviour
     private void OnPlayerLeaveStage()
     {
         EventStageEnd?.Invoke(stats);
+    }
+
+    private void OnDialogueIntroEnd()
+    {
+        oracle.EnableCheckArea();
     }
     #endregion
 }

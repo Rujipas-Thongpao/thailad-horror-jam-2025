@@ -12,6 +12,7 @@ public class UIDialoguePanel : MonoBehaviour
 
     private readonly Queue<string> dialogueQueue = new();
     private float dialogueTimer;
+    private bool isDone;
 
     public void Initialize()
     {
@@ -26,14 +27,15 @@ public class UIDialoguePanel : MonoBehaviour
 
     private void Update()
     {
-        if (dialogueQueue.Count == 0) return;
-
         dialogueTimer -= Time.deltaTime;
 
-        if (dialogueQueue.Count == 0 && dialogueTimer <= 0)
+        if (dialogueQueue.Count == 0)
         {
+            if (!isDone && dialogueTimer > 0) return;
+
             dialogueBox.SetActive(false);
             EventDialogueEnd?.Invoke();
+            isDone = true;
             return;
         }
 
@@ -46,7 +48,7 @@ public class UIDialoguePanel : MonoBehaviour
 
     public void Play(List<string> dialogues)
     {
-        Stop();
+        isDone = false;
         dialogueTimer = 0;
         dialogueBox.SetActive(true);
 

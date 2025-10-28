@@ -1,31 +1,20 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
-    private enum DialogueState
-    {
-        OUTRO = 0,
-        INTRO = 1,
-
-        EXAMINE = 3,
-        TASK = 4,
-        WARN = 10,
-        IDLE = 15,
-
-        NONE = 101,
-    }
+    public event Action EventIntroEnd;
 
     [SerializeField] private DialogueConfigSO dialogueConfigSo;
 
-    private int lastRandomIndex;
-
     private UIDialoguePanel dialoguePanel;
-    private DialogueState currentState;
     private StageDialogueSO currentStage;
 
     private static DialogueManager instance;
     public static DialogueManager Instance => instance;
+
+    private bool IsIntro;
 
     public void Awake()
     {
@@ -44,15 +33,10 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel = _dialoguePanel;
         dialoguePanel.Initialize();
         dialoguePanel.EventDialogueEnd += OnDialogueEnd;
-
-        lastRandomIndex = 0;
-
-        currentState = DialogueState.NONE;
     }
 
     public void Dispose()
     {
-        dialoguePanel.EventDialogueEnd -= OnDialogueEnd;
         dialoguePanel.Dispose();
         dialoguePanel = null;
     }
@@ -62,58 +46,44 @@ public class DialogueManager : MonoBehaviour
     {
         currentStage = dialogueConfigSo.stages[level];
 
-        TryChangeState(DialogueState.INTRO);
-
         PlayDialogue(currentStage.Intro);
         PlayDialogue(AbnormalConfig.Infos[abnormalIndex]);
+
+        IsIntro = true;
     }
 
     public void PlayCorrectExamine()
     {
-        if (!TryChangeState(DialogueState.EXAMINE)) return;
-
         PlayDialogue(currentStage.CorrectExamine.GetRandomDialogue());
     }
 
     public void PlayIncorrectExamine()
     {
-        if (!TryChangeState(DialogueState.EXAMINE)) return;
-
         PlayDialogue(currentStage.IncorrectExamine.GetRandomDialogue());
     }
 
     public void PlayWarnDialogue()
     {
-        if (!TryChangeState(DialogueState.WARN)) return;
-
         PlayDialogue(currentStage.Warn.GetRandomDialogue());
     }
 
     public void PlayIdleDialogue()
     {
-        if (!TryChangeState(DialogueState.IDLE)) return;
-
         PlayDialogue(currentStage.Idle.GetRandomDialogue());
     }
 
     public void PlayTaskAllComplete()
     {
-        if (!TryChangeState(DialogueState.TASK)) return;
-
         PlayDialogue(currentStage.TaskAllComplete.GetRandomDialogue());
     }
 
     public void PlayTaskComplete()
     {
-        if (!TryChangeState(DialogueState.TASK)) return;
-
         PlayDialogue(currentStage.TaskComplete.GetRandomDialogue());
     }
 
     public void PlayTaskIncomplete()
     {
-        if (!TryChangeState(DialogueState.TASK)) return;
-
         PlayDialogue(currentStage.TaskIncomplete.GetRandomDialogue());
     }
 
@@ -124,7 +94,11 @@ public class DialogueManager : MonoBehaviour
 
     private void OnDialogueEnd()
     {
-        TryChangeState(DialogueState.NONE);
+        if (!IsIntro) return;
+
+        IsIntro = false;
+        EventIntroEnd?.Invoke();
+        dialoguePanel.EventDialogueEnd -= OnDialogueEnd;
     }
     #endregion
 
@@ -138,15 +112,6 @@ public class DialogueManager : MonoBehaviour
     private void PlayDialogue(List<string> dialogueList)
     {
         dialoguePanel.Play(dialogueList);
-    }
-
-    private bool TryChangeState(DialogueState state)
-    {
-        if (currentState < state && state != DialogueState.NONE) return false;
-
-        currentState = state;
-
-        return true;
     }
     #endregion
 }

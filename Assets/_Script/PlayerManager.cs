@@ -55,7 +55,7 @@ public class PlayerManager : MonoBehaviour
         normalState = new NormalState(this);
         holdingItemState = new HoldingItemState(this);
         inspectingState = new InspectItemState(this);
-        draggingState = new DraggingFurnitureState(this); 
+        draggingState = new DraggingFurnitureState(this);
 
         stateDictionary = new Dictionary<E_PlayerState, GameState>
         {

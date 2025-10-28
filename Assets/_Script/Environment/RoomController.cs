@@ -32,9 +32,9 @@ public class RoomController : MonoBehaviour
         }
     }
 
-    public void Init(List<BaseMark> marks)
+    public void Init(List<BaseMark> marks, FurnitureSetup furnitureSetup)
     {
-        setup = Instantiate(setupPool[Random.Range(0, setupPool.Length)], transform);
+        setup = Instantiate(furnitureSetup, transform);
         SetUpFurniture(marks);
         SetUpLight();
         PlayerManager.Instance.transform.SetPositionAndRotation(playerSpawnPoint.position, playerSpawnPoint.rotation);
@@ -186,5 +186,10 @@ public class RoomController : MonoBehaviour
             await UniTask.Delay(System.TimeSpan.FromSeconds(Random.Range(2f, 5f)));
         }
         return;
+    }
+
+    public void SpawnGhost()
+    {
+        var spawnPoint = setup.GhostSpawnPoints[Random.Range(0, setup.GhostSpawnPoints.Length)];
     }
 }

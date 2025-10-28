@@ -188,8 +188,12 @@ public class RoomController : MonoBehaviour
         return;
     }
 
+    [ContextMenu("Spawn Ghost")]
     public void SpawnGhost()
     {
+        if(setup.GhostSpawnPoints.Length == 0) return;
+
         var spawnPoint = setup.GhostSpawnPoints[Random.Range(0, setup.GhostSpawnPoints.Length)];
+        Instantiate(setup.GhostPrefabs, spawnPoint);
     }
 }

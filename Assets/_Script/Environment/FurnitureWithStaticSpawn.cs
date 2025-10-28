@@ -40,6 +40,7 @@ public class FurnitureWithStaticSpawn : FurnitureObject
                                     SpawnNormalObject();
             var place = placesWithParent[i];
             //obj.GetComponent<Rigidbody>().isKinematic = false;
+            Debug.Log($"Placing object {obj.name} at place with parent {place.name}");
             obj.Init(true);
             obj.transform.SetPositionAndRotation(place.position, place.rotation);
             obj.transform.SetParent(place);

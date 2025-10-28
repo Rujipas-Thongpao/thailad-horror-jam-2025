@@ -38,7 +38,6 @@ public class DetectableObject : MonoBehaviour, IDetectable
         if(isPlaceWithParent)
         {
             rb.isKinematic = true;
-            TogglePhysicCollider(false);
         }
     }
 

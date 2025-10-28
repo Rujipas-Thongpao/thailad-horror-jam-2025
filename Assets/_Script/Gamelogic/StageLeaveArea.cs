@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class StageLeaveArea : MonoBehaviour, IInteractable
+public class StageLeaveArea : MonoBehaviour, IDetectable, IInteractable
 {
     private event Action eventInteracted;
 
@@ -29,5 +29,15 @@ public class StageLeaveArea : MonoBehaviour, IInteractable
     public void OnInteracted()
     {
         eventInteracted?.Invoke();
+    }
+
+    public void OnHovered()
+    {
+        
+    }
+
+    public void OnUnhovered()
+    {
+        
     }
 }

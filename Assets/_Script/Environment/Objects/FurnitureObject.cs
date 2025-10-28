@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FurnitureObject : MonoBehaviour
 {
-    [SerializeField] private Transform[] places;
+    [SerializeField] protected Transform[] places;
     [SerializeField] private FurnitureConfigSO config;
 
     private void Start()
@@ -14,7 +15,7 @@ public class FurnitureObject : MonoBehaviour
         }
     }
 
-    public List<DetectableObject> PlaceItems(List<BaseMark> marks)
+    public virtual List<DetectableObject> PlaceItems(List<BaseMark> marks)
     {
         var objs = new List<DetectableObject>();
         var amount = GetAmount(marks.Count);
@@ -27,6 +28,7 @@ public class FurnitureObject : MonoBehaviour
                                     SpawnNormalObject() :
                                     SpawnAbnormalObject(ref marks);
 
+            obj.Init();
             var angleY = Random.Range(0f, 360f);
             var rotation = Quaternion.Euler(new Vector3(0, angleY, 0));
             obj.transform.SetPositionAndRotation(shuffledPlaces[i].position, rotation);
@@ -37,12 +39,12 @@ public class FurnitureObject : MonoBehaviour
         return objs;
     }
 
-    private DetectableObject SpawnNormalObject()
+    protected DetectableObject SpawnNormalObject()
     {
         return Instantiate(config.GetNormalObject());
     }
 
-    private DetectableObject SpawnAbnormalObject(ref List<BaseMark> marks)
+    protected DetectableObject SpawnAbnormalObject(ref List<BaseMark> marks)
     {
         var obj = Instantiate(config.GetAbnormalObject());
         var mark = marks[^1];
@@ -53,7 +55,7 @@ public class FurnitureObject : MonoBehaviour
         return obj;
     }
 
-    private int GetAmount(int minimum)
+    protected virtual int GetAmount(int minimum)
     {
         int maximum = places.Length;
         minimum = Mathf.Max(minimum, maximum / 2);

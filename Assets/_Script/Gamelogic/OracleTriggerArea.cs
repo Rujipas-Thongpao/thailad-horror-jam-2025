@@ -3,27 +3,36 @@ using UnityEngine;
 
 public class OracleTriggerArea : MonoBehaviour
 {
-    private Action<BaseMark> eventAbnormalSecured;
-    private Action eventIncorrectChecked;
+    public event Action<BaseMark> EventAbnormalSecured;
+    public event Action EventIncorrectChecked;
+    public event Action EventLeaveStage; 
+
+    [SerializeField] private StageLeaveArea stageLeaveArea;
 
     private PlayerManager player;
 
-    public void Init(Action<BaseMark> _eventAbnormalSecured, Action _eventIncorrectChecked)
+    public void Init()
     {
         player = PlayerManager.Instance;
 
-        eventAbnormalSecured = _eventAbnormalSecured;
-        eventIncorrectChecked = _eventIncorrectChecked;
+        stageLeaveArea.Init(OnLeaveStage);
+
         player.ObjectHolder.EventAbnormalSecured += OnAbnormalSecured;
     }
 
     public void Dispose()
     {
-        eventAbnormalSecured = null;
-        eventIncorrectChecked = null;
+        stageLeaveArea.Dispose();
+
         player.ObjectHolder.EventAbnormalSecured -= OnAbnormalSecured;
     }
 
+    public void EnableLeaveArea()
+    {
+        stageLeaveArea.Enable();
+    }
+
+    #region trigger events
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
@@ -37,6 +46,7 @@ public class OracleTriggerArea : MonoBehaviour
 
         player.DisableSecureObject();
     }
+    #endregion
 
     private void CheckHoldingObject()
     {
@@ -54,12 +64,19 @@ public class OracleTriggerArea : MonoBehaviour
         else
         {
             DialogueManager.Instance.PlayIncorrectExamine();
-            eventIncorrectChecked?.Invoke();
+            EventIncorrectChecked?.Invoke();
         }
     }
 
+    #region subscribe events
     private void OnAbnormalSecured(BaseMark mark)
     {
-        eventAbnormalSecured?.Invoke(mark);
+        EventAbnormalSecured?.Invoke(mark);
     }
+
+    private void OnLeaveStage()
+    {
+        EventLeaveStage?.Invoke();
+    }
+    #endregion
 }

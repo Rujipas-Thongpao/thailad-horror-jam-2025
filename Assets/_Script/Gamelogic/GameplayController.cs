@@ -43,16 +43,24 @@ public class GameplayController : MonoBehaviour
 
     private void OnStageEnd(PerformanceStatsData stats)
     {
-        Debug.Log("STAGE END");
         levelManager.Dispose();
         ui.ResultPanel.Init(stats, OnCloseResult);
+        ui.ButtonPrompt.Hide();
+        ToggleCursor(true);
     }
 
     private void OnCloseResult()
     {
         ui.ResultPanel.Dispose();
         StartNextLevel();
+        ToggleCursor(false);
     }
 
     #endregion
+
+    private static void ToggleCursor(bool visible)
+    {
+        Cursor.lockState = visible ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = visible;
+    }
 }

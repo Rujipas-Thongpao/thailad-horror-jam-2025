@@ -41,7 +41,11 @@ public class LevelManager : MonoBehaviour
         }
 
         roomController.Init(marks);
-        oracle.Init(OnAbnormalSecured, OnIncorrectChecked);
+        oracle.Init();
+        oracle.EventAbnormalSecured += OnAbnormalSecured;
+        oracle.EventIncorrectChecked += OnIncorrectChecked;
+        oracle.EventLeaveStage += OnPlayerLeaveStage;
+
         hallway = Instantiate(config.Hallways[level]);
 
         stats = new PerformanceStatsData();
@@ -53,6 +57,12 @@ public class LevelManager : MonoBehaviour
     {
         roomController.Dispose();
         oracle.Dispose();
+        oracle.EventAbnormalSecured -= OnAbnormalSecured;
+        oracle.EventIncorrectChecked -= OnIncorrectChecked;
+        oracle.EventLeaveStage -= OnPlayerLeaveStage;
+
+        marks.Clear();
+        mainAbnormal.Clear();
 
         Destroy(hallway);
     }
@@ -61,17 +71,38 @@ public class LevelManager : MonoBehaviour
 
     private void OnAbnormalSecured(BaseMark mark)
     {
-        stats.AbnormalSecured(mainAbnormal.Contains(mark));
-        Debug.Log(stats.MainAbnormal);
+        var isMain = mainAbnormal.Contains(mark);
+        stats.AbnormalSecured(isMain);
+
+        if (stats.MainAbnormal + stats.SubAbnormal == marks.Count)
+        {
+            DialogueManager.Instance.PlayTaskAllComplete();
+        }
+        else if (isMain)
+        {
+            if (stats.MainAbnormal == mainAbnormal.Count)
+            {
+                DialogueManager.Instance.PlayTaskComplete();
+            }
+            else
+            {
+                DialogueManager.Instance.PlayTaskIncomplete();
+            }
+        }
 
         if (stats.MainAbnormal < mainAbnormal.Count) return;
 
-        EventStageEnd?.Invoke(stats);
+        oracle.EnableLeaveArea();
     }
 
     private void OnIncorrectChecked()
     {
         stats.IncorrectChecked();
+    }
+
+    private void OnPlayerLeaveStage()
+    {
+        EventStageEnd?.Invoke(stats);
     }
     #endregion
 }

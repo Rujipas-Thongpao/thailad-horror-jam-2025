@@ -6,17 +6,17 @@ public class DialogueManager : MonoBehaviour
     private enum DialogueState
     {
         OUTRO = 0,
-        TUTORIAL = 1,
-        INTRO = 2,
+        INTRO = 1,
 
         EXAMINE = 3,
+        TASK = 4,
         WARN = 10,
         IDLE = 15,
 
         NONE = 101,
     }
 
-    [SerializeField] private GameDialogueSO dialogueSO;
+    [SerializeField] private DialogueConfigSO dialogueConfigSo;
 
     private int lastRandomIndex;
 
@@ -60,19 +60,12 @@ public class DialogueManager : MonoBehaviour
     #region state dialogue
     public void StartIntroDialogue(int level, int abnormalIndex)
     {
-        currentStage = dialogueSO.stages[level];
+        currentStage = dialogueConfigSo.stages[level];
 
         TryChangeState(DialogueState.INTRO);
 
         PlayDialogue(currentStage.Intro);
         PlayDialogue(AbnormalConfig.Infos[abnormalIndex]);
-    }
-
-    public void OutroDialogue()
-    {
-        TryChangeState(DialogueState.OUTRO);
-        
-        PlayDialogue(currentStage.Outro);
     }
 
     public void PlayCorrectExamine()
@@ -101,6 +94,27 @@ public class DialogueManager : MonoBehaviour
         if (!TryChangeState(DialogueState.IDLE)) return;
 
         PlayDialogue(currentStage.Idle.GetRandomDialogue());
+    }
+
+    public void PlayTaskAllComplete()
+    {
+        if (!TryChangeState(DialogueState.TASK)) return;
+
+        PlayDialogue(currentStage.TaskAllComplete.GetRandomDialogue());
+    }
+
+    public void PlayTaskComplete()
+    {
+        if (!TryChangeState(DialogueState.TASK)) return;
+
+        PlayDialogue(currentStage.TaskComplete.GetRandomDialogue());
+    }
+
+    public void PlayTaskIncomplete()
+    {
+        if (!TryChangeState(DialogueState.TASK)) return;
+
+        PlayDialogue(currentStage.TaskIncomplete.GetRandomDialogue());
     }
 
     public void StopDialogue()

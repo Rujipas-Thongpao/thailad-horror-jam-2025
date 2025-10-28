@@ -1117,7 +1117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee86880519fb6484d9c31ab843014c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectHolder
-  camera: {fileID: 4554362863643064376}
+  _camera: {fileID: 4554362863643064376}
   placableLayer:
     serializedVersion: 2
     m_Bits: 119

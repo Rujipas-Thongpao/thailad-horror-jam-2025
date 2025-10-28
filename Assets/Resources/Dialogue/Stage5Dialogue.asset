@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc0c383e5f7468428dfca2fedf09436, type: 3}
+  m_Name: Stage5Dialogue
+  m_EditorClassIdentifier: 
+  Intro:
+  - 
+  CorrectExamine: {fileID: 11400000, guid: 20d5cdfbd0a2697428d404161771de4d, type: 2}
+  IncorrectExamine: {fileID: 11400000, guid: 01f49da293d63e94ca936ed17dd54d83, type: 2}
+  Warn: {fileID: 11400000, guid: 6fa767acfb10c8f47b116c1e3e6be212, type: 2}
+  Idle: {fileID: 11400000, guid: 26c1af166f4b7f042acff6b200f197d9, type: 2}
+  TaskAllComplete: {fileID: 11400000, guid: 1cfd2164408b49f41be75edeb0e56a9d, type: 2}
+  TaskComplete: {fileID: 11400000, guid: a65a6e7749b935b4c8c4d1a2d2ccee8b, type: 2}
+  TaskIncomplete: {fileID: 11400000, guid: 8c94785a4712a464cb92a16c1138d5e2, type: 2}
+  Outro:
+  - Containment successful. Another anomaly down.
+  - Good work, The Division will review your report.

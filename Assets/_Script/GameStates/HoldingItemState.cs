@@ -23,7 +23,15 @@ public class HoldingItemState : GameState
 
     public override void OnSelect(Vector2 screenPos)
     {
-        playerManager.ObjectHolder.PlaceItem();
+        if (playerManager.ObjectHolder.CanSecure)
+        {
+            playerManager.ObjectHolder.SecureObject();
+        }
+        else
+        {
+            playerManager.ObjectHolder.PlaceItem();
+        }
+
         playerManager.ChangeState(E_PlayerState.Normal);
     }
 

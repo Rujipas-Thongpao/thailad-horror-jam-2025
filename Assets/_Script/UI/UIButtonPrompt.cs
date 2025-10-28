@@ -7,6 +7,7 @@ public class UIButtonPrompt : MonoBehaviour
     [SerializeField] private GameObject drag;
     [SerializeField] private GameObject interact;
     [SerializeField] private GameObject secure;
+    [SerializeField] private GameObject leave;
 
     private CameraDetectObject detect;
     private ObjectHolder holder;
@@ -49,14 +50,20 @@ public class UIButtonPrompt : MonoBehaviour
             return;
         }
 
-        if (detectable as DraggableFurnitureObject)
-        {
-            ShowDrag();
-        }
+        // if (detectable as DraggableFurnitureObject)
+        // {
+        //     ShowDrag();
+        // }
     }
 
     private void OnFindInteractableObject(IInteractable interactable)
     {
+        if (interactable as StageLeaveArea)
+        {
+            ShowLeave();
+            return;
+        }
+
         ShowInteract();
     }
 
@@ -106,12 +113,18 @@ public class UIButtonPrompt : MonoBehaviour
         secure.SetActive(true);
     }
 
-    private void Hide()
+    private void ShowLeave()
+    {
+        leave.SetActive(true);
+    }
+
+    public void Hide()
     {
         pickup.SetActive(false);
         place.SetActive(false);
         drag.SetActive(false);
         interact.SetActive(false);
         secure.SetActive(false);
+        leave.SetActive(false);
     }
 }

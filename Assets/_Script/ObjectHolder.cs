@@ -9,7 +9,7 @@ public class ObjectHolder : MonoBehaviour
     public event Action<BaseMark> EventAbnormalSecured;
 
     [SerializeField]
-    private Camera camera;
+    private Camera _camera;
 
     [SerializeField]
     private LayerMask placableLayer;
@@ -53,9 +53,9 @@ public class ObjectHolder : MonoBehaviour
 
     void Start()
     {
-        if (camera == null)
+        if (_camera == null)
         {
-            camera = Camera.main;
+            _camera = Camera.main;
         }
     }
 
@@ -112,14 +112,14 @@ public class ObjectHolder : MonoBehaviour
         var center = holdingObject.Center;
 
         obj.RotateAround(center.position, Vector3.up * (invert ? -1 : 1), rotation.x);
-        obj.RotateAround(center.position, camera.transform.right * (invert ? -1 : 1), rotation.y);
+        obj.RotateAround(center.position, _camera.transform.right * (invert ? -1 : 1), rotation.y);
     }
 
     public void PlaceItem()
     {
         RaycastHit hit;
         // Does the ray intersect any objects in detectableLayer?
-        if (!Physics.Raycast(camera.transform.position, camera.transform.TransformDirection(Vector3.forward), out hit,
+        if (!Physics.Raycast(_camera.transform.position, _camera.transform.TransformDirection(Vector3.forward), out hit,
                 10, placableLayer)) return;
 
         holdingObject.OnPlaced(hit.point);

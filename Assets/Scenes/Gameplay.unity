@@ -805,7 +805,7 @@ PrefabInstance:
     - target: {fileID: 7600346184146069637, guid: ea03fb70b63832e4099aadad62e64cd9, type: 3}
       propertyPath: oracle
       value: 
-      objectReference: {fileID: 1296266677}
+      objectReference: {fileID: 0}
     - target: {fileID: 7600346184146069637, guid: ea03fb70b63832e4099aadad62e64cd9, type: 3}
       propertyPath: roomController
       value: 
@@ -929,7 +929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneController
 --- !u!114 &1296266677 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3098881744716195235, guid: 75869042a97369d48b09b27a64755993, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1887670321018452773, guid: 75869042a97369d48b09b27a64755993, type: 3}
   m_PrefabInstance: {fileID: 1296266675}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

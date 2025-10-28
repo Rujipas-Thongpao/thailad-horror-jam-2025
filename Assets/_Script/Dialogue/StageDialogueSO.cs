@@ -7,12 +7,14 @@ public class StageDialogueSO : ScriptableObject
     [TextArea]
     public List<string> Intro;
 
+    [Header ("Examine")]
     public DialoguePoolSO CorrectExamine;
     public DialoguePoolSO IncorrectExamine;
-    public DialoguePoolSO TaskComplete;
     public DialoguePoolSO Warn;
     public DialoguePoolSO Idle;
 
-    [TextArea]
-    public List<string> Outro;
+    [Header ("Tasks Status")]
+    public DialoguePoolSO TaskAllComplete;
+    public DialoguePoolSO TaskComplete;
+    public DialoguePoolSO TaskIncomplete;
 }

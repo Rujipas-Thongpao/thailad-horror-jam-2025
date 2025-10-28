@@ -29,10 +29,10 @@ public class NormalState : GameState
 
         if (detectedObj == null)
         {
-            var furniture = playerManager.CameraDetectObject.GetLastFurnitureObject();
-            if (furniture == null) return;
-
-            playerManager.ChangeState(E_PlayerState.Dragging);
+        //     var furniture = playerManager.CameraDetectObject.GetLastFurnitureObject();
+        //     if (furniture == null) return;
+        //
+        //     playerManager.ChangeState(E_PlayerState.Dragging);
             return;
         }
 

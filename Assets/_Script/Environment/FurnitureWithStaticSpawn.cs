@@ -49,7 +49,7 @@ public class FurnitureWithStaticSpawn : FurnitureObject
         return objs;
     }
 
-    protected int GetAmount(int minimum, int maximum)
+    private static int GetAmount(int minimum, int maximum)
     {
         minimum = Mathf.Max(minimum, maximum / 2);
         return Random.Range(minimum, maximum);

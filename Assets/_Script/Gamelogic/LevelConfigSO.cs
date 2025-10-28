@@ -5,8 +5,6 @@ using UnityEngine;
 public class LevelConfigSO : ScriptableObject
 {
     public LevelData[] Levels;
-
-    public GameObject[] Hallways;
 }
 
 [Serializable]
@@ -15,4 +13,6 @@ public class LevelData
     [Header ("Abnormal Intensity")]
     public int[] MainIntensity;
     public int[] SubIntensity;
+    public FurnitureSetup furniture;
+    public GameObject Hallway;
 }

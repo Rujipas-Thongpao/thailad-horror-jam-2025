@@ -23,6 +23,8 @@ public class LevelManager : MonoBehaviour
         var main = config.Levels[level].MainIntensity;
         var sub = config.Levels[level].SubIntensity;
 
+        var furnitureSetup = config.Levels[level].furniture;
+
         mainAbnormalType = Random.Range(0, AbnormalConfig.Count);
 
         foreach (var intensity in main)
@@ -40,13 +42,13 @@ public class LevelManager : MonoBehaviour
             marks.Add(AbnormalConfig.Create(rand, intensity));
         }
 
-        roomController.Init(marks);
+        roomController.Init(marks, furnitureSetup);
         oracle.Init();
         oracle.EventAbnormalSecured += OnAbnormalSecured;
         oracle.EventIncorrectChecked += OnIncorrectChecked;
         oracle.EventLeaveStage += OnPlayerLeaveStage;
 
-        hallway = Instantiate(config.Hallways[level]);
+        hallway = Instantiate(config.Levels[level].Hallway);
 
         stats = new PerformanceStatsData();
 

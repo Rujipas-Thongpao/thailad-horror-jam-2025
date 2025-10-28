@@ -167,6 +167,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a15efb5d4486a8e4cb782f5fd6bd2737, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4733620860157268552}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a15efb5d4486a8e4cb782f5fd6bd2737, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1208406343648564564}
   m_SourcePrefab: {fileID: 100100000, guid: a15efb5d4486a8e4cb782f5fd6bd2737, type: 3}
 --- !u!1 &2306558178287463915 stripped
 GameObject:
@@ -243,6 +246,23 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6657998009922166292, guid: a15efb5d4486a8e4cb782f5fd6bd2737, type: 3}
+--- !u!114 &-1208406343648564564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2306558178287463915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ecc64d1e9db694b82927f30497ba30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: 09a3a75eae61ce540a64776b7fe79b8a, type: 3}
+  minCollisionVelocity: 1
+  volume: 0.8
+  minPitch: 0.9
+  maxPitch: 1.1
 --- !u!4 &3119124125858723665 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a15efb5d4486a8e4cb782f5fd6bd2737, type: 3}

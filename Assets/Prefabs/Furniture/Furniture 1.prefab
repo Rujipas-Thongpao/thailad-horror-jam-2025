@@ -59,7 +59,7 @@ MonoBehaviour:
   objectSpawns:
   - {fileID: 6288252233625343279}
   - {fileID: 28227899998799074}
-  - {fileID: 6563479650599962913}
+  - {fileID: 6688261203202028848}
   - {fileID: 3203834067330628235}
   - {fileID: 9017186090404311088}
   - {fileID: 6560886284869943154}
@@ -625,7 +625,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8646591901182383628, guid: 0c2296b8c1a9bb04099b0589046d55be, type: 3}
       propertyPath: m_Name
-      value: TallShelf
+      value: Wardrobe
       objectReference: {fileID: 0}
     - target: {fileID: 8986103102726638774, guid: 0c2296b8c1a9bb04099b0589046d55be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -677,15 +677,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8986103102726638774, guid: 0c2296b8c1a9bb04099b0589046d55be, type: 3}
   m_PrefabInstance: {fileID: 6211980586697923639}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6563479650599962913 stripped
+--- !u!114 &6688261203202028848 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 946682371783300374, guid: 0c2296b8c1a9bb04099b0589046d55be, type: 3}
+  m_CorrespondingSourceObject: {fileID: 784780060017207559, guid: 0c2296b8c1a9bb04099b0589046d55be, type: 3}
   m_PrefabInstance: {fileID: 6211980586697923639}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48327ffd03b22544b8004fb6d5dcef67, type: 3}
+  m_Script: {fileID: 11500000, guid: f3b2b846f65099946bdf6d1267e34e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7020528643805091612

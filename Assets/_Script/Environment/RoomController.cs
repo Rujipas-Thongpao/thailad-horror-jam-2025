@@ -40,7 +40,14 @@ public class RoomController : MonoBehaviour
 
     public void Dispose()
     {
+        for (int i = 0; i < sceneObjects.Count; i++)
+        {
+            if (sceneObjects[i] == null) continue;
+            Destroy(sceneObjects[i].gameObject);
+        }
+
         sceneObjects.Clear();
+        Destroy(setup.gameObject);
     }
 
     private void SetUpFurniture(List<BaseMark> marks)

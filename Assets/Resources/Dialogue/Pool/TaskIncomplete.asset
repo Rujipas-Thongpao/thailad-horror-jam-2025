@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: TaskIncomplete
   m_EditorClassIdentifier: 
   Dialogues:
-  - There's still more, keep finding.
+  - The room isn't stable yet.
+  - There are still traces left.
+  - I can still sense it.

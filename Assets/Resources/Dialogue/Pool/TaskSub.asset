@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: TaskSub
   m_EditorClassIdentifier: 
   Dialogues:
-  - Nothing left here, GTFO.
+  - This one isn't in the report, I'll note it.
+  - It's another type of anomaly.
+  - Not the main cause, but I'm glad it's secured.
+  - Not the one we're looking for, but good catch.

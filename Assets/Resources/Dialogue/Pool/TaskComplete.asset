@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: TaskComplete
   m_EditorClassIdentifier: 
   Dialogues:
-  - It's all done, lets GTFO.
+  - Great, the main presence is gone.
+  - Alright. Main case resolved.
+  - All primary abnormalities neutralized.

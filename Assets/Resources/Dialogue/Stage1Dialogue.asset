@@ -13,25 +13,16 @@ MonoBehaviour:
   m_Name: Stage1Dialogue
   m_EditorClassIdentifier: 
   Intro:
-  - "I\u2019ll be your oversight for this operation. Try not to make me fill another
-    casualty report."
-  - "I\u2019ll keep communication brief. You search, I monitor. Simple enough."
-  - This room was flagged after reports of spatial distortion and loss of contact
-    with prior staff.
-  - Local reality inside the containment zone is unstable. The cause is believed
-    to be one or more anomalous objects.
-  - Everything inside has been untouched since the event. Your task is to locate
-    the source and secure it for analysis.
-  - "I cannot enter with you. The interference scrambles my sensors beyond the door.
-    You\u2019ll be my hands inside."
-  - This threshold marks the safe limit. Beyond that, even my instruments start bleeding
-    data.
-  - "Move through the room carefully. Observe each object\u2014furniture, tools,
-    even debris."
-  - "Hold the object steady while I analyze. I\u2019ll confirm if it\u2019s abnormal\u2014and
-    whether it\u2019s the main source."
-  - "Some items may react violently to touch or proximity. If the environment starts
-    to distort\u2014move away."
+  - The previous field team reported an object with some kind of parasitic attachment
+    inside this property.
+  - "I can sense the abnormalities from here, but the reaction becomes unstable if
+    I get too close. That\u2019s why I have to stay outside."
+  - "I need your help finding those objects, the ones carrying the parasitic residue.
+    It might not look unusual at first \u2014"
+  - But the reaction should be noticeable when you touch it or even just when you
+    get too close.
+  - "Once you locate one, bring it here. I\u2019ll confirm it, and then we\u2019ll
+    secure it."
   CorrectExamine: {fileID: 11400000, guid: 20d5cdfbd0a2697428d404161771de4d, type: 2}
   IncorrectExamine: {fileID: 11400000, guid: 01f49da293d63e94ca936ed17dd54d83, type: 2}
   Warn: {fileID: 11400000, guid: 6fa767acfb10c8f47b116c1e3e6be212, type: 2}
@@ -39,3 +30,4 @@ MonoBehaviour:
   TaskAllComplete: {fileID: 11400000, guid: 1cfd2164408b49f41be75edeb0e56a9d, type: 2}
   TaskComplete: {fileID: 11400000, guid: a65a6e7749b935b4c8c4d1a2d2ccee8b, type: 2}
   TaskIncomplete: {fileID: 11400000, guid: 8c94785a4712a464cb92a16c1138d5e2, type: 2}
+  SecureSub: {fileID: 0}

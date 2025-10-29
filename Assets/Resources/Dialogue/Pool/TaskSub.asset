@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d412106da4f103c4d9f82ec4ec1f6512, type: 3}
-  m_Name: IncorrectExamine 1
+  m_Name: TaskSub
   m_EditorClassIdentifier: 
   Dialogues:
-  - No resonance detected. Just a regular object.
-  - Negative. Readings are flat. Leave it.
-  - "That one\u2019s harmless. The anomaly isn\u2019t tied to it."
-  - No signal. You can drop it.
-  - "Nothing unusual. Don\u2019t waste time."
+  - This one isn't in the report, I'll note it.
+  - It's another type of anomaly.
+  - Not the main cause, but I'm glad it's secured.
+  - Not the one we're looking for, but good catch.

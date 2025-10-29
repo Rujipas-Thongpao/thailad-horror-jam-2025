@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6059646018490352737}
   m_Layer: 0
-  m_Name: eye
+  m_Name: Abnormal_eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

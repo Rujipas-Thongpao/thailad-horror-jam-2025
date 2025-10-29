@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d412106da4f103c4d9f82ec4ec1f6512, type: 3}
-  m_Name: TaskAllComplete
+  m_Name: ExamineCorrect
   m_EditorClassIdentifier: 
   Dialogues:
-  - Nothing left here, thank you for your hard work.
-  - Containment complete. Great job.
+  - That's it, I can feel the pressure.
+  - Strong distortion... Don't hold it too long.
+  - Yes. Secure it before it stimulate again
+  - That's the one causing instability.
+  - This presence, we can't leave it here.

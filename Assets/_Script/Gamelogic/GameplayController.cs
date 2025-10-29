@@ -51,6 +51,12 @@ public class GameplayController : MonoBehaviour
         level++;
     }
 
+    private void RestartLevel()
+    {
+        level = 0;
+        StartNextLevel();
+    }
+
     #region game flow
 
     private void OnStageEnd(PerformanceStatsData stats)

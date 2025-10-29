@@ -14,8 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NormalObj:
   - {fileID: 9037837074746961484, guid: 1907731a9f2ae0a4a9df6000c6ddc3e8, type: 3}
-  - {fileID: 4975294847260443509, guid: 15831c248e1debc428a7d50ca5809e1d, type: 3}
-  - {fileID: 5880181520234187571, guid: a0eb5c4721b1a9e46a9d4e29b51beec4, type: 3}
   AbnormalObj:
   - {fileID: 9037837074746961484, guid: 1907731a9f2ae0a4a9df6000c6ddc3e8, type: 3}
-  - {fileID: 4975294847260443509, guid: 15831c248e1debc428a7d50ca5809e1d, type: 3}

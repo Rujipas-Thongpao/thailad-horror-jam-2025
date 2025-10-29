@@ -5,7 +5,7 @@ public class OracleTriggerArea : MonoBehaviour
 {
     public event Action<BaseMark> EventAbnormalSecured;
     public event Action EventIncorrectChecked;
-    public event Action EventLeaveStage; 
+    public event Action EventLeaveStage;
 
     [SerializeField] private StageLeaveArea stageLeaveArea;
 

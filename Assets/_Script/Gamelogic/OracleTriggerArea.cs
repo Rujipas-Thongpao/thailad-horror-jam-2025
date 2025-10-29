@@ -12,8 +12,11 @@ public class OracleTriggerArea : MonoBehaviour
     protected PlayerManager player;
     protected bool isActive;
 
+    protected bool isTutorialCheckActive;
+
     public void Init()
     {
+        isTutorialCheckActive = false;
         player = PlayerManager.Instance;
 
         stageLeaveArea.Init(OnLeaveStage);
@@ -35,6 +38,11 @@ public class OracleTriggerArea : MonoBehaviour
         isActive = true;
     }
 
+    public void EnableCheckForTutorial()
+    {
+        isTutorialCheckActive = true;
+    }
+
     public void EnableLeaveArea()
     {
         stageLeaveArea.Enable();
@@ -43,6 +51,15 @@ public class OracleTriggerArea : MonoBehaviour
     #region trigger events
     private void OnTriggerEnter(Collider other)
     {
+        if (isTutorialCheckActive)
+        {
+            if (!other.CompareTag("Player")) return;
+            Debug.Log("Player entered Oracle Trigger Area");
+
+            CheckHoldingObject();
+        }
+
+
         if (!isActive) return;
         if (!other.CompareTag("Player")) return;
 

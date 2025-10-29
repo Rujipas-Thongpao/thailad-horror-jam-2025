@@ -108,13 +108,13 @@ public class DialogueManager : MonoBehaviour
     #endregion
 
     #region reuseable methods
-    private void PlayDialogue(string dialogue)
+    public void PlayDialogue(string dialogue)
     {
         List<string> dialogueList = new() { dialogue };
         PlayDialogue(dialogueList);
     }
 
-    private void PlayDialogue(List<string> dialogueList)
+    public void PlayDialogue(List<string> dialogueList)
     {
         dialoguePanel.Play(dialogueList);
     }

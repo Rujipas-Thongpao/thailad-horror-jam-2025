@@ -37,7 +37,7 @@ public class NormalState : GameState
         }
 
         // pick item -> change state to holding item state.
-        detectedObj.OnPicked();
+        //detectedObj.OnPicked();
         playerManager.ObjectHolder.RegisterObject(detectedObj, interactable);
         playerManager.ChangeState(E_PlayerState.Holding);
     }

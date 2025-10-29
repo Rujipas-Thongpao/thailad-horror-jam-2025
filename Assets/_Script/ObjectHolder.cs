@@ -75,6 +75,7 @@ public class ObjectHolder : MonoBehaviour
         holdingObject.GetComponent<Collider>().enabled = false;
         holdingObject.transform.SetParent(holdPoint);
         holdingObject.transform.localPosition = Vector3.zero;
+        holdingObject.OnPicked();
         holdingObject.gameObject.layer = LayerMask.NameToLayer("HoldingItem");
 
         EventObjectPicked?.Invoke(obj, interactable);

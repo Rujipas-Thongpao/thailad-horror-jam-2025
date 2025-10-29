@@ -7,17 +7,21 @@ public class TutorialManager : MonoBehaviour
     private GameplayController gameplayController;
     [SerializeField] private OracleTriggerAreaTutorial door;
     [SerializeField] private GameObject phonePrefab;
+    [SerializeField] private StageDialogueSO introSO;
 
     public void Init(GameplayController gameplayController)
     {
         this.gameplayController = gameplayController;
         door.Init();
-        door.EnableCheckArea();
+        door.EnableCheckForTutorial();
         Subscribe();
 
         var phone = Instantiate(phonePrefab);
+        // Have to Disable input.
         PlayerManager.Instance.ObjectHolder.RegisterObject(phone.GetComponent<DetectableObject>(), null);
         PlayerManager.Instance.ChangeState(E_PlayerState.Holding) ;
+
+        DialogueManager.Instance.PlayDialogue(introSO.Intro);
     }
 
     private void OnDestroy()

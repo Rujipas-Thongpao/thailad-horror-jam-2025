@@ -27,18 +27,13 @@ public class PlayerSanityController : MonoBehaviour
         sanity = Mathf.Clamp(sanity + amount, 0f, maxSanity);
 
         // reduce maxSanity by a fraction of the drain amount
-        var maxReduction = amount * Mathf.Clamp01(maxSanityReductionFactor);
-        maxSanity = Mathf.Max(0f, maxSanity + maxReduction);
+        //var maxReduction = amount * Mathf.Clamp01(maxSanityReductionFactor);
+        //maxSanity = Mathf.Max(0f, maxSanity + maxReduction);
 
         // ensure current sanity does not exceed the new maximum
         sanity = Mathf.Min(sanity, maxSanity);
 
         UpdateMaterial();
-
-        if(maxSanity == 0f)
-        {
-            // died
-        }
     }
 
     private void Update()

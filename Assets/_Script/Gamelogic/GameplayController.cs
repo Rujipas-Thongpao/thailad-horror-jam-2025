@@ -5,6 +5,7 @@ public class GameplayController : MonoBehaviour
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private PlayerManager playerManager;
+    [SerializeField] private TutoriaManager tutoriaManager;
 
     private UIManager ui;
 
@@ -21,7 +22,8 @@ public class GameplayController : MonoBehaviour
 
         levelManager.EventStageEnd += OnStageEnd;
 
-        StartNextLevel();
+        //StartNextLevel();
+        StartTutorial();
     }
 
     private void OnDestroy()
@@ -54,6 +56,15 @@ public class GameplayController : MonoBehaviour
         ui.ResultPanel.Dispose();
         StartNextLevel();
         ToggleCursor(false);
+    }
+
+    #endregion
+
+    #region
+
+    private void StartTutorial()
+    {
+        tutoriaManager.Init(this);
     }
 
     #endregion

@@ -9,8 +9,8 @@ public class OracleTriggerArea : MonoBehaviour
 
     [SerializeField] private StageLeaveArea stageLeaveArea;
 
-    private PlayerManager player;
-    private bool isActive;
+    protected PlayerManager player;
+    protected bool isActive;
 
     public void Init()
     {
@@ -46,6 +46,8 @@ public class OracleTriggerArea : MonoBehaviour
         if (!isActive) return;
         if (!other.CompareTag("Player")) return;
 
+        Debug.Log("Player entered Oracle Trigger Area");
+
         CheckHoldingObject();
     }
 
@@ -58,7 +60,7 @@ public class OracleTriggerArea : MonoBehaviour
     }
     #endregion
 
-    private void CheckHoldingObject()
+    protected virtual void CheckHoldingObject()
     {
         if (!player.ObjectHolder.HaveObject)
         {

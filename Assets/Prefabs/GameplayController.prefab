@@ -48,6 +48,8 @@ MonoBehaviour:
   levelManager: {fileID: 0}
   dialogueManager: {fileID: 4862223947979487390}
   playerManager: {fileID: 0}
+  tutoriaManagerPrefab: {fileID: 4612986476219986891, guid: 6449fd52ce39efa4e8658dd391829d7a, type: 3}
+  StartWithTutorial: 0
 --- !u!114 &4862223947979487390
 MonoBehaviour:
   m_ObjectHideFlags: 0

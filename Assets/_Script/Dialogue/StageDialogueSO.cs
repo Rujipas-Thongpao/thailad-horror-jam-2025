@@ -17,4 +17,5 @@ public class StageDialogueSO : ScriptableObject
     public DialoguePoolSO TaskAllComplete;
     public DialoguePoolSO TaskComplete;
     public DialoguePoolSO TaskIncomplete;
+    public DialoguePoolSO SecureSub;
 }

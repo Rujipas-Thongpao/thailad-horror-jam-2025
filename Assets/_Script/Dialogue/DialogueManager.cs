@@ -87,6 +87,11 @@ public class DialogueManager : MonoBehaviour
         PlayDialogue(currentStage.TaskIncomplete.GetRandomDialogue());
     }
 
+    public void PlaySecureSubDialogue()
+    {
+        PlayDialogue(currentStage.SecureSub.GetRandomDialogue());
+    }
+
     public void StopDialogue()
     {
         dialoguePanel.Stop();

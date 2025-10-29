@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0b87d0a318b224fa2650582ce9f5a4, type: 3}
+  m_Name: TestLevelConfig
+  m_EditorClassIdentifier: 
+  Levels:
+  - MainIntensity: 0000000001000000
+    SubIntensity: 
+    furniture: {fileID: -1965681638723052981, guid: 8f319e660b6863447802640318930b77, type: 3}
+    Hallway: {fileID: 4211945227658862420, guid: 44b5aae74e7b58147b405889a57bf257, type: 3}
+  - MainIntensity: 0100000001000000
+    SubIntensity: 0000000000000000
+    furniture: {fileID: -1965681638723052981, guid: 8f319e660b6863447802640318930b77, type: 3}
+    Hallway: {fileID: 4211945227658862420, guid: 44b5aae74e7b58147b405889a57bf257, type: 3}
+  - MainIntensity: 0100000002000000
+    SubIntensity: 000000000000000001000000
+    furniture: {fileID: -1965681638723052981, guid: 8f319e660b6863447802640318930b77, type: 3}
+    Hallway: {fileID: 5962565275216379980, guid: 90f352cd8b7cbf84498d399c3ed94343, type: 3}
+  - MainIntensity: 010000000200000003000000
+    SubIntensity: 000000000100000001000000
+    furniture: {fileID: -1965681638723052981, guid: 8f319e660b6863447802640318930b77, type: 3}
+    Hallway: {fileID: 5962565275216379980, guid: 90f352cd8b7cbf84498d399c3ed94343, type: 3}
+  - MainIntensity: 020000000300000003000000
+    SubIntensity: 010000000100000001000000
+    furniture: {fileID: -1965681638723052981, guid: 8f319e660b6863447802640318930b77, type: 3}
+    Hallway: {fileID: 2795019828412085846, guid: 09efc64812f60af45bc2a810ce50f22d, type: 3}

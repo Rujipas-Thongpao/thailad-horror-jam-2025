@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Stage1Dialogue
   m_EditorClassIdentifier: 
   Intro:
-  - "You must be the new containment operative. I\u2019m your remote handler\u2014call
-    me Oracle."
   - "I\u2019ll be your oversight for this operation. Try not to make me fill another
     casualty report."
   - "I\u2019ll keep communication brief. You search, I monitor. Simple enough."
@@ -41,6 +39,3 @@ MonoBehaviour:
   TaskAllComplete: {fileID: 11400000, guid: 1cfd2164408b49f41be75edeb0e56a9d, type: 2}
   TaskComplete: {fileID: 11400000, guid: a65a6e7749b935b4c8c4d1a2d2ccee8b, type: 2}
   TaskIncomplete: {fileID: 11400000, guid: 8c94785a4712a464cb92a16c1138d5e2, type: 2}
-  Outro:
-  - Containment successful. Another anomaly down.
-  - Good work, The Division will review your report.

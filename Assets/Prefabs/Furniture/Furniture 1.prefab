@@ -71,10 +71,10 @@ Transform:
   - {fileID: 132850577672535493}
   - {fileID: 5282066334622989988}
   - {fileID: 4218937256731233199}
+  - {fileID: 4338620813218700667}
   - {fileID: 4902603235184532822}
   - {fileID: 6201037355605175557}
   - {fileID: 8458284702082180156}
-  - {fileID: 4338620813218700667}
   - {fileID: 6803760342270494478}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -100,6 +100,7 @@ MonoBehaviour:
   - {fileID: 6688261203202028848}
   - {fileID: 3203834067330628235}
   - {fileID: 9017186090404311088}
+  - {fileID: 6752513090480482726}
   - {fileID: 6560886284869943154}
   - {fileID: 3609705976634375224}
 --- !u!1 &8308142736208401613
@@ -360,7 +361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4528115337224079114, guid: 3e19322ae05c73d49b96f895a99c5af3, type: 3}
       propertyPath: m_Name
-      value: ShelfWithCabinet
+      value: Shelf Cabinet 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -372,6 +373,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1832065214541993957, guid: 3e19322ae05c73d49b96f895a99c5af3, type: 3}
   m_PrefabInstance: {fileID: 2585172349565295690}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6752513090480482726 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9103426791066039788, guid: 3e19322ae05c73d49b96f895a99c5af3, type: 3}
+  m_PrefabInstance: {fileID: 2585172349565295690}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b2b846f65099946bdf6d1267e34e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2691232003573172894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -422,7 +434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4528115337224079114, guid: 3e19322ae05c73d49b96f895a99c5af3, type: 3}
       propertyPath: m_Name
-      value: Shelf Cabinet
+      value: Shelf Cabinet 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -962,7 +974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1030440310119068555, guid: 5817d5bcb6c00b047bd79b3f267bb765, type: 3}
       propertyPath: m_Name
-      value: Table 1 (1)
+      value: Table 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

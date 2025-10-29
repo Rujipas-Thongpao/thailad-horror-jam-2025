@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class UIResultPanel : MonoBehaviour
 {
@@ -34,7 +35,24 @@ public class UIResultPanel : MonoBehaviour
 
         closeButton.onClick.AddListener(OnNext);
 
-        //change text
+        date.text = $"10-{stats.Date}-2025";
+        caseText.text = $"#{Random.Range(100000, 999999)}";
+        owner.text = new string('■', Random.Range(6, 9)) + ('■', Random.Range(8, 12));
+        location.text = new string('■', Random.Range(12, 15));
+        mainAbnormal.text = stats.MainAbnormal.ToString();
+        subAbnormal.text = stats.SubAbnormal.ToString();
+        incorrect.text = stats.Incorrect.ToString();
+        status.text = "Secured";
+        detail.text = new string('■', Random.Range(20, 25));
+        other.text = new string('■', Random.Range(20, 25));
+
+        comment.text = stats.Incorrect switch
+        {
+            0 => "Works perfectly",
+            > 3 => "Performing below standard",
+            > 0 => "Work according to standards",
+            _ => "■■■■■■■■"
+        };
 
         ToggleVisible(true);
     }

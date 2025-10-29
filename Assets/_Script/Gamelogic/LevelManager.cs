@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
 
         hallway = Instantiate(config.Levels[level].Hallway);
 
-        stats = new PerformanceStatsData();
+        stats = new PerformanceStatsData(level);
 
         DialogueManager.Instance.EventIntroEnd += OnDialogueIntroEnd;
 
@@ -121,9 +121,15 @@ public class LevelManager : MonoBehaviour
 
 public class PerformanceStatsData
 {
+    public int Date;
     public int MainAbnormal { get; private set;}
     public int SubAbnormal { get ; private set; }
     public int Incorrect { get ; private set; }
+
+    public PerformanceStatsData(int level)
+    {
+        Date = 26 + level;
+    }
 
     public void AbnormalSecured(bool isMain)
     {

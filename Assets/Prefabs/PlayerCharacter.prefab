@@ -144,12 +144,27 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 1cdb50246ce547f48abc22629dfe4ef1, type: 2}
+    - {fileID: 11400000, guid: 6f8c1117540cf3644bcbdef6ac3b0154, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: RoomController, Assembly-CSharp
-          m_MethodName: SpawnGhost
+          m_TargetAssemblyTypeName: BlinkEyeController, Assembly-CSharp
+          m_MethodName: ToOpenEye
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 2
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: BlinkEyeController, Assembly-CSharp
+          m_MethodName: CloseEyeInstance
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

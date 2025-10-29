@@ -2630,6 +2630,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5379490555423283546}
   - component: {fileID: 3782890604476256758}
+  - component: {fileID: 823476253910386658}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -2668,6 +2669,20 @@ MonoBehaviour:
   dialogue: {fileID: 38330377499841787}
   buttonPrompt: {fileID: 7552369746178046736}
   result: {fileID: 3029254293009809855}
+  blinkEyeController: {fileID: 823476253910386658}
+--- !u!114 &823476253910386658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068539571944472797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9811717b2341b7499cb84604d16c855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkEye: {fileID: 2100000, guid: 3c3a9192576363c48bcb1ba091d1d07f, type: 2}
 --- !u!1 &7535272609087530266
 GameObject:
   m_ObjectHideFlags: 0

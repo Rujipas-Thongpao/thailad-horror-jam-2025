@@ -51,6 +51,14 @@ public class ObjectHolder : MonoBehaviour
         }
     }
 
+    public bool IsObjectTutorial
+    {
+        get
+        {
+            return holdingObject.CompareTag("TutorialObj");
+        }
+    }
+
     void Start()
     {
         if (_camera == null)

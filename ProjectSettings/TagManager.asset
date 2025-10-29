@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - ForceObj
+  - TutorialObj
   layers:
   - Default
   - TransparentFX

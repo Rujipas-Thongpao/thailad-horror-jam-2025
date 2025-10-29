@@ -6,6 +6,11 @@ public class GameplayController : MonoBehaviour
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private PlayerManager playerManager;
 
+    [SerializeField] private TutorialManager tutoriaManagerPrefab;
+    private TutorialManager tutoriaManager;
+
+    [SerializeField] private bool StartWithTutorial = false;
+
     private UIManager ui;
 
     private enum GameState { Menu, Gameplay, Result }
@@ -21,7 +26,14 @@ public class GameplayController : MonoBehaviour
 
         levelManager.EventStageEnd += OnStageEnd;
 
-        StartNextLevel();
+        if (StartWithTutorial)
+        {
+            StartTutorial();
+        }
+        else
+        {
+            StartNextLevel();
+        }
     }
 
     private void OnDestroy()
@@ -60,6 +72,16 @@ public class GameplayController : MonoBehaviour
         ui.ResultPanel.Dispose();
         StartNextLevel();
         ToggleCursor(false);
+    }
+
+    #endregion
+
+    #region
+
+    private void StartTutorial()
+    {
+        var tutorialFurniture = Instantiate(tutoriaManagerPrefab);
+        tutoriaManagerPrefab.Init(this);
     }
 
     #endregion

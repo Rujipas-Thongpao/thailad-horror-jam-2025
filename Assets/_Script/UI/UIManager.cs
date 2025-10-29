@@ -14,6 +14,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UIResultPanel result;
     public UIResultPanel ResultPanel => result;
 
+    [SerializeField] private BlinkEyeController blinkEyeController;
+    public BlinkEyeController BlinkEyeController => blinkEyeController;
+
     public void Awake()
     {
         if (instance != null && instance != this)

@@ -32,7 +32,6 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePanel = _dialoguePanel;
         dialoguePanel.Initialize();
-        dialoguePanel.EventDialogueEnd += OnDialogueEnd;
     }
 
     public void Dispose()
@@ -50,6 +49,7 @@ public class DialogueManager : MonoBehaviour
         PlayDialogue(AbnormalConfig.Infos[abnormalIndex]);
 
         IsIntro = true;
+        dialoguePanel.EventDialogueEnd += OnDialogueEnd;
     }
 
     public void PlayCorrectExamine()

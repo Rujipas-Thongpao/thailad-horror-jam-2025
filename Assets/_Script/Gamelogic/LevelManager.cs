@@ -108,6 +108,7 @@ public class LevelManager : MonoBehaviour
 
     private void OnPlayerLeaveStage()
     {
+        DialogueManager.Instance.StopDialogue();
         EventStageEnd?.Invoke(stats);
     }
 

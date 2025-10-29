@@ -10,7 +10,6 @@ public class RoomController : MonoBehaviour
     [SerializeField] private LightObject[] lights;
     [SerializeField] private Material lightOn, lightOff;
 
-    [SerializeField] private FurnitureSetup[] setupPool;
     [SerializeField] private Transform playerSpawnPoint;
 
     private FurnitureSetup setup;

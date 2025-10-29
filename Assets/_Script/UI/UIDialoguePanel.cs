@@ -43,13 +43,13 @@ public class UIDialoguePanel : MonoBehaviour
 
         var dialogue = dialogueQueue.Dequeue();
         dialogueText.text = dialogue;
-        dialogueTimer = 1.5f + dialogue.Length * 0.05f;
+        dialogueTimer = 1f + dialogue.Length * 0.05f;
     }
 
     public void Play(List<string> dialogues)
     {
         isDone = false;
-        dialogueTimer = 0;
+        dialogueTimer = 0.5f;
         dialogueBox.SetActive(true);
 
         foreach (var dialogue in dialogues)
@@ -73,10 +73,9 @@ public class UIDialoguePanel : MonoBehaviour
 
     public void Stop()
     {
+        dialogueText.text = "";
         dialogueBox.SetActive(false);
         dialogueQueue.Clear();
         dialogueTimer = 0;
-
-        EventDialogueEnd?.Invoke();
     }
 }

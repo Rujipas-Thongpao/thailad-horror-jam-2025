@@ -9,7 +9,19 @@ public class UIResultPanel : MonoBehaviour
 
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Button closeButton;
-    [SerializeField] private TextMeshProUGUI resultText;
+
+    [Header("Result Text")]
+    [SerializeField] private TextMeshProUGUI date;
+    [SerializeField] private TextMeshProUGUI caseText;
+    [SerializeField] private TextMeshProUGUI owner;
+    [SerializeField] private TextMeshProUGUI location;
+    [SerializeField] private TextMeshProUGUI mainAbnormal;
+    [SerializeField] private TextMeshProUGUI subAbnormal;
+    [SerializeField] private TextMeshProUGUI incorrect;
+    [SerializeField] private TextMeshProUGUI status;
+    [SerializeField] private TextMeshProUGUI detail;
+    [SerializeField] private TextMeshProUGUI other;
+    [SerializeField] private TextMeshProUGUI comment;
 
     private void Start()
     {
@@ -22,9 +34,7 @@ public class UIResultPanel : MonoBehaviour
 
         closeButton.onClick.AddListener(OnNext);
 
-        resultText.text = $"Main Abnormal: {stats.MainAbnormal}\n" +
-                          $"Sub Abnormal: {stats.SubAbnormal}\n" +
-                          $"Incorrect: {stats.Incorrect}";
+        //change text
 
         ToggleVisible(true);
     }

@@ -554,7 +554,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 2298495473347620619}
   closeButton: {fileID: 1778116167522314329}
-  resultText: {fileID: 0}
+  date: {fileID: 4015321176681722436}
+  caseText: {fileID: 475489999474953028}
+  owner: {fileID: 727414859240643617}
+  location: {fileID: 2632784530062677347}
+  mainAbnormal: {fileID: 6938990701044156965}
+  subAbnormal: {fileID: 4510734124105635999}
+  incorrect: {fileID: 5210674156142922856}
+  status: {fileID: 6300089088477483727}
+  detail: {fileID: 5350912898244877190}
+  other: {fileID: 584470942099690908}
+  comment: {fileID: 3702349361198257831}
 --- !u!225 &2298495473347620619
 CanvasGroup:
   m_ObjectHideFlags: 0

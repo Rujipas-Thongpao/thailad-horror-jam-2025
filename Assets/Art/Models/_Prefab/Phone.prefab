@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2588125249973201866}
   - component: {fileID: 1007425560328383880}
   - component: {fileID: 5794976437515388129}
+  - component: {fileID: 3608959749401110386}
   m_Layer: 0
   m_Name: Phone
   m_TagString: Untagged
@@ -99,6 +100,23 @@ MonoBehaviour:
     Flip: 0
     PlaceVertical: 0
   center: {fileID: 8824370822081566825}
+--- !u!114 &3608959749401110386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4229943330589721005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ecc64d1e9db694b82927f30497ba30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: f384e0fdc313fb74494b554a5cffa3fe, type: 3}
+  minCollisionVelocity: 1
+  volume: 0.8
+  minPitch: 0.9
+  maxPitch: 1.1
 --- !u!1001 &9078359643646017410
 PrefabInstance:
   m_ObjectHideFlags: 0

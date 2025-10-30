@@ -7,9 +7,11 @@ using Random = UnityEngine.Random;
 public class UIResultPanel : MonoBehaviour
 {
     private Action eventCloseResult;
+    private Action eventStamp;
 
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Button closeButton;
+    [SerializeField] private ApproveStampHandler stamp;
 
     [Header("Result Text")]
     [SerializeField] private TextMeshProUGUI date;
@@ -24,6 +26,7 @@ public class UIResultPanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI other;
     [SerializeField] private TextMeshProUGUI comment;
 
+
     private void Start()
     {
         ToggleVisible(false);
@@ -33,7 +36,7 @@ public class UIResultPanel : MonoBehaviour
     {
         eventCloseResult = _eventNext;
 
-        closeButton.onClick.AddListener(OnNext);
+        closeButton.onClick.AddListener(OnStamp);
 
         date.text = $"10-{stats.Date}-2025";
         caseText.text = $"#{Random.Range(100000, 999999)}";
@@ -72,7 +75,16 @@ public class UIResultPanel : MonoBehaviour
 
     #region event listeners
 
-    private void OnNext()
+    private void OnStamp()
+    {
+        stamp.StampSecure();
+        //Stamp sound
+        closeButton.gameObject.SetActive(false);
+
+        Invoke("invokeEndLevel", 1f);
+    }
+
+    private void invokeEndLevel()
     {
         eventCloseResult?.Invoke();
     }

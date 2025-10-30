@@ -64,6 +64,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8149447035349091709}
+  - component: {fileID: 7490569538604615074}
   m_Layer: 0
   m_Name: Stamp
   m_TagString: Untagged
@@ -92,6 +93,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 501.7794, y: 182.4652}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7490569538604615074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491155255422360908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7316dca007f451c449fc8f9d45f185a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lostStamp: {fileID: 2953876893066187084}
+  securedStamp: {fileID: 9163768416065666191}
 --- !u!1 &1063065363965989077
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 2298495473347620619}
   closeButton: {fileID: 1778116167522314329}
+  stamp: {fileID: 7490569538604615074}
   date: {fileID: 4015321176681722436}
   caseText: {fileID: 475489999474953028}
   owner: {fileID: 727414859240643617}
@@ -3499,7 +3515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3586610729595846217
 RectTransform:
   m_ObjectHideFlags: 0

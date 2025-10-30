@@ -81,7 +81,7 @@ public class UIResultPanel : MonoBehaviour
     private void OnStamp()
     {
         stamp.StampSecure();
-        SoundManager.PlaySound(stampSfx);
+        AudioPoolManager.instance.PlayClipAtPoint(stampSfx, this.transform.position);
         closeButton.gameObject.SetActive(false);
 
         Invoke("invokeEndLevel", 1f);

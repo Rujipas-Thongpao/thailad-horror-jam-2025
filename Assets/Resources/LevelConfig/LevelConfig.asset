@@ -15,7 +15,7 @@ MonoBehaviour:
   Levels:
   - MainIntensity: 0000000001000000
     SubIntensity: 
-    furniture: {fileID: 6178246717644289517, guid: bea3b8ef2729f7b47a352842078a638a, type: 3}
+    furniture: {fileID: 4518234244646243733, guid: 4e1f05c5cb2537d4a900c50a8552b4bb, type: 3}
     Hallway: {fileID: 4211945227658862420, guid: 44b5aae74e7b58147b405889a57bf257, type: 3}
   - MainIntensity: 0100000001000000
     SubIntensity: 0000000000000000

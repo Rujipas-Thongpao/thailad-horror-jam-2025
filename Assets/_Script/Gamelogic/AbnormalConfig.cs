@@ -9,6 +9,7 @@ public static class AbnormalConfig
         "By report, this abnormality can induce vivid hallucinations.", //Dizzy
         "Reports state the victims suffered a crawling sensation beneath their skin.", //Hand Tremor
         "By report, residents witnessed object moving by themselves.", //Poltergeist
+        "By report, there are dark subjects roaming around in this room, don't look at their eyes." // ghost
     };
 
     public static readonly string[] Names =
@@ -29,7 +30,8 @@ public static class AbnormalConfig
             2 => new PlayerDizzyMark(intensity),
             3 => new HandTremorsMark(intensity),
             4 => new PoltergeistMark(intensity),
-            _ => new PoltergeistMark(intensity),
+            5 => new GhostMark(intensity),
+            _ => new FlickerMark(intensity),
         };
 
         return mark;

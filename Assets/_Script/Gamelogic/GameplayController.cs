@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class GameplayController : MonoBehaviour
@@ -7,11 +8,12 @@ public class GameplayController : MonoBehaviour
     [SerializeField] private PlayerManager playerManager;
 
     [SerializeField] private GameObject tutoriaManagerPrefab;
-    private TutorialManager tutoriaManager;
+    private TutorialManager tutorialManager;
 
     [SerializeField] private bool StartWithTutorial = false;
 
     private UIManager ui;
+    public UIManager UI => ui;
 
     private enum GameState { Menu, Gameplay, Result }
     private GameState state = GameState.Gameplay;
@@ -25,6 +27,7 @@ public class GameplayController : MonoBehaviour
         ui.ButtonPrompt.Init(playerManager);
 
         levelManager.EventStageEnd += OnStageEnd;
+
 
         if (StartWithTutorial)
         {
@@ -46,6 +49,7 @@ public class GameplayController : MonoBehaviour
 
     private void StartNextLevel()
     {
+        ui.BlinkEyeController.ToOpenEye(3);
         var abnormalIndex = levelManager.Init(level);
         dialogueManager.StartIntroStageDialogue(level, abnormalIndex);
         level++;
@@ -62,9 +66,27 @@ public class GameplayController : MonoBehaviour
     private void OnStageEnd(PerformanceStatsData stats)
     {
         levelManager.Dispose();
+        ui.BlinkEyeController.ToCloseEye(2);
         ui.ResultPanel.Init(stats, OnCloseResult);
         ui.ButtonPrompt.Hide();
         ToggleCursor(true);
+    }
+
+    private void OnTutorialEnd()
+    {
+        ui.BlinkEyeController.ToCloseEye(4f, () =>
+        {
+            levelManager.DisposeForTutorial();
+            ui.ButtonPrompt.Hide();
+            ToggleCursor(true);
+
+            tutorialManager.Dispose();
+            tutorialManager.EventTutorialEnd -= OnTutorialEnd;
+
+            Destroy(tutorialManager.gameObject);
+
+            StartNextLevel();
+        });
     }
 
     private void OnCloseResult()
@@ -79,8 +101,9 @@ public class GameplayController : MonoBehaviour
     #region
     private void StartTutorial()
     {
-        tutoriaManager = Instantiate(tutoriaManagerPrefab).GetComponent<TutorialManager>();
-        tutoriaManager.Init(this);
+        tutorialManager = Instantiate(tutoriaManagerPrefab).GetComponent<TutorialManager>();
+        tutorialManager.Init(this);
+        tutorialManager.EventTutorialEnd += OnTutorialEnd;
     }
 
     #endregion

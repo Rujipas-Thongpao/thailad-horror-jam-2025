@@ -1,5 +1,6 @@
+using DG.Tweening;
+using System; // Make sure DOTween is imported and installed in your project
 using UnityEngine;
-using DG.Tweening; // Make sure DOTween is imported and installed in your project
 
 public class BlinkEyeController : MonoBehaviour
 {
@@ -23,8 +24,31 @@ public class BlinkEyeController : MonoBehaviour
         blinkEye.SetFloat(FloatField, 0f);
     }
 
-    // Animate to open the eye over 'sec' seconds
     public void ToOpenEye(float sec)
+    {
+        ToOpenEye(sec, null);
+    }
+    // Animate to open the eye over 'sec' seconds
+    public void ToOpenEye(float sec, Action OnFinish)
+    {
+        KillTween();
+        float current = blinkEye.GetFloat(FloatField);
+        blinkTween = DOTween.To(() => current, x =>
+            {
+                current = x;
+                blinkEye.SetFloat(FloatField, x);
+            },
+            1f,
+            sec
+        ).OnComplete(() => OnFinish());
+    }
+
+    public void ToCloseEye(float sec)
+    {
+        ToCloseEye(sec, null);
+    }
+    // Animate to close the eye over 'sec' seconds
+    public void ToCloseEye(float sec, Action OnFinish)
     {
         KillTween();
         float current = blinkEye.GetFloat(FloatField);
@@ -32,18 +56,8 @@ public class BlinkEyeController : MonoBehaviour
         {
             current = x;
             blinkEye.SetFloat(FloatField, x);
-            }, 1f, sec);
-        }
-
-    // Animate to close the eye over 'sec' seconds
-    public void ToCloseEye(float sec)
-    {
-        KillTween();
-        float current = blinkEye.GetFloat(FloatField);
-        blinkTween = DOTween.To(() => current, x => {
-            current = x;
-            blinkEye.SetFloat(FloatField, x);
-        }, 0f, sec);
+        }, 0f, sec)
+        .OnComplete(() => OnFinish());
     }
 
     // Helper to kill any running tween

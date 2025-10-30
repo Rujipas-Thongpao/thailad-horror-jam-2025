@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -20,6 +22,21 @@ public class TutorialManager : MonoBehaviour
         PlayerManager.Instance.ChangeState(E_PlayerState.Holding) ;
 
         DialogueManager.Instance.StartIntroTutorialDialogue(introSO);
+    }
+    public void Dispose()
+    {
+
+        var objHolder = PlayerManager.Instance.ObjectHolder;
+        var currentHolingObject = objHolder.Holdingobject;
+        objHolder.DisableSecureObject();
+
+        if(currentHolingObject != null)
+        {
+            objHolder.UnregisterObject();
+            Destroy(currentHolingObject.gameObject);
+        }
+
+        PlayerManager.Instance.ChangeState(E_PlayerState.Normal) ;
     }
 
     [ContextMenu("Enable Door")]
@@ -47,7 +64,10 @@ public class TutorialManager : MonoBehaviour
 
     private void PlayEndTutorialRoutine()
     {
-        Debug.Log("Tutorial Ended");
+        //Debug.Log("Tutorial Ended");
+        gameplayController.UI.BlinkEyeController.ToCloseEye(2);
+        EventTutorialEnd?.Invoke();
+        //this.GetComponent<PlayableDirector>().Play();
     }
 
     private void OnIntroEnd()

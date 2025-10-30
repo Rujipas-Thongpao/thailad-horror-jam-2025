@@ -23,6 +23,7 @@ public class ObjectHolder : MonoBehaviour
 
     [SerializeField] AudioClip placeObj;
 
+    public DetectableObject Holdingobject => holdingObject;
     public float RotateSpeed
     {
         get => rotateSpeed;
@@ -55,7 +56,7 @@ public class ObjectHolder : MonoBehaviour
     {
         get
         {
-            return holdingObject.CompareTag("TutorialObj");
+            return holdingObject != null && holdingObject.CompareTag("TutorialObj");
         }
     }
 
@@ -81,7 +82,7 @@ public class ObjectHolder : MonoBehaviour
         EventObjectPicked?.Invoke(obj, interactable);
     }
 
-    private void UnregisterObject()
+    public void UnregisterObject()
     {
         holdingObject.gameObject.layer = LayerMask.NameToLayer("Default");
 
@@ -167,4 +168,5 @@ public class ObjectHolder : MonoBehaviour
 
         //TODO: spawn secured container on player's hand (object holder).
     }
+
 }

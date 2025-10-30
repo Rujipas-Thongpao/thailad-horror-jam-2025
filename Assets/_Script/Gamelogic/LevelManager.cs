@@ -73,6 +73,17 @@ public class LevelManager : MonoBehaviour
         Destroy(hallway);
     }
 
+    public void DisposeForTutorial()
+    {
+        //roomController.Dispose();
+        //oracle.Dispose();
+        //oracle.EventAbnormalSecured -= OnAbnormalSecured;
+        //oracle.EventIncorrectChecked -= OnIncorrectChecked;
+        //oracle.EventLeaveStage -= OnPlayerLeaveStage;
+
+        DialogueManager.Instance.EventIntroEnd -= OnDialogueIntroEnd;
+    }
+
     #region event listener
 
     private void OnAbnormalSecured(BaseMark mark)

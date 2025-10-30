@@ -148,7 +148,7 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 823476253910386658, guid: babad44be258e3546916cdb55c8f43cb, type: 3}
           m_TargetAssemblyTypeName: BlinkEyeController, Assembly-CSharp
           m_MethodName: ToOpenEye
           m_Mode: 4
@@ -162,7 +162,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 823476253910386658, guid: babad44be258e3546916cdb55c8f43cb, type: 3}
           m_TargetAssemblyTypeName: BlinkEyeController, Assembly-CSharp
           m_MethodName: CloseEyeInstance
           m_Mode: 1
@@ -1214,7 +1214,8 @@ MonoBehaviour:
     m_Bits: 119
   holdPoint: {fileID: 9188378090419028485}
   rotateSpeed: 1
-  placeObj: {fileID: 8300000, guid: 533aced36d8a9b34eba5379df84e6fac, type: 3}
+  pickObj: {fileID: 8300000, guid: 5a930ae31119b814194455e835e55fa0, type: 3}
+  placeObj: {fileID: 8300000, guid: 4d796ee85664e8d41bd6991448e653ef, type: 3}
   invert: 0
 --- !u!95 &7797796615266935274
 Animator:

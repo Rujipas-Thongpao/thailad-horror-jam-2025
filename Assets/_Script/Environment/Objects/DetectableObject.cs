@@ -63,6 +63,9 @@ public class DetectableObject : MonoBehaviour, IDetectable
         transform.position = pos;
         rb.isKinematic = false;
         TogglePhysicCollider(true);
+        
+        PropSound objSound = GetComponent<PropSound>();
+        AudioPoolManager.instance.PlayClipAtPoint(objSound.hitSound, pos);
 
         switch (placeConfig.Flip)
         {

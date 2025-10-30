@@ -89,7 +89,7 @@ MonoBehaviour:
   lightSource: {fileID: 0}
   OnMaterial: {fileID: 2100000, guid: 50e7f12ba7fc601498be464da3a607c4, type: 2}
   OffMaterial: {fileID: 2100000, guid: 7c7d5ab814f16994aa2fc6b1c8638372, type: 2}
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: d8ef9ca406fd8244487faa5a98020aec, type: 3}
 --- !u!65 &6656536614326752491
 BoxCollider:
   m_ObjectHideFlags: 0

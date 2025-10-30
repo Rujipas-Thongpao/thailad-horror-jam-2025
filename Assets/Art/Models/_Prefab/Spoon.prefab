@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ecc64d1e9db694b82927f30497ba30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSound: {fileID: 8300000, guid: 09a3a75eae61ce540a64776b7fe79b8a, type: 3}
+  hitSound: {fileID: 8300000, guid: 4218cb2802aef2443b2f18a21a1fcc65, type: 3}
   minCollisionVelocity: 1
   volume: 0.8
   minPitch: 0.9

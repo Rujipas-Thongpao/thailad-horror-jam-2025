@@ -5,7 +5,7 @@ public class PropSound : MonoBehaviour
 {
     [Header("Sound Settings")]
     [Tooltip("The sound to play on collision.")]
-    [SerializeField] private AudioClip hitSound;
+    public AudioClip hitSound;
 
     [Tooltip("The minimum collision speed (magnitude) required to trigger the sound.")]
     [SerializeField] private float minCollisionVelocity = 1.0f;

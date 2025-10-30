@@ -78,12 +78,14 @@ public class RoomController : MonoBehaviour
 
     private void SetUpLight()
     {
-        foreach (var light in lights)
+        var isOn = LogicHelper.GetDistributeArray(Random.Range(1, 4), 4);
+
+        for (int i = 0; i < lights.Length; i++)
         {
-            var isOn = Random.Range(0f, 1f) > 0.3f;
+            var light = lights[i];
 
             light.Init(lightOn, lightOff);
-            light.SetLight(isOn);
+            light.SetLight(isOn[i] > 0);
             activeLights.Add(light);
         }
     }

@@ -6,7 +6,7 @@ public class GameplayController : MonoBehaviour
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private PlayerManager playerManager;
 
-    [SerializeField] private TutorialManager tutoriaManagerPrefab;
+    [SerializeField] private GameObject tutoriaManagerPrefab;
     private TutorialManager tutoriaManager;
 
     [SerializeField] private bool StartWithTutorial = false;
@@ -47,7 +47,7 @@ public class GameplayController : MonoBehaviour
     private void StartNextLevel()
     {
         var abnormalIndex = levelManager.Init(level);
-        dialogueManager.StartIntroDialogue(level, abnormalIndex);
+        dialogueManager.StartIntroStageDialogue(level, abnormalIndex);
         level++;
     }
 
@@ -77,11 +77,10 @@ public class GameplayController : MonoBehaviour
     #endregion
 
     #region
-
     private void StartTutorial()
     {
-        var tutorialFurniture = Instantiate(tutoriaManagerPrefab);
-        tutoriaManagerPrefab.Init(this);
+        tutoriaManager = Instantiate(tutoriaManagerPrefab).GetComponent<TutorialManager>();
+        tutoriaManager.Init(this);
     }
 
     #endregion

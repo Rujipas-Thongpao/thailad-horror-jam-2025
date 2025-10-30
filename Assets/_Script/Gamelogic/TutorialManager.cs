@@ -13,15 +13,19 @@ public class TutorialManager : MonoBehaviour
     {
         this.gameplayController = gameplayController;
         door.Init();
-        door.EnableCheckForTutorial();
         Subscribe();
 
         var phone = Instantiate(phonePrefab);
-        // Have to Disable input.
         PlayerManager.Instance.ObjectHolder.RegisterObject(phone.GetComponent<DetectableObject>(), null);
         PlayerManager.Instance.ChangeState(E_PlayerState.Holding) ;
 
-        DialogueManager.Instance.PlayDialogue(introSO.Intro);
+        DialogueManager.Instance.StartIntroTutorialDialogue(introSO);
+    }
+
+    [ContextMenu("Enable Door")]
+    private void EnableDoor()
+    {
+        door.EnableCheckArea();
     }
 
     private void OnDestroy()
@@ -32,15 +36,22 @@ public class TutorialManager : MonoBehaviour
     public void Subscribe()
     {
         door.EventPlayerSecuredTutorialObject += PlayEndTutorialRoutine;
+        DialogueManager.Instance.EventIntroEnd += OnIntroEnd;
     }
 
     public void Unsubscibe()
     {
         door.EventPlayerSecuredTutorialObject -= PlayEndTutorialRoutine;
+        DialogueManager.Instance.EventIntroEnd -= OnIntroEnd;
     }
 
     private void PlayEndTutorialRoutine()
     {
         Debug.Log("Tutorial Ended");
+    }
+
+    private void OnIntroEnd()
+    {
+        EnableDoor();
     }
 }

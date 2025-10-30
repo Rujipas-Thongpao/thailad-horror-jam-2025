@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 3183698089929735191}
-  phonePrefab: {fileID: 7578917172616261314, guid: f4cf63e3e4c91f84db718229d605de7c, type: 3}
+  phonePrefab: {fileID: 4229943330589721005, guid: f4cf63e3e4c91f84db718229d605de7c, type: 3}
   introSO: {fileID: 11400000, guid: 9beb3da774e57e94497e2b129e4adac7, type: 2}
 --- !u!1 &6176091699021588543
 GameObject:

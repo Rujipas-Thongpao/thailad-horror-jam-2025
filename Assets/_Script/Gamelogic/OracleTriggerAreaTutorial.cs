@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
 
 public class OracleTriggerAreaTutorial : OracleTriggerArea
 {
@@ -15,7 +16,6 @@ public class OracleTriggerAreaTutorial : OracleTriggerArea
         if(player.ObjectHolder.IsObjectTutorial)
         {
             EnableLeaveArea();
-            Debug.Log("Tutorial Object Secured");
             EventPlayerSecuredTutorialObject?.Invoke();
             return;
         }

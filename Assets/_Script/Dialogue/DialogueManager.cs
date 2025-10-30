@@ -41,7 +41,16 @@ public class DialogueManager : MonoBehaviour
     }
 
     #region state dialogue
-    public void StartIntroDialogue(int level, int abnormalIndex)
+
+    public void StartIntroTutorialDialogue(StageDialogueSO dialogue)
+    {
+        PlayDialogue(dialogue.Intro);
+
+        IsIntro = true;
+        dialoguePanel.EventDialogueEnd += OnDialogueEnd;
+    }
+
+    public void StartIntroStageDialogue(int level, int abnormalIndex)
     {
         currentStage = dialogueConfigSo.stages[level];
 

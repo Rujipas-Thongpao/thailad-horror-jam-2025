@@ -831,9 +831,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 712779399}
     - target: {fileID: 6443590925618390693, guid: ea03fb70b63832e4099aadad62e64cd9, type: 3}
+      propertyPath: StartWithTutorial
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6443590925618390693, guid: ea03fb70b63832e4099aadad62e64cd9, type: 3}
       propertyPath: cameraDetectObject
       value: 
       objectReference: {fileID: 712779398}
+    - target: {fileID: 6443590925618390693, guid: ea03fb70b63832e4099aadad62e64cd9, type: 3}
+      propertyPath: tutoriaManagerPrefab
+      value: 
+      objectReference: {fileID: 30107434202573454, guid: 6449fd52ce39efa4e8658dd391829d7a, type: 3}
     - target: {fileID: 7600346184146069637, guid: ea03fb70b63832e4099aadad62e64cd9, type: 3}
       propertyPath: oracle
       value: 

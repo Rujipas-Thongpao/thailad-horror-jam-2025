@@ -661,8 +661,6 @@ MonoBehaviour:
   openAnim: {fileID: 850402377574102704}
   closeAnim: {fileID: 282368022724559999}
   closeAnother: {fileID: 0}
-  interactionDistance: 3
-  interactionKey: 102
   clip: {fileID: 8300000, guid: 586d984449c2a0e4ab43df8104cee413, type: 3}
 --- !u!320 &850402377574102704
 PlayableDirector:
@@ -808,8 +806,6 @@ MonoBehaviour:
   openAnim: {fileID: 6913680968359650298}
   closeAnim: {fileID: 625772429772942702}
   closeAnother: {fileID: 0}
-  interactionDistance: 3
-  interactionKey: 102
   clip: {fileID: 8300000, guid: 586d984449c2a0e4ab43df8104cee413, type: 3}
 --- !u!320 &6913680968359650298
 PlayableDirector:
@@ -844,7 +840,7 @@ GameObject:
   - component: {fileID: 47753039418047678}
   - component: {fileID: 785131731439097473}
   - component: {fileID: 3390574309693191373}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1223,12 +1219,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6487201809995602731, guid: 8fc25a84225bbc2479862a5ef3e3b44e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 282368022724559999}
+    - targetCorrespondingSourceObject: {fileID: 6487201809995602731, guid: 8fc25a84225bbc2479862a5ef3e3b44e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2190113751444192386}
     - targetCorrespondingSourceObject: {fileID: 7582117050766964456, guid: 8fc25a84225bbc2479862a5ef3e3b44e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2217418474120755088}
     - targetCorrespondingSourceObject: {fileID: 7582117050766964456, guid: 8fc25a84225bbc2479862a5ef3e3b44e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 625772429772942702}
+    - targetCorrespondingSourceObject: {fileID: 7582117050766964456, guid: 8fc25a84225bbc2479862a5ef3e3b44e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2576344112949464201}
     - targetCorrespondingSourceObject: {fileID: -8068073526183931155, guid: 8fc25a84225bbc2479862a5ef3e3b44e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3537468398140680453}
@@ -1306,6 +1308,27 @@ PlayableDirector:
     value: {fileID: 2217418474120755088}
   m_ExposedReferences:
     m_References: []
+--- !u!65 &2576344112949464201
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658587327405422927}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0080554355, y: 0.008300869, z: 0.0006131943}
+  m_Center: {x: 0, y: -0.0001976871, z: 0.0060691996}
 --- !u!4 &1993881693960614258 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7320280127806275285, guid: 8fc25a84225bbc2479862a5ef3e3b44e, type: 3}
@@ -1357,6 +1380,27 @@ PlayableDirector:
     value: {fileID: 1490419268345254157}
   m_ExposedReferences:
     m_References: []
+--- !u!65 &2190113751444192386
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2610469883143279756}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0080554355, y: 0.008300869, z: 0.00056141295}
+  m_Center: {x: 0, y: -0.00019768711, z: 0.0060433084}
 --- !u!1 &4076184278651638821 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5092708244707826562, guid: 8fc25a84225bbc2479862a5ef3e3b44e, type: 3}
@@ -1444,8 +1488,6 @@ MonoBehaviour:
   openAnim: {fileID: 2327503669098616138}
   closeAnim: {fileID: 9095386877451852356}
   closeAnother: {fileID: 0}
-  interactionDistance: 3
-  interactionKey: 102
   clip: {fileID: 8300000, guid: 077775ed54fb5a44a9ed06933be50d83, type: 3}
 --- !u!320 &2327503669098616138
 PlayableDirector:
@@ -1563,8 +1605,6 @@ MonoBehaviour:
   openAnim: {fileID: 8165901542418372991}
   closeAnim: {fileID: 631772078400456263}
   closeAnother: {fileID: 0}
-  interactionDistance: 3
-  interactionKey: 102
   clip: {fileID: 8300000, guid: 077775ed54fb5a44a9ed06933be50d83, type: 3}
 --- !u!320 &8165901542418372991
 PlayableDirector:

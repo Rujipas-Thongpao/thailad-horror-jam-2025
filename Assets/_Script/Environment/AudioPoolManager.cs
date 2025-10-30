@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +7,13 @@ public class AudioPoolManager : MonoBehaviour
     public static AudioPoolManager instance;
 
     [Header("Pool Settings")]
+    [SerializeField] private AudioSource ambientLoop;
+    [SerializeField] private AudioSource bgmLoop;
     [SerializeField] private AudioSource audioSourcePrefab;
     [SerializeField] private int initialPoolSize = 20;
 
     private Queue<AudioSource> audioSourcePool = new Queue<AudioSource>();
+    private Coroutine volumeLerpCoroutine;
 
     void Awake()
     {
@@ -93,5 +97,32 @@ public class AudioPoolManager : MonoBehaviour
         source.spatialBlend = 1.0f; 
 
         source.Play();
+    }
+
+    public void SetAmbientVolume(float volume)
+    {
+        if (volumeLerpCoroutine != null)
+        {
+            StopCoroutine(volumeLerpCoroutine);
+        }
+
+        volumeLerpCoroutine = StartCoroutine(LerpVolumeCoroutine(volume, 1f));
+    }
+
+    private IEnumerator LerpVolumeCoroutine(float targetVolume, float duration)
+    {
+        var startVolume = ambientLoop.volume;
+        var time = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            var lerp = Mathf.Clamp01(time / duration);
+            ambientLoop.volume = Mathf.Lerp(startVolume, targetVolume, lerp);
+            yield return null;
+        }
+
+        ambientLoop.volume = targetVolume;
+        volumeLerpCoroutine = null;
     }
 }

@@ -75,12 +75,6 @@ public class LevelManager : MonoBehaviour
 
     public void DisposeForTutorial()
     {
-        //roomController.Dispose();
-        //oracle.Dispose();
-        //oracle.EventAbnormalSecured -= OnAbnormalSecured;
-        //oracle.EventIncorrectChecked -= OnIncorrectChecked;
-        //oracle.EventLeaveStage -= OnPlayerLeaveStage;
-
         DialogueManager.Instance.EventIntroEnd -= OnDialogueIntroEnd;
     }
 
@@ -105,6 +99,10 @@ public class LevelManager : MonoBehaviour
             {
                 DialogueManager.Instance.PlayTaskIncomplete();
             }
+        }
+        else
+        {
+            DialogueManager.Instance.PlaySecureSubDialogue();
         }
 
         if (stats.MainAbnormal < mainAbnormal.Count) return;

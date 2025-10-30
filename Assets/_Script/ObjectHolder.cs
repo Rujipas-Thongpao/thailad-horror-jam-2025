@@ -81,7 +81,7 @@ public class ObjectHolder : MonoBehaviour
         holdingObject.OnPicked();
         holdingObject.gameObject.layer = LayerMask.NameToLayer("HoldingItem");
 
-        SoundManager.PlaySound(pickObj);
+        AudioPoolManager.instance.PlayClipAtPoint(pickObj, transform.position);
 
         EventObjectPicked?.Invoke(obj, interactable);
     }
@@ -138,7 +138,7 @@ public class ObjectHolder : MonoBehaviour
 
         holdingObject.OnPlaced(hit.point);
 
-        SoundManager.PlaySound(placeObj);
+        AudioPoolManager.instance.PlayClipAtPoint(placeObj, hit.point);
 
         DisableSecureObject();
         UnregisterObject();

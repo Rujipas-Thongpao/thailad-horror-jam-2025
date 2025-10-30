@@ -22,7 +22,7 @@ public class GlowObject : AbnormalObject, IInteractable
         isOn = !isOn;
         UpdateDisplay();
 
-        SoundManager.PlaySound(clip);
+        AudioPoolManager.instance.PlayClipAtPoint(clip, transform.position);
     }
 
     private void UpdateDisplay()

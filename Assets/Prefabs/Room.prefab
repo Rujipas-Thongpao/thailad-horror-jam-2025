@@ -563,6 +563,18 @@ MonoBehaviour:
   - {fileID: 2325070622935704042}
   lightOn: {fileID: 2100000, guid: 5f39c267d18b80546ad882bdc4db4b87, type: 2}
   lightOff: {fileID: 2100000, guid: 3906762970461ee47a5fc40ecb8b9d9e, type: 2}
+  flickerClip: {fileID: 8300000, guid: 63d630328b9e6f644be99fa3ab6bd087, type: 3}
+  roomShakeClip: {fileID: 8300000, guid: a678fd02e57a4cf448a17716f9430c68, type: 3}
+  ambientClips:
+  - {fileID: 8300000, guid: 0198cd644a07d05438a2de5de8193b97, type: 3}
+  - {fileID: 8300000, guid: b3cb1e856f3dcee4fbad328f94291d1d, type: 3}
+  - {fileID: 8300000, guid: 4b80709f8e8f7ac4795576ea39e11650, type: 3}
+  - {fileID: 8300000, guid: c16e7cd8350a7d74f8108e2a4828a186, type: 3}
+  ghostWhisperClips:
+  - {fileID: 8300000, guid: 191a83a7ba788854ead2415d04fe32e6, type: 3}
+  - {fileID: 8300000, guid: f85c9e2c5c04f054d8c782c11f77243c, type: 3}
+  - {fileID: 8300000, guid: 40912af92a0f56e4e86e0108faf5a91d, type: 3}
+  - {fileID: 8300000, guid: d5a709b4899ed2e4eab72f891ab15117, type: 3}
   playerSpawnPoint: {fileID: 3792957426656444615}
 --- !u!1001 &1031369152776136636
 PrefabInstance:

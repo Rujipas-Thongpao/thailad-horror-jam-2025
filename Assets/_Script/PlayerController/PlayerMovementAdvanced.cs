@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovementAdvanced : MonoBehaviour
@@ -73,12 +72,14 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public bool climbing;
     public bool walking;
 
-    bool jumped;
+    private bool jumped;
+    private int footstepIndex;
 
     [Header("Sound")]
     public AudioSource sound;
     public AudioSource walkSound;
     public AudioClip landSound;
+    public AudioClip[] footstepSounds;
 
     [Header("Animation")]
     [SerializeField] Animator anim;
@@ -173,24 +174,22 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     IEnumerator WalkSound()
     {
-        float walkCd = 0.1f;
-        if(state == MovementState.walking && walking)
-        {
-            walkCd = 0.5f;
-            
-            float randPitch = Random.Range(0.9f, 1.1f);
-            walkSound.pitch = randPitch;
-            walkSound.volume = 1f;
-            walkSound.Play();
-        }
-        else if(state == MovementState.sliding && walking)
-        {
-            walkCd = 1f;
+        float walkCd = 0.5f;
 
-            float randPitch = Random.Range(0.9f, 1.1f);
-            walkSound.pitch = randPitch;
-            walkSound.volume = 0.5f;
-            walkSound.Play();
+        switch (state)
+        {
+            case MovementState.walking when walking:
+                walkCd = 0.4f;
+            
+                walkSound.PlayOneShot(footstepSounds[footstepIndex]);
+                footstepIndex = (footstepIndex + 1) % 2;
+                break;
+            case MovementState.sliding when walking:
+                walkCd = 0.8f;
+
+                walkSound.PlayOneShot(footstepSounds[footstepIndex]);
+                footstepIndex = (footstepIndex + 1) % 2;
+                break;
         }
         // else if(state == MovementState.sprinting && walking)
         // {

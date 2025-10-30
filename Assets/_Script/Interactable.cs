@@ -58,6 +58,6 @@ public class Interactable : MonoBehaviour, IInteractable, IDetectable
 
         isOpen = !isOpen;
 
-        SoundManager.PlaySound(clip);
+        AudioPoolManager.instance.PlayClipAtPoint(clip, transform.position);
     }
 }

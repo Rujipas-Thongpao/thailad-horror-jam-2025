@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class OracleTriggerArea : MonoBehaviour
 {
@@ -8,9 +9,12 @@ public class OracleTriggerArea : MonoBehaviour
     public event Action EventLeaveStage;
 
     [SerializeField] private StageLeaveArea stageLeaveArea;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] oracleClips;
 
     protected PlayerManager player;
-    protected bool isActive;
+    private bool isActive;
+    private int lastClipIndex;
 
     public void Init()
     {
@@ -19,6 +23,7 @@ public class OracleTriggerArea : MonoBehaviour
         stageLeaveArea.Init(OnLeaveStage);
 
         player.ObjectHolder.EventAbnormalSecured += OnAbnormalSecured;
+        DialogueManager.Instance.EventOracleSpeak += OnOracleSpeak;
     }
 
     public void Dispose()
@@ -26,6 +31,7 @@ public class OracleTriggerArea : MonoBehaviour
         stageLeaveArea.Dispose();
 
         player.ObjectHolder.EventAbnormalSecured -= OnAbnormalSecured;
+        DialogueManager.Instance.EventOracleSpeak -= OnOracleSpeak;
 
         isActive = false;
     }
@@ -90,6 +96,14 @@ public class OracleTriggerArea : MonoBehaviour
     private void OnLeaveStage()
     {
         EventLeaveStage?.Invoke();
+    }
+
+    private void OnOracleSpeak()
+    {
+        var rand = Random.Range(0, oracleClips.Length);
+        if (rand == lastClipIndex) rand = (rand + 1) % oracleClips.Length;
+        audioSource.PlayOneShot(oracleClips[rand]);
+        lastClipIndex = rand;
     }
     #endregion
 }

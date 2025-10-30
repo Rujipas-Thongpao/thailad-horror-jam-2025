@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class UIDialoguePanel : MonoBehaviour
 {
+    public event Action EventOracleSpeak;
+    public event Action EventGhostSpeak;
     public event Action EventDialogueEnd;
 
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text dialogueText;
 
-    private readonly Queue<string> dialogueQueue = new();
+    private readonly Queue<string> oracleDialogueQueue = new();
     private float dialogueTimer;
     private bool isDone;
 
@@ -29,7 +31,7 @@ public class UIDialoguePanel : MonoBehaviour
     {
         dialogueTimer -= Time.deltaTime;
 
-        if (dialogueQueue.Count == 0)
+        if (oracleDialogueQueue.Count == 0)
         {
             if (!isDone && dialogueTimer > 0) return;
 
@@ -41,12 +43,13 @@ public class UIDialoguePanel : MonoBehaviour
 
         if (dialogueTimer > 0) return;
 
-        var dialogue = dialogueQueue.Dequeue();
+        var dialogue = oracleDialogueQueue.Dequeue();
         dialogueText.text = dialogue;
         dialogueTimer = 1f + dialogue.Length * 0.03f;
+        EventOracleSpeak?.Invoke();
     }
 
-    public void Play(List<string> dialogues)
+    public void PlayOracleDialogue(List<string> dialogues)
     {
         isDone = false;
         dialogueTimer = 0.3f;
@@ -54,28 +57,15 @@ public class UIDialoguePanel : MonoBehaviour
 
         foreach (var dialogue in dialogues)
         {
-            dialogueQueue.Enqueue(dialogue);
+            oracleDialogueQueue.Enqueue(dialogue);
         }
-    }
-
-    public void Play(string dialogue)
-    {
-        Play(new List<string> { dialogue });
-    }
-
-    public void Stall(string dialogue)
-    {
-        Stop();
-
-        dialogueBox.SetActive(true);
-        dialogueText.text = dialogue;
     }
 
     public void Stop()
     {
         dialogueText.text = "";
         dialogueBox.SetActive(false);
-        dialogueQueue.Clear();
+        oracleDialogueQueue.Clear();
         dialogueTimer = 0;
     }
 }

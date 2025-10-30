@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 public class GameplayController : MonoBehaviour
@@ -69,6 +68,7 @@ public class GameplayController : MonoBehaviour
         ui.BlinkEyeController.ToCloseEye(2);
         ui.ResultPanel.Init(stats, OnCloseResult);
         ui.ButtonPrompt.Hide();
+        AudioPoolManager.instance.SetAmbientVolume(0f);
         ToggleCursor(true);
     }
 
@@ -78,7 +78,6 @@ public class GameplayController : MonoBehaviour
         {
             levelManager.DisposeForTutorial();
             ui.ButtonPrompt.Hide();
-            ToggleCursor(true);
 
             tutorialManager.Dispose();
             tutorialManager.EventTutorialEnd -= OnTutorialEnd;
@@ -93,6 +92,7 @@ public class GameplayController : MonoBehaviour
     {
         ui.ResultPanel.Dispose();
         StartNextLevel();
+        AudioPoolManager.instance.SetAmbientVolume(1f);
         ToggleCursor(false);
     }
 

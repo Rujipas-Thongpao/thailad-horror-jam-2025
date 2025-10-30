@@ -11,6 +11,7 @@ public class OracleTriggerArea : MonoBehaviour
     [SerializeField] private StageLeaveArea stageLeaveArea;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] oracleClips;
+    [SerializeField] private AudioClip secureClip;
 
     protected PlayerManager player;
     private bool isActive;
@@ -91,6 +92,7 @@ public class OracleTriggerArea : MonoBehaviour
     private void OnAbnormalSecured(BaseMark mark)
     {
         EventAbnormalSecured?.Invoke(mark);
+        audioSource.PlayOneShot(secureClip);
     }
 
     private void OnLeaveStage()

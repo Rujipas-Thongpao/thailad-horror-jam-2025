@@ -7,50 +7,26 @@ public class Interactable : MonoBehaviour, IInteractable, IDetectable
     [SerializeField] private PlayableDirector openAnim;
     [SerializeField] private PlayableDirector closeAnim;
     [SerializeField] private Interactable closeAnother;
+    [SerializeField] private AudioClip clip;
 
-    bool isOpen;
-
-    [SerializeField] private float interactionDistance = 5f;
-    [SerializeField] private KeyCode interactionKey = KeyCode.F;
-
-    private Camera mainCamera;
-
-    float lastInteract;
-
-    [SerializeField] AudioClip clip;
+    private bool isOpen;
+    private float lastInteract;
 
     public void OnInteracted()
     {
-        if(Time.time - lastInteract >= 2f) Interact();
-    }
+        if (Time.time - lastInteract < 1.25f) return;
 
-    // private MeshRenderer[] meshes;
-    // private void Awake()
-    // {
-    //     meshes = GetComponentsInChildren<MeshRenderer>();
-    // }
+        Interact();
+    }
 
     public void OnHovered()
     {
-        // SetLayerMask("Outline");
+        
     }
 
     public void OnUnhovered()
     {
-        // SetLayerMask("Default");
-    }
-
-    // private void SetLayerMask(string layer)
-    // {
-    //     foreach (var mesh in meshes)
-    //     {
-    //         mesh.gameObject.layer = LayerMask.NameToLayer(layer);
-    //     }
-    // }
-
-    void Start()
-    {
-        mainCamera = Camera.main;
+        
     }
 
     public void ForceClose()
@@ -59,7 +35,7 @@ public class Interactable : MonoBehaviour, IInteractable, IDetectable
         {
             closeAnim?.Play();
 
-            if(closeAnother) closeAnother.ForceClose();
+            if (closeAnother) closeAnother.ForceClose();
         }
 
         isOpen = false;
@@ -77,7 +53,7 @@ public class Interactable : MonoBehaviour, IInteractable, IDetectable
         {
             closeAnim?.Play();
 
-            if(closeAnother) closeAnother.ForceClose();
+            if (closeAnother) closeAnother.ForceClose();
         }
 
         isOpen = !isOpen;

@@ -411,7 +411,7 @@ MonoBehaviour:
   lightSource: {fileID: 7416866602596712368}
   OnMaterial: {fileID: 2100000, guid: 20676484649532a4a9a1246f07016551, type: 2}
   OffMaterial: {fileID: 2100000, guid: 3ad1eb6ca96c7cb41a9c7e0771f6fc8a, type: 2}
-  clip: {fileID: 8300000, guid: 3dd7e3c6bf170594faac5bbcab3c92b5, type: 3}
+  clip: {fileID: 8300000, guid: 704898b2ceb2d4845b9f653f35e5549a, type: 3}
 --- !u!136 &5878829364111170577
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -474,7 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ecc64d1e9db694b82927f30497ba30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSound: {fileID: 8300000, guid: 09a3a75eae61ce540a64776b7fe79b8a, type: 3}
+  hitSound: {fileID: 8300000, guid: f384e0fdc313fb74494b554a5cffa3fe, type: 3}
   minCollisionVelocity: 1
   volume: 0.8
   minPitch: 0.9

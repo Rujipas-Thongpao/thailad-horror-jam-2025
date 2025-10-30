@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ObjectHolder : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class ObjectHolder : MonoBehaviour
 
     [SerializeField] private float rotateSpeed = 3f;
 
+    [SerializeField] AudioClip pickObj;
     [SerializeField] AudioClip placeObj;
 
     public DetectableObject Holdingobject => holdingObject;
@@ -78,6 +80,8 @@ public class ObjectHolder : MonoBehaviour
         holdingObject.transform.localPosition = Vector3.zero;
         holdingObject.OnPicked();
         holdingObject.gameObject.layer = LayerMask.NameToLayer("HoldingItem");
+
+        SoundManager.PlaySound(pickObj);
 
         EventObjectPicked?.Invoke(obj, interactable);
     }

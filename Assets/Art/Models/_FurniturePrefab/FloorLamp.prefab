@@ -225,7 +225,7 @@ MonoBehaviour:
   lightSource: {fileID: 3468377445471345423}
   OnMaterial: {fileID: 2100000, guid: 20676484649532a4a9a1246f07016551, type: 2}
   OffMaterial: {fileID: 2100000, guid: 3ad1eb6ca96c7cb41a9c7e0771f6fc8a, type: 2}
-  clip: {fileID: 8300000, guid: 3dd7e3c6bf170594faac5bbcab3c92b5, type: 3}
+  clip: {fileID: 8300000, guid: 704898b2ceb2d4845b9f653f35e5549a, type: 3}
 --- !u!136 &8372209657232942737
 CapsuleCollider:
   m_ObjectHideFlags: 0

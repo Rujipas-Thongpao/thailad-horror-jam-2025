@@ -787,6 +787,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 6976032555370044892, guid: e373aa5844093734daa81ee94030606d, type: 3}
+      propertyPath: pickObj
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a930ae31119b814194455e835e55fa0, type: 3}
+    - target: {fileID: 6976032555370044892, guid: e373aa5844093734daa81ee94030606d, type: 3}
+      propertyPath: placeObj
+      value: 
+      objectReference: {fileID: 8300000, guid: 4d796ee85664e8d41bd6991448e653ef, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

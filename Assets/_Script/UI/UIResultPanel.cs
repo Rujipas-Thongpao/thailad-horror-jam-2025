@@ -12,6 +12,8 @@ public class UIResultPanel : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Button closeButton;
     [SerializeField] private ApproveStampHandler stamp;
+    [SerializeField] private ImageRandomizer polaroid;
+    [SerializeField] private AudioClip stampSfx;
 
     [Header("Result Text")]
     [SerializeField] private TextMeshProUGUI date;
@@ -42,6 +44,7 @@ public class UIResultPanel : MonoBehaviour
 
         closeButton.onClick.AddListener(OnStamp);
 
+        polaroid.UseImage(stats.Level);
         date.text = $"10-{stats.Date}-2025";
         caseText.text = $"#{Random.Range(100000, 999999)}";
         owner.text = new string('■', Random.Range(6, 9)) + ('■', Random.Range(8, 12));
@@ -78,7 +81,7 @@ public class UIResultPanel : MonoBehaviour
     private void OnStamp()
     {
         stamp.StampSecure();
-        //Stamp sound
+        SoundManager.PlaySound(stampSfx);
         closeButton.gameObject.SetActive(false);
 
         Invoke("invokeEndLevel", 1f);

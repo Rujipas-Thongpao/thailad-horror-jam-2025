@@ -31,4 +31,4 @@ MonoBehaviour:
   TaskAllComplete: {fileID: 11400000, guid: 1cfd2164408b49f41be75edeb0e56a9d, type: 2}
   TaskComplete: {fileID: 11400000, guid: a65a6e7749b935b4c8c4d1a2d2ccee8b, type: 2}
   TaskIncomplete: {fileID: 11400000, guid: 8c94785a4712a464cb92a16c1138d5e2, type: 2}
-  SecureSub: {fileID: 0}
+  SecureSub: {fileID: 11400000, guid: 324db6c0015eb1f4a93052e35f2081d5, type: 2}

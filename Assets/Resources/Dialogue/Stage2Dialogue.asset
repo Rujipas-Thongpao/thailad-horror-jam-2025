@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Stage2Dialogue
   m_EditorClassIdentifier: 
   Intro:
-  - 'I sense '
+  - "You did well yesterday. Let\u2019s see what we\u2019re dealing with today."
+  - ...Hmm. The report only mentioned one anomaly.
+  - "But I can sense something else\u2014faint, hidden.\nPlease stay alert."
   CorrectExamine: {fileID: 11400000, guid: 20d5cdfbd0a2697428d404161771de4d, type: 2}
   IncorrectExamine: {fileID: 11400000, guid: 01f49da293d63e94ca936ed17dd54d83, type: 2}
   Warn: {fileID: 11400000, guid: 6fa767acfb10c8f47b116c1e3e6be212, type: 2}
@@ -21,3 +23,4 @@ MonoBehaviour:
   TaskAllComplete: {fileID: 11400000, guid: 1cfd2164408b49f41be75edeb0e56a9d, type: 2}
   TaskComplete: {fileID: 11400000, guid: a65a6e7749b935b4c8c4d1a2d2ccee8b, type: 2}
   TaskIncomplete: {fileID: 11400000, guid: 8c94785a4712a464cb92a16c1138d5e2, type: 2}
+  SecureSub: {fileID: 11400000, guid: 324db6c0015eb1f4a93052e35f2081d5, type: 2}

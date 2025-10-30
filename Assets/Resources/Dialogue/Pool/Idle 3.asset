@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d412106da4f103c4d9f82ec4ec1f6512, type: 3}
+  m_Name: Idle 3
+  m_EditorClassIdentifier: 
+  Dialogues:
+  - "I\u2019m fine. Thank you."
+  - Be careful.
+  - Where is it hiding?
+  - Try not to touch anything too long.
+  - "I\u2019ll monitor from here. Don\u2019t worry about me."
+  - "I wasn\u2019t born for this kind of work, but it\u2019s what only I can do."
+  - "Every partner I had before you\u2026 forget it."

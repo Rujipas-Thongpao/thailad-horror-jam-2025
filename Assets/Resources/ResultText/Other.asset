@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d412106da4f103c4d9f82ec4ec1f6512, type: 3}
+  m_Name: Other
+  m_EditorClassIdentifier: 
+  Dialogues:
+  - '              Photometric readings of the emission were inconclusive, showing
+    rapid, non-standard shifts between warm and cold spectrums.'
+  - "              Operative \u2588\u2588\u2588\u2588  reported significant disorientation
+    and sensory distortion (feeling of \"being watched by his own silhouette\").
+    Refer to psycho-eval file 0457-B-PE."
+  - '              Building 09 residents have been issued a standard cover story
+    (gas leak / electrical surge) and are pending relocation by the LFS public liaison
+    team.'

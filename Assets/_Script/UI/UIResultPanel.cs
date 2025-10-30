@@ -26,6 +26,10 @@ public class UIResultPanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI other;
     [SerializeField] private TextMeshProUGUI comment;
 
+    [Header("PoolSO")]
+    [SerializeField] private DialoguePoolSO detailSO;
+    [SerializeField] private DialoguePoolSO otherSO;
+    [SerializeField] private DialoguePoolSO commentSO;
 
     private void Start()
     {
@@ -46,16 +50,12 @@ public class UIResultPanel : MonoBehaviour
         subAbnormal.text = stats.SubAbnormal.ToString();
         incorrect.text = stats.Incorrect.ToString();
         status.text = "Secured";
-        detail.text = new string('■', Random.Range(20, 25));
-        other.text = new string('■', Random.Range(20, 25));
-
-        comment.text = stats.Incorrect switch
-        {
-            0 => "Works perfectly",
-            > 3 => "Performing below standard",
-            > 0 => "Work according to standards",
-            _ => "■■■■■■■■"
-        };
+        int detailRand = Random.Range(0, detailSO.Dialogues.Length - 1);
+        detail.text = detailSO.Dialogues[detailRand];
+        int otherRand = Random.Range(0, otherSO.Dialogues.Length - 1);
+        other.text = otherSO.Dialogues[otherRand];
+        int commentRand = Random.Range(0, commentSO.Dialogues.Length - 1);
+        comment.text = commentSO.Dialogues[commentRand];
 
         ToggleVisible(true);
     }

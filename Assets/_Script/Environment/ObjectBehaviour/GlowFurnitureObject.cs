@@ -6,6 +6,7 @@ public class GlowFurnitureObject : DraggableFurnitureObject, IInteractable
     [SerializeField] private Light lightSource;
     [SerializeField] private Material OnMaterial;
     [SerializeField] private Material OffMaterial;
+    [SerializeField] private AudioSource audioSource;
 
     [SerializeField] AudioClip clip;
 
@@ -22,15 +23,21 @@ public class GlowFurnitureObject : DraggableFurnitureObject, IInteractable
         isOn = !isOn;
         UpdateDisplay();
 
-        SoundManager.PlaySound(clip);
+        AudioPoolManager.instance.PlayClipAtPoint(clip, transform.position);
     }
 
     private void UpdateDisplay()
     {
         renderer.material = isOn ? OnMaterial : OffMaterial;
 
-        if (lightSource == null) return;
+        if (audioSource != null)
+        {
+            audioSource.enabled = isOn;
+        }
 
-        lightSource.enabled = isOn;
+        if (lightSource != null)
+        {
+            lightSource.enabled = isOn;
+        }
     }
 }

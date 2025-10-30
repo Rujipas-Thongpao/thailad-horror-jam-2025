@@ -77,4 +77,10 @@ public static class LogicHelper
             transform.rotation = Quaternion.Euler(euler.x, euler.y, euler.z);
         }
     }
+
+    public static Vector3 GetRandomPositionOnSphere(Vector3 center, float radius = 4f)
+    {
+        var randomDirection = Random.onUnitSphere;
+        return center + randomDirection * radius;
+    }
 }

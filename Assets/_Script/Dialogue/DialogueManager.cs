@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
+    public event Action EventOracleSpeak;
+    public event Action EventGhostSpeak;
     public event Action EventIntroEnd;
 
     [SerializeField] private DialogueConfigSO dialogueConfigSo;
@@ -32,11 +34,15 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePanel = _dialoguePanel;
         dialoguePanel.Initialize();
+        dialoguePanel.EventOracleSpeak += OnOracleSpeak;
+        dialoguePanel.EventGhostSpeak += OnGhostSpeak;
     }
 
     public void Dispose()
     {
         dialoguePanel.Dispose();
+        dialoguePanel.EventOracleSpeak -= OnOracleSpeak;
+        dialoguePanel.EventGhostSpeak -= OnGhostSpeak;
         dialoguePanel = null;
     }
 
@@ -105,7 +111,9 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePanel.Stop();
     }
+    #endregion
 
+    #region subscribe events
     private void OnDialogueEnd()
     {
         if (!IsIntro) return;
@@ -113,6 +121,16 @@ public class DialogueManager : MonoBehaviour
         IsIntro = false;
         EventIntroEnd?.Invoke();
         dialoguePanel.EventDialogueEnd -= OnDialogueEnd;
+    }
+
+    private void OnOracleSpeak()
+    {
+        EventOracleSpeak?.Invoke();
+    }
+
+    private void OnGhostSpeak()
+    {
+        EventGhostSpeak?.Invoke();
     }
     #endregion
 
@@ -125,7 +143,7 @@ public class DialogueManager : MonoBehaviour
 
     public void PlayDialogue(List<string> dialogueList)
     {
-        dialoguePanel.Play(dialogueList);
+        dialoguePanel.PlayOracleDialogue(dialogueList);
     }
     #endregion
 }

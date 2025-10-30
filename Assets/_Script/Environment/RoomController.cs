@@ -10,9 +10,18 @@ public class RoomController : MonoBehaviour
     [SerializeField] private LightObject[] lights;
     [SerializeField] private Material lightOn, lightOff;
 
+    [Header ("Audio")]
+    [SerializeField] private AudioClip flickerClip;
+    [SerializeField] private AudioClip roomShakeClip;
+    [SerializeField] private AudioClip[] ambientClips;
+    [SerializeField] private AudioClip[] ghostWhisperClips;
+
     [SerializeField] private Transform playerSpawnPoint;
 
     private FurnitureSetup setup;
+
+    private float nextAmbientTime;
+    private float nextWhisperTime;
 
     private readonly List<DetectableObject> sceneObjects = new();
     private readonly List<LightObject> activeLights = new();
@@ -31,12 +40,36 @@ public class RoomController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (!setup) return;
+
+        if (Time.time > nextAmbientTime)
+        {
+            var clip = ambientClips[Random.Range(0, ambientClips.Length)];
+            var pos = LogicHelper.GetRandomPositionOnSphere(Vector3.zero, 4f);
+            AudioPoolManager.instance.PlayClipAtPoint(clip, pos);
+            nextAmbientTime = Time.time + Random.Range(30f, 60f);
+        }
+
+        if (Time.time > nextWhisperTime)
+        {
+            var clip = ghostWhisperClips[Random.Range(0, ghostWhisperClips.Length)];
+            var pos = Random.insideUnitSphere * 4f;
+            AudioPoolManager.instance.PlayClipAtPoint(clip, pos);
+            nextWhisperTime = Time.time + Random.Range(20f, 40f);
+        }
+    }
+
     public void Init(List<BaseMark> marks, FurnitureSetup furnitureSetup)
     {
         setup = Instantiate(furnitureSetup, transform);
         SetUpFurniture(marks);
         SetUpLight();
         PlayerManager.Instance.transform.SetPositionAndRotation(playerSpawnPoint.position, playerSpawnPoint.rotation);
+
+        nextAmbientTime = Time.time + Random.Range(10f, 20f);
+        nextWhisperTime = Time.time + Random.Range(30f, 40f);
     }
 
     public void Dispose()
@@ -49,6 +82,7 @@ public class RoomController : MonoBehaviour
 
         sceneObjects.Clear();
         Destroy(setup.gameObject);
+        setup = null;
     }
 
     private void SetUpFurniture(List<BaseMark> marks)
@@ -140,6 +174,8 @@ public class RoomController : MonoBehaviour
         {
             if (i != randObj) continue;
 
+            AudioPoolManager.instance.PlayClipAtPoint(flickerClip, activeLights[i].transform.position);
+
             switch (randFlickerMode)
             {
                 case 0:
@@ -181,7 +217,7 @@ public class RoomController : MonoBehaviour
     public async UniTask PoltergeistRoutine(float intensity)
     {
         var r = Random.Range(2f, intensity * 3f);
-        for(int i =0;i< r; i++)
+        for (int i = 0; i < r; i++)
         {
             PushObj(intensity);
             await UniTask.Delay(System.TimeSpan.FromSeconds(Random.Range(2f, 5f)));

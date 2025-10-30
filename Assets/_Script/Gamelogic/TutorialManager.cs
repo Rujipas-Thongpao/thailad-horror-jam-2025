@@ -8,7 +8,7 @@ public class TutorialManager : MonoBehaviour
     public event Action EventTutorialEnd;
     private GameplayController gameplayController;
     [SerializeField] private OracleTriggerAreaTutorial door;
-    [SerializeField] private GameObject phonePrefab;
+    [SerializeField] private GameObject phone;
     [SerializeField] private StageDialogueSO introSO;
 
     List<string> endingDialouge = new()
@@ -22,15 +22,17 @@ public class TutorialManager : MonoBehaviour
         door.Init();
         Subscribe();
 
-        var phone = Instantiate(phonePrefab);
         PlayerManager.Instance.ObjectHolder.RegisterObject(phone.GetComponent<DetectableObject>(), null);
         PlayerManager.Instance.ChangeState(E_PlayerState.Holding);
+    }
 
+    public void StartIntroTutorialDialogue()
+    {
         DialogueManager.Instance.StartIntroTutorialDialogue(introSO);
     }
+
     public void Dispose()
     {
-
         var objHolder = PlayerManager.Instance.ObjectHolder;
         var currentHolingObject = objHolder.Holdingobject;
         objHolder.DisableSecureObject();

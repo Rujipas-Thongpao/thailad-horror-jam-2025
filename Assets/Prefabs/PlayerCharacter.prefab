@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e99e9d71c73f5449891f71ecb6510d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 4
+  walkSpeed: 2
   sprintSpeed: 4
   slideSpeed: 3
   wallrunSpeed: 0
@@ -774,8 +774,8 @@ MonoBehaviour:
   speedIncreaseMultiplier: 0
   slopeIncreaseMultiplier: 0
   groundDrag: 4
-  jumpForce: 12.5
-  jumpCooldown: 0.25
+  jumpForce: 5
+  jumpCooldown: 2
   airMultiplier: 1
   crouchSpeed: 0
   crouchYScale: 0

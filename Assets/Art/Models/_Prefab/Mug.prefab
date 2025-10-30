@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1103908088905233176}
   - component: {fileID: 2824886087972204801}
   - component: {fileID: 2135473344278323630}
+  - component: {fileID: 8781431031756779061}
   m_Layer: 0
   m_Name: Mug
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 3ec2d435a64136547a201a73be5b124e, type: 3}
+  - {fileID: 2100000, guid: 360c5bc5881db124bba8265f04ec4d59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,6 +88,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8781431031756779061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3286122274829932199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8306672cb976b5e459e04a7cd7255085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 4
+  height: 4
+  setTilling: 1
 --- !u!1 &7485778689747833421
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9c52bf85cd84f764b8520ab622c45226
+guid: 0e67e1ffa5cdbc441ba715431d71f9b2
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,23 +7,28 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Can
-    second: {fileID: 2100000, guid: 4b5a9dedf089c0b4f8145bd57abc269a, type: 2}
+      name: Book
+    second: {fileID: 2100000, guid: 20f7edff3d2e7b544ae1583e4f4e9ad1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Soda lid
-    second: {fileID: 2100000, guid: d971cd7f0f61c284c92ec7f49ce99b58, type: 2}
+      name: Cover
+    second: {fileID: 2100000, guid: 830f923182525a84c8d791d7d9323c03, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: SodaCan
-    second: {fileID: 2100000, guid: fc58e5836e37d734f93ba2b1a20856a1, type: 2}
+      name: Cover.001
+    second: {fileID: 2100000, guid: 20f7edff3d2e7b544ae1583e4f4e9ad1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: SodaTop
-    second: {fileID: 2100000, guid: 04b58e2d9e216aa4e86f8676a235dd05, type: 2}
+      name: paper
+    second: {fileID: 2100000, guid: 8b56abc5a56a88947be3a286567d2a0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: paper.002
+    second: {fileID: 2100000, guid: 20f7edff3d2e7b544ae1583e4f4e9ad1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

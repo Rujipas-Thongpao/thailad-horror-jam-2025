@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9c52bf85cd84f764b8520ab622c45226
+guid: 580492d4162493345a8b415f3e06f93c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,23 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Can
-    second: {fileID: 2100000, guid: 4b5a9dedf089c0b4f8145bd57abc269a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Soda lid
-    second: {fileID: 2100000, guid: d971cd7f0f61c284c92ec7f49ce99b58, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: SodaCan
-    second: {fileID: 2100000, guid: fc58e5836e37d734f93ba2b1a20856a1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: SodaTop
-    second: {fileID: 2100000, guid: 04b58e2d9e216aa4e86f8676a235dd05, type: 2}
+      name: Cloth
+    second: {fileID: 2100000, guid: 6becf7496ff08e74fa2a690cf6731490, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

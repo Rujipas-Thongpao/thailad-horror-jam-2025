@@ -1,7 +1,7 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
-using UnityEngine.Timeline;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -11,6 +11,11 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject phonePrefab;
     [SerializeField] private StageDialogueSO introSO;
 
+    List<string> endingDialouge = new()
+    {
+        "good job, lets go to the site."
+    };
+
     public void Init(GameplayController gameplayController)
     {
         this.gameplayController = gameplayController;
@@ -19,7 +24,7 @@ public class TutorialManager : MonoBehaviour
 
         var phone = Instantiate(phonePrefab);
         PlayerManager.Instance.ObjectHolder.RegisterObject(phone.GetComponent<DetectableObject>(), null);
-        PlayerManager.Instance.ChangeState(E_PlayerState.Holding) ;
+        PlayerManager.Instance.ChangeState(E_PlayerState.Holding);
 
         DialogueManager.Instance.StartIntroTutorialDialogue(introSO);
     }
@@ -30,13 +35,13 @@ public class TutorialManager : MonoBehaviour
         var currentHolingObject = objHolder.Holdingobject;
         objHolder.DisableSecureObject();
 
-        if(currentHolingObject != null)
+        if (currentHolingObject != null)
         {
             objHolder.UnregisterObject();
             Destroy(currentHolingObject.gameObject);
         }
 
-        PlayerManager.Instance.ChangeState(E_PlayerState.Normal) ;
+        PlayerManager.Instance.ChangeState(E_PlayerState.Normal);
     }
 
     [ContextMenu("Enable Door")]
@@ -64,10 +69,17 @@ public class TutorialManager : MonoBehaviour
 
     private void PlayEndTutorialRoutine()
     {
-        //Debug.Log("Tutorial Ended");
+        StartCoroutine(EndTutorialRoutine());
+    }
+
+    IEnumerator EndTutorialRoutine()
+    {
+        DialogueManager.Instance.PlayDialogue(endingDialouge);
+
+        yield return new WaitForSeconds(5f);
+
         gameplayController.UI.BlinkEyeController.ToCloseEye(2);
         EventTutorialEnd?.Invoke();
-        //this.GetComponent<PlayableDirector>().Play();
     }
 
     private void OnIntroEnd()

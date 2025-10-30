@@ -137,8 +137,10 @@ public class PerformanceStatsData
     public int SubAbnormal { get ; private set; }
     public int Incorrect { get ; private set; }
 
+    public int Level;
     public PerformanceStatsData(int level)
     {
+        Level = level;
         Date = 26 + level;
     }
 

@@ -36,7 +36,7 @@ public class CameraDetectObject : MonoBehaviour
 
         // Draw debug ray (yellow if hit, white if not)
         RaycastHit hitInfo;
-        bool isHit = Physics.Raycast(camera.transform.position, dir, out hitInfo, 10, detectableLayer);
+        bool isHit = Physics.Raycast(camera.transform.position, dir, out hitInfo, 2, detectableLayer);
         //Debug.Log("Raycast hit: " + (isHit ? hitInfo.transform.name : "Nothing"));
         Debug.DrawRay(
             camera.transform.position,

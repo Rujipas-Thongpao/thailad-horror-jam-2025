@@ -125,12 +125,12 @@ public class ObjectHolder : MonoBehaviour
         obj.RotateAround(center.position, _camera.transform.right * (invert ? -1 : 1), rotation.y);
     }
 
-    public void PlaceItem()
+    public bool PlaceItem()
     {
         RaycastHit hit;
         // Does the ray intersect any objects in detectableLayer?
         if (!Physics.Raycast(_camera.transform.position, _camera.transform.TransformDirection(Vector3.forward), out hit,
-                10, placableLayer)) return;
+                2, placableLayer)) return false;
 
         holdingObject.OnPlaced(hit.point);
 
@@ -138,6 +138,7 @@ public class ObjectHolder : MonoBehaviour
 
         DisableSecureObject();
         UnregisterObject();
+        return true;
     }
 
     public void TryInteract()

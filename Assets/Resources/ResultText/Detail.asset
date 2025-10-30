@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d412106da4f103c4d9f82ec4ec1f6512, type: 3}
+  m_Name: Detail
+  m_EditorClassIdentifier: 
+  Dialogues:
+  - '              Dispatched to location following civilian reports of acausal light
+    phenomena in a fully isolated power grid.'
+  - '              Team entered under low-visibility protocol. Observed multiple
+    instances of phase-inverted illumination (approx. 0.3s persistence post-filament-dark).'
+  - '              Primary object (domestic lamp, see Main abnormal) found emitting
+    12-15 lux despite being physically disconnected from any power source.'
+  - "              Anomalous shadow-drifting observed, persisting several seconds
+    (3\u22125s) after operative motion ceased."
+  - '              Object designated "Residual Lumen" and secured via standard insulated
+    containment canopy at 01:18.'

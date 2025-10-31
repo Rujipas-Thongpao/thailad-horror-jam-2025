@@ -10,6 +10,7 @@ public class NormalState : GameState
 
     public override void Enter()
     {
+        playerManager.ObjectHolder.DisableSecureObject();
         playerManager.CameraDetectObject.SetEnable(true);
     }
 

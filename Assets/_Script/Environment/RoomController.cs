@@ -52,13 +52,13 @@ public class RoomController : MonoBehaviour
             nextAmbientTime = Time.time + Random.Range(30f, 60f);
         }
 
-        if (Time.time > nextWhisperTime)
-        {
-            var clip = ghostWhisperClips[Random.Range(0, ghostWhisperClips.Length)];
-            var pos = Random.insideUnitSphere * 4f;
-            AudioPoolManager.instance.PlayClipAtPoint(clip, pos);
-            nextWhisperTime = Time.time + Random.Range(20f, 40f);
-        }
+        //if (Time.time > nextWhisperTime)
+        //{
+        //    var clip = ghostWhisperClips[Random.Range(0, ghostWhisperClips.Length)];
+        //    var pos = Random.insideUnitSphere * 4f;
+        //    AudioPoolManager.instance.PlayClipAtPoint(clip, pos);
+        //    nextWhisperTime = Time.time + Random.Range(20f, 40f);
+        //}
     }
 
     public void Init(List<BaseMark> marks, FurnitureSetup furnitureSetup)

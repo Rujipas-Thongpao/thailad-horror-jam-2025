@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -91,6 +92,13 @@ public class PlayerMovementAdvanced : MonoBehaviour
         set { moveable = value; }
     }
 
+    // Event invoked when player transitions from not-grounded to grounded.
+    // Parameter: impact velocity (positive number, magnitude of downward velocity at contact)
+    public event Action<float> EventHitGround;
+
+    // internal state to detect ground transitions
+    private bool wasGrounded;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -108,6 +116,18 @@ public class PlayerMovementAdvanced : MonoBehaviour
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
 
+        // detect landing transition and raise event once per landing
+        if (!wasGrounded && grounded)
+        {
+            float impactVelocity = Mathf.Max(0f, -rb.linearVelocity.y);
+            if(impactVelocity > 1f)
+            {
+                sound.clip = landSound;
+                sound.Play();
+                EventHitGround?.Invoke(impactVelocity);
+            }
+        }
+
         MyInput();
         SpeedControl();
         StateHandler();
@@ -120,8 +140,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
             if (jumped)
             {
                 jumped = false;
-                sound.clip = landSound;
-                sound.Play();
+                //sound.clip = landSound;
+                //sound.Play();
             }
         }
         else if (grounded && sliding == true && OnSlope() && !exitingSlope)
@@ -141,6 +161,9 @@ public class PlayerMovementAdvanced : MonoBehaviour
         }
         else
             rb.linearDamping = 0;
+
+        // update previous grounded state for next frame
+        wasGrounded = grounded;
     }
 
     private void FixedUpdate()

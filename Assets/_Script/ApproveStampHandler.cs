@@ -16,4 +16,10 @@ public class ApproveStampHandler : MonoBehaviour
         lostStamp.SetActive(false);
         securedStamp.SetActive(true);
     }
+
+    public void CloseStemp()
+    {
+        securedStamp.SetActive(false);
+        lostStamp.SetActive(false);
+    }
 }

@@ -120,6 +120,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forward: {fileID: 7705336529420914575}
+  ghostSounds:
+  - {fileID: 8300000, guid: df1ae9e4140cf4847ac192b12e25a156, type: 3}
+  - {fileID: 8300000, guid: c7ba753e6df403c4a9a8c920e9086462, type: 3}
+  - {fileID: 8300000, guid: f73d8cfae484adb47a217347c0b79f75, type: 3}
+  - {fileID: 8300000, guid: 65fc7383c420ed441b6baf4ed42f638c, type: 3}
+  - {fileID: 8300000, guid: da91b5944d075f741a89b2709bbc7495, type: 3}
 --- !u!4 &8647507242211422261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f2cb54f5340b9ab4bbf9db19dd362161, type: 3}

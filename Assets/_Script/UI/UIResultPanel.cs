@@ -61,13 +61,14 @@ public class UIResultPanel : MonoBehaviour
         int commentRand = Random.Range(0, commentSO.Dialogues.Length - 1);
         comment.text = commentSO.Dialogues[commentRand];
 
+        closeButton.gameObject.SetActive(true);
         ToggleVisible(true);
     }
 
     public void Dispose()
     {
+        stamp.CloseStemp();
         eventCloseResult = null;
-
         ToggleVisible(false);
     }
 

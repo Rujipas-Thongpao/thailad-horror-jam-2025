@@ -8,11 +8,15 @@ public class StageLeaveArea : MonoBehaviour, IDetectable, IInteractable
 
     private Collider col;
 
+    private void Awake()
+    {
+        col = GetComponent<Collider>();
+        col.enabled = false;
+    }
+
     public void Init(Action _eventInteracted)
     {
         eventInteracted = _eventInteracted;
-
-        col = GetComponent<Collider>();
         col.enabled = false;
     }
 

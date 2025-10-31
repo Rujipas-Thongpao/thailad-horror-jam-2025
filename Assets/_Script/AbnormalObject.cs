@@ -7,14 +7,20 @@ public class AbnormalObject : DetectableObject
     private GameObject[] abnormalPrefabs;
 
     [SerializeField]
-    private Transform[] cursePoints; 
+    private Transform[] cursePoints;
+
+   
 
     public BaseMark Mark { get; private set; }
+
+    private AbnormalRandomSound randomSound;
 
     public void ApplyMark(BaseMark mark)
     {
         Mark = mark;
         SpawnAbnormal();
+        randomSound = gameObject.GetComponent<AbnormalRandomSound>();
+        randomSound.StartRandomSound();
     }
 
     private void SpawnAbnormal()

@@ -795,7 +795,7 @@ MonoBehaviour:
   walking: 0
   sound: {fileID: 3807580011965603454}
   walkSound: {fileID: 9142234108335348464}
-  landSound: {fileID: 8300000, guid: c5363c8eea13c694db4b5b48877660c4, type: 3}
+  landSound: {fileID: 8300000, guid: be49a75dce568f345a872903167fe048, type: 3}
   footstepSounds:
   - {fileID: 8300000, guid: 75743a793a4f22f4ea3f7ea9002fa484, type: 3}
   - {fileID: 8300000, guid: 735ddf2ae51c63b4a9ef09d6bff636f0, type: 3}

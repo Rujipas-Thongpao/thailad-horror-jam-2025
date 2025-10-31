@@ -26,13 +26,20 @@ public class TutorialManager : MonoBehaviour
         PlayerManager.Instance.ChangeState(E_PlayerState.Holding);
         PlayerManager.Instance.MovementController.Moveable = false;
         PlayerManager.Instance.InputHandler.Interactable = false;
-
+        gameplayController.UI.ButtonPrompt.Hide();
+        gameplayController.UI.BlinkEyeController.CloseEyeInstance();
     }
 
     public void EnablePlayerWalk()
     {
         PlayerManager.Instance.MovementController.Moveable = true;
         PlayerManager.Instance.InputHandler.Interactable = true;
+        //gameplayController.UI.ButtonPrompt
+    }
+
+    public void OpenEye()
+    {
+        gameplayController.UI.BlinkEyeController.ToOpenEye(2);
     }
 
     public void StartIntroTutorialDialogue()

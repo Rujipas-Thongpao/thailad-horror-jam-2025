@@ -44,7 +44,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public float maxSlopeAngle;
     private RaycastHit slopeHit;
     private bool exitingSlope;
-    
+
 
     public Transform orientation;
 
@@ -113,28 +113,28 @@ public class PlayerMovementAdvanced : MonoBehaviour
         StateHandler();
 
         // handle drag
-        if(grounded && sliding == false)
+        if (grounded && sliding == false)
         {
             rb.linearDamping = groundDrag;
 
-            if(jumped)
+            if (jumped)
             {
                 jumped = false;
                 sound.clip = landSound;
                 sound.Play();
             }
         }
-        else if(grounded && sliding == true && OnSlope() && !exitingSlope)
+        else if (grounded && sliding == true && OnSlope() && !exitingSlope)
         {
             // slide on slope
             rb.linearDamping = 0;
         }
-        else if(grounded && sliding == true && (OnSlope() == false || exitingSlope))
+        else if (grounded && sliding == true && (OnSlope() == false || exitingSlope))
         {
             // slide on ground
             rb.linearDamping += Time.deltaTime * 10;
 
-            if(rb.linearDamping >= 15)
+            if (rb.linearDamping >= 15)
             {
                 rb.linearDamping = 15;
             }
@@ -154,7 +154,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // when to jump
-        if(Input.GetKey(jumpKey) && readyToJump && grounded && moveable)
+        if (Input.GetKey(jumpKey) && readyToJump && grounded && moveable)
         {
             jumped = true;
 
@@ -183,20 +183,23 @@ public class PlayerMovementAdvanced : MonoBehaviour
     {
         float walkCd = 0.5f;
 
-        switch (state)
+        if (moveable)
         {
-            case MovementState.walking when walking:
-                walkCd = 0.4f;
-            
-                walkSound.PlayOneShot(footstepSounds[footstepIndex]);
-                footstepIndex = (footstepIndex + 1) % 2;
-                break;
-            case MovementState.sliding when walking:
-                walkCd = 0.8f;
+            switch (state)
+            {
+                case MovementState.walking when walking:
+                    walkCd = 0.4f;
 
-                walkSound.PlayOneShot(footstepSounds[footstepIndex]);
-                footstepIndex = (footstepIndex + 1) % 2;
-                break;
+                    walkSound.PlayOneShot(footstepSounds[footstepIndex]);
+                    footstepIndex = (footstepIndex + 1) % 2;
+                    break;
+                case MovementState.sliding when walking:
+                    walkCd = 0.8f;
+
+                    walkSound.PlayOneShot(footstepSounds[footstepIndex]);
+                    footstepIndex = (footstepIndex + 1) % 2;
+                    break;
+            }
         }
         // else if(state == MovementState.sprinting && walking)
         // {
@@ -218,7 +221,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
             desiredMoveSpeed = climbSpeed;
 
-            if(anim)
+            if (anim)
             {
                 anim.SetBool("Walk", true);
             }
@@ -231,7 +234,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
             desiredMoveSpeed = wallrunSpeed;
 
-            if(anim)
+            if (anim)
             {
                 anim.SetBool("Walk", true);
             }
@@ -248,7 +251,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
             else
                 desiredMoveSpeed = sprintSpeed;
 
-            if(anim && ((horizontalInput != 0) || (verticalInput != 0)))
+            if (anim && ((horizontalInput != 0) || (verticalInput != 0)))
             {
                 walking = true;
                 anim.SetBool("Walk", true);
@@ -261,36 +264,36 @@ public class PlayerMovementAdvanced : MonoBehaviour
         }
 
         // Mode - Crouching
-        else if (Input.GetKey(crouchKey))
+        else if (Input.GetKey(crouchKey) && moveable)
         {
             state = MovementState.crouching;
             desiredMoveSpeed = crouchSpeed;
 
-            if(anim)
+            if (anim)
             {
                 anim.SetBool("Walk", false);
             }
         }
 
         // Mode - Sprinting
-        else if(grounded && Input.GetKey(sprintKey))
+        else if (grounded && Input.GetKey(sprintKey))
         {
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
 
-            if(anim)
+            if (anim)
             {
                 anim.SetBool("Walk", true);
             }
         }
 
         // Mode - Walking
-        else if (grounded)
+        else if (grounded && moveable)
         {
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
 
-            if(anim && ((horizontalInput != 0) || (verticalInput != 0)))
+            if (anim && ((horizontalInput != 0) || (verticalInput != 0)))
             {
                 walking = true;
                 anim.SetBool("Walk", true);
@@ -307,14 +310,14 @@ public class PlayerMovementAdvanced : MonoBehaviour
         {
             state = MovementState.air;
 
-            if(anim)
+            if (anim)
             {
                 anim.SetBool("Walk", false);
             }
         }
 
         // check if desiredMoveSpeed has changed drastically
-        if(Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0)
+        if (Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0)
         {
             StopAllCoroutines();
             StartCoroutine(SmoothlyLerpMoveSpeed());
@@ -357,7 +360,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     private void MovePlayer()
     {
         // calculate movement direction
-        if(!moveable) return;
+        if (!moveable) return;
 
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
@@ -371,11 +374,11 @@ public class PlayerMovementAdvanced : MonoBehaviour
         }
 
         // on ground
-        else if(grounded)
+        else if (grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
 
         // in air
-        else if(!grounded)
+        else if (!grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
 
         // turn gravity off while on slope
@@ -423,7 +426,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     public bool OnSlope()
     {
-        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f))
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
             return angle < maxSlopeAngle && angle != 0;

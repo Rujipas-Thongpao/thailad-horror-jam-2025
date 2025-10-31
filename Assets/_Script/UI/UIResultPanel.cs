@@ -13,6 +13,7 @@ public class UIResultPanel : MonoBehaviour
     [SerializeField] private Button closeButton;
     [SerializeField] private ApproveStampHandler stamp;
     [SerializeField] private ImageRandomizer polaroid;
+    [SerializeField] private AudioSource stampSource;
     [SerializeField] private AudioClip stampSfx;
 
     [Header("Result Text")]
@@ -81,7 +82,8 @@ public class UIResultPanel : MonoBehaviour
     private void OnStamp()
     {
         stamp.StampSecure();
-        AudioPoolManager.instance.PlayClipAtPoint(stampSfx, this.transform.position);
+        //AudioPoolManager.instance.PlayClipAtPoint(stampSfx, this.transform.position);
+        stampSource.Play();
         closeButton.gameObject.SetActive(false);
 
         Invoke("invokeEndLevel", 1f);

@@ -17,12 +17,12 @@ MonoBehaviour:
     inside this property.
   - "I can sense the abnormalities from here, but the reaction becomes unstable if
     I get too close. That\u2019s why I have to stay outside."
-  - "I need your help finding those objects, the ones carrying the parasitic residue.
-    It might not look unusual at first \u2014"
-  - But the reaction should be noticeable when you touch it or even just when you
-    get too close.
-  - "Once you locate one, bring it here. I\u2019ll confirm it, and then we\u2019ll
-    secure it."
+  - "I need you <color=#FFFF00><b> help finding those objects, the ones carrying
+    the parasitic residue </b></color>. It might not look unusual at first \u2014"
+  - But the reaction should be <color=#FFFF00><b> noticeable when you touch it or
+    even just when you get too close. </b></color>
+  - "<color=#FFFF00><b>Once you locate one, bring it here. </b></color> I\u2019ll
+    confirm it, and then we\u2019ll secure it."
   CorrectExamine: {fileID: 11400000, guid: 20d5cdfbd0a2697428d404161771de4d, type: 2}
   IncorrectExamine: {fileID: 11400000, guid: 01f49da293d63e94ca936ed17dd54d83, type: 2}
   Warn: {fileID: 11400000, guid: 6fa767acfb10c8f47b116c1e3e6be212, type: 2}

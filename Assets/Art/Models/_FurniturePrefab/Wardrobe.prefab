@@ -661,7 +661,8 @@ MonoBehaviour:
   openAnim: {fileID: 850402377574102704}
   closeAnim: {fileID: 282368022724559999}
   closeAnother: {fileID: 0}
-  clip: {fileID: 8300000, guid: 586d984449c2a0e4ab43df8104cee413, type: 3}
+  openClip: {fileID: 0}
+  closeClip: {fileID: 0}
 --- !u!320 &850402377574102704
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -806,7 +807,8 @@ MonoBehaviour:
   openAnim: {fileID: 6913680968359650298}
   closeAnim: {fileID: 625772429772942702}
   closeAnother: {fileID: 0}
-  clip: {fileID: 8300000, guid: 586d984449c2a0e4ab43df8104cee413, type: 3}
+  openClip: {fileID: 0}
+  closeClip: {fileID: 0}
 --- !u!320 &6913680968359650298
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -1015,23 +1017,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   places:
-  - {fileID: 5242328001392211916}
-  - {fileID: 990848232645336020}
-  - {fileID: 2027953363444431933}
   - {fileID: 8711590506465532509}
   - {fileID: 6701500454890582823}
   - {fileID: 3238176492677761263}
-  - {fileID: 3781229031056517845}
   - {fileID: 1993085786987503444}
   - {fileID: 3114260704968236622}
   config: {fileID: 11400000, guid: d22935895562a774b9199f3a368e117b, type: 2}
   placesWithParent:
-  - {fileID: 8868530231821142821}
   - {fileID: 6512790730996709091}
   - {fileID: 8307306764689456921}
-  - {fileID: 441304630160578708}
   - {fileID: 5486982857738255550}
-  - {fileID: 2765113703854039226}
   - {fileID: 2316866513461362783}
   - {fileID: 1372738748531480216}
 --- !u!1 &9020978551540427697
@@ -1488,7 +1483,8 @@ MonoBehaviour:
   openAnim: {fileID: 2327503669098616138}
   closeAnim: {fileID: 9095386877451852356}
   closeAnother: {fileID: 0}
-  clip: {fileID: 8300000, guid: 077775ed54fb5a44a9ed06933be50d83, type: 3}
+  openClip: {fileID: 0}
+  closeClip: {fileID: 0}
 --- !u!320 &2327503669098616138
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -1605,7 +1601,8 @@ MonoBehaviour:
   openAnim: {fileID: 8165901542418372991}
   closeAnim: {fileID: 631772078400456263}
   closeAnother: {fileID: 0}
-  clip: {fileID: 8300000, guid: 077775ed54fb5a44a9ed06933be50d83, type: 3}
+  openClip: {fileID: 0}
+  closeClip: {fileID: 0}
 --- !u!320 &8165901542418372991
 PlayableDirector:
   m_ObjectHideFlags: 0

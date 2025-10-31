@@ -20,3 +20,4 @@ MonoBehaviour:
   AbnormalObj:
   - {fileID: -278274731959432650, guid: af0effde2c618ae42b95c3842aa891d9, type: 3}
   - {fileID: 1608338135864411766, guid: 620f5b63e147f5c4ea226479bf9493ca, type: 3}
+  - {fileID: 97117816110932354, guid: 5cede326439cb4e46b59473aa9433df2, type: 3}

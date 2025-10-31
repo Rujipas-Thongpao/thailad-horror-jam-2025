@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Intro:
   - "Good afternoon. I'm a Level-3 Field Containment Operative, you can called me
-    \u2018Oracle\u2019"
+    <color=#FFFF00><b> \u2018Oracle\u2019 </b></color>"
   - Your director assigned you as my temporary assistant starting today.
   - Did he tell you what you're supposed to do?
   - "Of course not\u2026 That department never explains anything to newcomers."
   - "We\u2019ve got a case. A resident reported an abnormality happened inside their
     property."
-  - "You\u2019ll be my hands in the field\u2026 and don\u2019t expect this to be
-    safe."
-  - "We don\u2019t have much time. There\u2019s a case file on the table\u2014pick
-    it up and bring it to me outside."
+  - "You\u2019ll be my hands in the field to <color=#FFFF00><b> investigate those
+    object </b></color> \u2026 and don\u2019t expect this to be safe."
+  - "We don\u2019t have much time. <color=#FFFF00><b>There\u2019s a case file on
+    the table</b></color>\u2014pick it up and bring it to me outside."
   CorrectExamine: {fileID: 11400000, guid: 20d5cdfbd0a2697428d404161771de4d, type: 2}
   IncorrectExamine: {fileID: 11400000, guid: 01f49da293d63e94ca936ed17dd54d83, type: 2}
   Warn: {fileID: 11400000, guid: 6fa767acfb10c8f47b116c1e3e6be212, type: 2}

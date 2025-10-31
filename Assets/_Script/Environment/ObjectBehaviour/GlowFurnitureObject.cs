@@ -1,5 +1,8 @@
 using UnityEngine;
 
+public enum Startmode { 
+    On, Off, Random
+}
 public class GlowFurnitureObject : DraggableFurnitureObject, IInteractable
 {
     [SerializeField] private MeshRenderer renderer;
@@ -10,11 +13,26 @@ public class GlowFurnitureObject : DraggableFurnitureObject, IInteractable
 
     [SerializeField] AudioClip clip;
 
+    [SerializeField]
+    private Startmode startMode = Startmode.Random;
+
     private bool isOn;
 
     private void Start()
     {
-        isOn = Random.Range(0f, 1f) > 0.5f;
+        switch (startMode)
+        {
+            case Startmode.On:
+                isOn = true;
+                break;
+            case Startmode.Off:
+                isOn = false;
+                break;
+            case Startmode.Random:
+                isOn = Random.Range(0f, 1f) > 0.5f;
+                break;
+        }
+        //isOn = Random.Range(0f, 1f) > 0.5f;
         UpdateDisplay();
     }
 

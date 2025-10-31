@@ -23,6 +23,9 @@ public class Dizzyness : PlayerEffect
             volume.profile.TryGet<Vignette>(out var vignette);
             vignette.active = true;
             DOTween.To(() => vignette.intensity.value, x => vignette.intensity.value = x, 0.5f, 1f);
+
+            volume.profile.TryGet<ChromaticAberration>(out var chromatic);
+            chromatic.active = true;
             //vignette.intensity.value = .5f;
         }
         if (intensity >= 1)
@@ -33,6 +36,8 @@ public class Dizzyness : PlayerEffect
             DOTween.To(() => dof.focalLength.value, x => dof.focalLength.value = x, 100f, 1f);
             dof.focalLength.value = 100f;
 
+            volume.profile.TryGet<ChromaticAberration>(out var chromatic);
+            chromatic.active = true;
             //camera.fieldOfView = 15f;
             DOTween.To(() => camera.fieldOfView, x => camera.fieldOfView = x, 40f, .5f);
         }
@@ -44,7 +49,7 @@ public class Dizzyness : PlayerEffect
     {
         volume.profile.TryGet<Vignette>(out var vignette);
         //vignette.intensity.value = 0f;
-        DOTween.To(() => vignette.intensity.value, x => vignette.intensity.value = x, 0.0f, 1f).OnComplete(() =>
+        DOTween.To(() => vignette.intensity.value, x => vignette.intensity.value = x, 0.1f, 1f).OnComplete(() =>
         {
             vignette.active = false;
         });
@@ -57,5 +62,8 @@ public class Dizzyness : PlayerEffect
 
         //camera.fieldOfView = 60f;
         DOTween.To(() => camera.fieldOfView, x => camera.fieldOfView = x, 60f, 1f);
+
+        volume.profile.TryGet<ChromaticAberration>(out var chromatic);
+        chromatic.active = false;
     }
 }

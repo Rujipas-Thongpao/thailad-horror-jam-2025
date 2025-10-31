@@ -102,10 +102,13 @@ public class OracleTriggerArea : MonoBehaviour
 
     private void OnOracleSpeak()
     {
-        var rand = Random.Range(0, oracleClips.Length);
-        if (rand == lastClipIndex) rand = (rand + 1) % oracleClips.Length;
-        audioSource.PlayOneShot(oracleClips[rand]);
-        lastClipIndex = rand;
+        if(audioSource != null)
+        {
+            var rand = Random.Range(0, oracleClips.Length);
+            if (rand == lastClipIndex) rand = (rand + 1) % oracleClips.Length;
+            audioSource.PlayOneShot(oracleClips[rand]);
+            lastClipIndex = rand;
+        }
     }
     #endregion
 }

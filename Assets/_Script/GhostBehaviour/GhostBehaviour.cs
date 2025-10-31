@@ -14,11 +14,10 @@ public class GhostBehaviour : MonoBehaviour
     {
         if (!player) return;
 
-        var angle = Vector3.Dot(player.PlayerCam.camHolder.transform.forward.normalized, (forward.position - player.transform.position).normalized);
-        Debug.Log(angle);
+        var angle = Vector3.Dot(player.PlayerCam.camHolder.transform.forward.normalized, (transform.position - player.transform.position).normalized);
 
-        if (angle <= .8f) return;
+        if (angle <= .7f) return;
 
-        player.SanityController.DrainSanity(-24f * Time.deltaTime);
+        player.SanityController.DrainSanity(-30f * Time.deltaTime);
     }
 }

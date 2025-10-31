@@ -7,7 +7,8 @@ public class Interactable : MonoBehaviour, IInteractable, IDetectable
     [SerializeField] private PlayableDirector openAnim;
     [SerializeField] private PlayableDirector closeAnim;
     [SerializeField] private Interactable closeAnother;
-    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioClip openClip;
+    [SerializeField] private AudioClip closeClip;
 
     private bool isOpen;
     private float lastInteract;
@@ -34,6 +35,7 @@ public class Interactable : MonoBehaviour, IInteractable, IDetectable
         if (isOpen)
         {
             closeAnim?.Play();
+            AudioPoolManager.instance.PlayClipAtPoint(closeClip, transform.position);
 
             if (closeAnother) closeAnother.ForceClose();
         }
@@ -48,16 +50,17 @@ public class Interactable : MonoBehaviour, IInteractable, IDetectable
         if (!isOpen)
         {
             openAnim?.Play();
+            AudioPoolManager.instance.PlayClipAtPoint(openClip, transform.position);
         }
         else
         {
             closeAnim?.Play();
+            AudioPoolManager.instance.PlayClipAtPoint(closeClip, transform.position);
 
             if (closeAnother) closeAnother.ForceClose();
         }
 
         isOpen = !isOpen;
 
-        AudioPoolManager.instance.PlayClipAtPoint(clip, transform.position);
     }
 }

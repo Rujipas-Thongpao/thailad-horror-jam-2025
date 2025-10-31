@@ -625,7 +625,8 @@ MonoBehaviour:
   openAnim: {fileID: 3736640130271549990}
   closeAnim: {fileID: 6015900191462179458}
   closeAnother: {fileID: 0}
-  clip: {fileID: 8300000, guid: 728f9161f919908448f4ca0bde354dda, type: 3}
+  openClip: {fileID: 8300000, guid: a8b5168ddc517ac4ca491cd32006b772, type: 3}
+  closeClip: {fileID: 8300000, guid: 5235207e1aa8b57469ba9e386442d008, type: 3}
 --- !u!320 &3736640130271549990
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -740,7 +741,8 @@ MonoBehaviour:
   openAnim: {fileID: 3755715538819550969}
   closeAnim: {fileID: 7613776915824143565}
   closeAnother: {fileID: 0}
-  clip: {fileID: 8300000, guid: 728f9161f919908448f4ca0bde354dda, type: 3}
+  openClip: {fileID: 8300000, guid: a8b5168ddc517ac4ca491cd32006b772, type: 3}
+  closeClip: {fileID: 8300000, guid: 5235207e1aa8b57469ba9e386442d008, type: 3}
 --- !u!320 &3755715538819550969
 PlayableDirector:
   m_ObjectHideFlags: 0

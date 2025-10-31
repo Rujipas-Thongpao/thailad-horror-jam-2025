@@ -84,6 +84,13 @@ public class PlayerMovementAdvanced : MonoBehaviour
     [Header("Animation")]
     [SerializeField] Animator anim;
 
+    private bool moveable = true;
+    public bool Moveable
+    {
+        get { return moveable; }
+        set { moveable = value; }
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -147,7 +154,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // when to jump
-        if(Input.GetKey(jumpKey) && readyToJump && grounded)
+        if(Input.GetKey(jumpKey) && readyToJump && grounded && moveable)
         {
             jumped = true;
 
@@ -159,14 +166,14 @@ public class PlayerMovementAdvanced : MonoBehaviour
         }
 
         // start crouch
-        if (Input.GetKeyDown(crouchKey))
+        if (Input.GetKeyDown(crouchKey) && moveable)
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
         }
 
         // stop crouch
-        if (Input.GetKeyUp(crouchKey))
+        if (Input.GetKeyUp(crouchKey) && moveable)
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
@@ -350,6 +357,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
     private void MovePlayer()
     {
         // calculate movement direction
+        if(!moveable) return;
+
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         // on slope

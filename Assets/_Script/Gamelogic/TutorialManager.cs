@@ -24,6 +24,15 @@ public class TutorialManager : MonoBehaviour
 
         PlayerManager.Instance.ObjectHolder.RegisterObject(phone.GetComponent<DetectableObject>(), null);
         PlayerManager.Instance.ChangeState(E_PlayerState.Holding);
+        PlayerManager.Instance.MovementController.Moveable = false;
+        PlayerManager.Instance.InputHandler.Interactable = false;
+
+    }
+
+    public void EnablePlayerWalk()
+    {
+        PlayerManager.Instance.MovementController.Moveable = true;
+        PlayerManager.Instance.InputHandler.Interactable = true;
     }
 
     public void StartIntroTutorialDialogue()

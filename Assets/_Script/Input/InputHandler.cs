@@ -16,9 +16,10 @@ public class InputHandler
 
     private InputActions inputActions;
 
+    public bool Interactable { get; set; } = true;
+
     public void Initialize()
     {
-        //input =  new Input().Gameplay;
         inputActions = new InputActions();
 
         inputActions.Gameplay.Axis.performed += OnMouseMoved;
@@ -51,11 +52,13 @@ public class InputHandler
 
     private void OnLeftClickPerformed(InputAction.CallbackContext context)
     {
+        if(!Interactable) return;
         EventSelectPerformed?.Invoke(Mouse.current.position.ReadValue());
     }
 
     private void OnLeftClickCanceled(InputAction.CallbackContext context)
     {
+        if(!Interactable) return;
         EventSelectCanceled?.Invoke(Mouse.current.position.ReadValue());
     }
 
@@ -70,6 +73,13 @@ public class InputHandler
     }
 
     private void OnInteractPerformed(InputAction.CallbackContext context)
+    {
+        if (!Interactable) return;
+        PerformInteract();
+    }
+
+    // New perform function
+    public void PerformInteract()
     {
         EventInteractPerformed?.Invoke();
     }

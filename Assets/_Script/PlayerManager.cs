@@ -38,6 +38,7 @@ public class PlayerManager : MonoBehaviour
     private DraggingFurnitureState draggingState;
 
     private InputHandler inputHandler;
+    public InputHandler InputHandler => inputHandler;
 
     private Dictionary<E_PlayerState, GameState> stateDictionary = new();
 

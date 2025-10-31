@@ -33,4 +33,4 @@ MonoBehaviour:
     SubIntensity: 010000000100000001000000
     furniture: {fileID: -1965681638723052981, guid: 8f319e660b6863447802640318930b77, type: 3}
     Hallway: {fileID: 2795019828412085846, guid: 09efc64812f60af45bc2a810ce50f22d, type: 3}
-  Length: 2
+  Length: 5

@@ -14,7 +14,7 @@ public class UIResultPanel : MonoBehaviour
     [SerializeField] private ApproveStampHandler stamp;
     [SerializeField] private ImageRandomizer polaroid;
     [SerializeField] private AudioSource stampSource;
-    [SerializeField] private AudioClip stampSfx;
+    //[SerializeField] private AudioClip stampSfx;
 
     [Header("Result Text")]
     [SerializeField] private TextMeshProUGUI date;

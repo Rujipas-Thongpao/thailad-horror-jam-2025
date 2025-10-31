@@ -661,8 +661,8 @@ MonoBehaviour:
   openAnim: {fileID: 850402377574102704}
   closeAnim: {fileID: 282368022724559999}
   closeAnother: {fileID: 0}
-  openClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: f850cc402284b64439c4c7197d6f069c, type: 3}
+  closeClip: {fileID: 8300000, guid: ba6f0762fe7c7da48820cb44720556c5, type: 3}
 --- !u!320 &850402377574102704
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -807,8 +807,8 @@ MonoBehaviour:
   openAnim: {fileID: 6913680968359650298}
   closeAnim: {fileID: 625772429772942702}
   closeAnother: {fileID: 0}
-  openClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: f850cc402284b64439c4c7197d6f069c, type: 3}
+  closeClip: {fileID: 8300000, guid: ba6f0762fe7c7da48820cb44720556c5, type: 3}
 --- !u!320 &6913680968359650298
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -1483,8 +1483,8 @@ MonoBehaviour:
   openAnim: {fileID: 2327503669098616138}
   closeAnim: {fileID: 9095386877451852356}
   closeAnother: {fileID: 0}
-  openClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: a8b5168ddc517ac4ca491cd32006b772, type: 3}
+  closeClip: {fileID: 8300000, guid: 5235207e1aa8b57469ba9e386442d008, type: 3}
 --- !u!320 &2327503669098616138
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -1601,8 +1601,8 @@ MonoBehaviour:
   openAnim: {fileID: 8165901542418372991}
   closeAnim: {fileID: 631772078400456263}
   closeAnother: {fileID: 0}
-  openClip: {fileID: 0}
-  closeClip: {fileID: 0}
+  openClip: {fileID: 8300000, guid: a8b5168ddc517ac4ca491cd32006b772, type: 3}
+  closeClip: {fileID: 8300000, guid: 5235207e1aa8b57469ba9e386442d008, type: 3}
 --- !u!320 &8165901542418372991
 PlayableDirector:
   m_ObjectHideFlags: 0

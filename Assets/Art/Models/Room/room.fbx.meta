@@ -1,9 +1,19 @@
 fileFormatVersion: 2
 guid: a8077c7f253b1d4469e8012f76717e3a
 ModelImporter:
-  serializedVersion: 24200
+  serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor
+    second: {fileID: 2100000, guid: ae03c6ee0a7cee24aae158f3376e089b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ridge
+    second: {fileID: 2100000, guid: ffe9f983d53ad7741a6fc38918d181ef, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -56,9 +66,6 @@ ModelImporter:
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
-    generateMeshLods: 0
-    meshLodGenerationFlags: 0
-    maximumMeshLod: -1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8

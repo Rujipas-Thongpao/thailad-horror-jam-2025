@@ -386,4 +386,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 5619416544346736803}
-  switchSound: {fileID: 8300000, guid: d8ef9ca406fd8244487faa5a98020aec, type: 3}
+  switchSound: {fileID: 8300000, guid: 704898b2ceb2d4845b9f653f35e5549a, type: 3}

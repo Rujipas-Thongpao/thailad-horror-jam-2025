@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class RadioObject : MonoBehaviour, IInteractable
 {
@@ -20,7 +19,6 @@ public class RadioObject : MonoBehaviour, IInteractable
         if (audioSource != null)
         {
             audioSource.enabled = isPlaying;
-            Debug.Log("radio is playing " +  isPlaying);
         }
     }
 }

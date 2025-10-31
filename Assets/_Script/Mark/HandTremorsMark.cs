@@ -1,6 +1,6 @@
 public class HandTremorsMark : BaseMark
 {
-    public HandTremorsMark(int _intensity) : base(_intensity)
+    public HandTremorsMark(int intensity, string name) : base(intensity, name)
     {
     }
 

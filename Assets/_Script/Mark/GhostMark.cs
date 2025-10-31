@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GhostMark : BaseMark
 {
-    public GhostMark(int intensity) : base(intensity)
+    public GhostMark(int intensity, string name) : base(intensity, name)
     {
     }
 

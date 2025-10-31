@@ -14,8 +14,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UIResultPanel result;
     public UIResultPanel ResultPanel => result;
 
+    [SerializeField] private UIWeeklyPanel weeklyPanel;
+    public UIWeeklyPanel WeeklyPanel => weeklyPanel;
+
     [SerializeField] private BlinkEyeController blinkEyeController;
     public BlinkEyeController BlinkEyeController => blinkEyeController;
+
 
     public void Awake()
     {

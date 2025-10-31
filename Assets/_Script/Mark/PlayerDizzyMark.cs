@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerDizzyMark : BaseMark
 {
-    public PlayerDizzyMark(int _intensity) : base(_intensity)
+    public PlayerDizzyMark(int _intensity, string name) : base(_intensity, name)
     {
     }
 

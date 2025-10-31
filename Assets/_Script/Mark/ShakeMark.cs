@@ -1,8 +1,7 @@
 public class ShakeMark : BaseMark
 {
-    public ShakeMark(int intensity) : base(intensity)
+    public ShakeMark(int intensity, string name) : base(intensity, name)
     {
-        
     }
 
     public override void Init(DetectableObject obj)

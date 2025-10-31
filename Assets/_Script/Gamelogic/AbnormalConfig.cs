@@ -18,20 +18,21 @@ public static class AbnormalConfig
         "Room Quake", //Room Shake
         "Hallucination", //Dizzy
         "Nerve Paralyze", //Hand Tremor
-        "Poltergeist"
+        "Poltergeist",
+        "Spectre"
     };
 
     public static BaseMark Create(int index, int intensity)
     {
         BaseMark mark = index switch
         {
-            0 => new FlickerMark(intensity),
-            1 => new ShakeMark(intensity),
-            2 => new PlayerDizzyMark(intensity),
-            3 => new HandTremorsMark(intensity),
-            4 => new PoltergeistMark(intensity),
-            5 => new GhostMark(intensity),
-            _ => new FlickerMark(intensity),
+            0 => new FlickerMark(intensity, Names[index]),
+            1 => new ShakeMark(intensity, Names[index]),
+            2 => new PlayerDizzyMark(intensity, Names[index]),
+            3 => new HandTremorsMark(intensity, Names[index]),
+            4 => new PoltergeistMark(intensity, Names[index]),
+            5 => new GhostMark(intensity, Names[index]),
+            _ => new FlickerMark(intensity, Names[0]),
         };
 
         return mark;

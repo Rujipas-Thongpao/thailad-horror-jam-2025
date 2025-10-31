@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private RoomController roomController;
     [SerializeField] private OracleTriggerArea oracle;
     [SerializeField] private LevelConfigSO config;
+    public LevelConfigSO LevelConfig => config;
 
     private readonly List<BaseMark> marks = new();
     private readonly List<BaseMark> mainAbnormal = new();
@@ -83,7 +84,7 @@ public class LevelManager : MonoBehaviour
     private void OnAbnormalSecured(BaseMark mark)
     {
         var isMain = mainAbnormal.Contains(mark);
-        stats.AbnormalSecured(isMain);
+        stats.AbnormalSecured(isMain, mark);
 
         if (stats.MainAbnormal + stats.SubAbnormal == marks.Count)
         {
@@ -131,21 +132,33 @@ public class LevelManager : MonoBehaviour
 public class PerformanceStatsData
 {
     public int Date;
+    public string MainAbnormalName { get; private set; }
     public int MainAbnormal { get; private set;}
+    public List<string> SubAbnormalNames { get; private set; }
     public int SubAbnormal { get ; private set; }
     public int Incorrect { get ; private set; }
 
     public int Level;
     public PerformanceStatsData(int level)
     {
+        SubAbnormalNames = new List<string>();
+
         Level = level;
         Date = 26 + level;
     }
 
-    public void AbnormalSecured(bool isMain)
+    public void AbnormalSecured(bool isMain, BaseMark mark)
     {
-        if (isMain) MainAbnormal++;
-        else SubAbnormal++;
+        if (isMain)
+        {
+            MainAbnormalName = mark.MarkName;
+            MainAbnormal++;
+        }
+        else
+        {
+            SubAbnormalNames.Add(mark.MarkName);
+            SubAbnormal++;
+        } 
     }
 
     public void IncorrectChecked()

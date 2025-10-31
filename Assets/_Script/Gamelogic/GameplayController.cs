@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameplayController : MonoBehaviour
@@ -11,6 +12,8 @@ public class GameplayController : MonoBehaviour
 
     [SerializeField] private bool StartWithTutorial = false;
 
+    public List<PerformanceStatsData> performanceStats;
+
     private UIManager ui;
     public UIManager UI => ui;
 
@@ -21,6 +24,7 @@ public class GameplayController : MonoBehaviour
 
     private void Start()
     {
+        performanceStats = new List<PerformanceStatsData>();
         ui = UIManager.Instance;
         dialogueManager.Init(ui.DialoguePanel);
         ui.ButtonPrompt.Init(playerManager);
@@ -64,17 +68,31 @@ public class GameplayController : MonoBehaviour
 
     private void OnStageEnd(PerformanceStatsData stats)
     {
-        levelManager.Dispose();
-        ui.BlinkEyeController.ToCloseEye(2);
-        ui.ResultPanel.Init(stats, OnCloseResult);
-        ui.ButtonPrompt.Hide();
-        AudioPoolManager.instance.SetAmbientVolume(0f);
-        ToggleCursor(true);
+        if (performanceStats.Count < 5)
+        {
+            performanceStats.Add(stats);
+        }
+
+        ui.BlinkEyeController.ToCloseEye(2, () =>
+        {
+            levelManager.Dispose();
+            if (stats.Level == levelManager.LevelConfig.Length-1)
+            {
+                ui.WeeklyPanel.Init(performanceStats);
+            }
+            else
+            {
+                ui.ResultPanel.Init(stats, OnCloseResult);
+            }
+            ui.ButtonPrompt.Hide();
+            AudioPoolManager.instance.SetAmbientVolume(0f);
+            ToggleCursor(true);
+        });
     }
 
     private void OnTutorialEnd()
     {
-        ui.BlinkEyeController.ToCloseEye(4f, () =>
+        ui.BlinkEyeController.ToCloseEye(3f, () =>
         {
             levelManager.DisposeForTutorial();
             ui.ButtonPrompt.Hide();

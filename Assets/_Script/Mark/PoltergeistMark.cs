@@ -1,7 +1,7 @@
 public class PoltergeistMark : BaseMark
 {
     // Constructor to pass required intensity parameter to BaseMark
-    public PoltergeistMark(int intensity) : base(intensity)
+    public PoltergeistMark(int intensity, string name) : base(intensity, name)
     {
     }
 

@@ -10,8 +10,12 @@ public abstract class BaseMark
     private bool isActive;
     private float nextTriggerTime;
 
-    protected BaseMark(int _intensity)
+    protected string markName = string.Empty;
+    public string MarkName => markName;
+
+    protected BaseMark(int _intensity, string name)
     {
+        markName = name;
         intensity = _intensity;
         nextTriggerTime = 0f;
         isActive = true;
@@ -38,6 +42,7 @@ public abstract class BaseMark
         if (!isActive) return false;
         if (Time.time <= nextTriggerTime) return false;
 
+        Debug.Log($" Trigger {markName} with {intensity}");
         nextTriggerTime = Time.time + DEFAULT_CD;
 
         return true;

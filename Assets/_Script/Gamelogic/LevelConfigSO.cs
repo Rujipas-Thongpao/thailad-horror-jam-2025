@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelConfigSO : ScriptableObject
 {
     public LevelData[] Levels;
+    public int Length;
 }
 
 [Serializable]

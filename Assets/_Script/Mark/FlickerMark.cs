@@ -1,8 +1,7 @@
 public class FlickerMark : BaseMark
 {
-    public FlickerMark(int intensity) : base(intensity)
+    public FlickerMark(int intensity, string name) : base(intensity, name)
     {
-        
     }
 
     public override void Init(DetectableObject obj)

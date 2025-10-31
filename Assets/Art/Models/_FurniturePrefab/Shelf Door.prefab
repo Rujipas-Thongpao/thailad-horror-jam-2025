@@ -515,6 +515,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8839568720538273707, guid: 981a7253c0b52ac458dd323d928626fb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7613776915824143565}
+    - targetCorrespondingSourceObject: {fileID: 8839568720538273707, guid: 981a7253c0b52ac458dd323d928626fb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6190348501860717270}
     - targetCorrespondingSourceObject: {fileID: -2476324099659919096, guid: 981a7253c0b52ac458dd323d928626fb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7411361478892655151}
@@ -533,6 +536,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -4282848018816662437, guid: 981a7253c0b52ac458dd323d928626fb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6015900191462179458}
+    - targetCorrespondingSourceObject: {fileID: -4282848018816662437, guid: 981a7253c0b52ac458dd323d928626fb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7079445524332058344}
     - targetCorrespondingSourceObject: {fileID: 335762107962535215, guid: 981a7253c0b52ac458dd323d928626fb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6003451100770094938}
@@ -619,8 +625,6 @@ MonoBehaviour:
   openAnim: {fileID: 3736640130271549990}
   closeAnim: {fileID: 6015900191462179458}
   closeAnother: {fileID: 0}
-  interactionDistance: 3
-  interactionKey: 102
   clip: {fileID: 8300000, guid: 728f9161f919908448f4ca0bde354dda, type: 3}
 --- !u!320 &3736640130271549990
 PlayableDirector:
@@ -736,8 +740,6 @@ MonoBehaviour:
   openAnim: {fileID: 3755715538819550969}
   closeAnim: {fileID: 7613776915824143565}
   closeAnother: {fileID: 0}
-  interactionDistance: 3
-  interactionKey: 102
   clip: {fileID: 8300000, guid: 728f9161f919908448f4ca0bde354dda, type: 3}
 --- !u!320 &3755715538819550969
 PlayableDirector:
@@ -804,6 +806,27 @@ PlayableDirector:
     value: {fileID: 5843849769111097700}
   m_ExposedReferences:
     m_References: []
+--- !u!65 &7079445524332058344
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5938893570800987837}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0073134075, y: 0.00028676086, z: 0.010023727}
+  m_Center: {x: 0.0036567037, y: 0.00014338043, z: 0.0048852623}
 --- !u!1 &7806709292535754061 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8839568720538273707, guid: 981a7253c0b52ac458dd323d928626fb, type: 3}
@@ -850,3 +873,24 @@ PlayableDirector:
     value: {fileID: 4855973309101571805}
   m_ExposedReferences:
     m_References: []
+--- !u!65 &6190348501860717270
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7806709292535754061}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0073134075, y: 0.00028676086, z: 0.010023726}
+  m_Center: {x: -0.0036567037, y: 0.00014338043, z: 0.005011863}
